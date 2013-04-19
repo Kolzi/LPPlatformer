@@ -12,6 +12,7 @@
 #include "Components/PositionComponent.hpp"
 #include "Components/PhysicsComponent.hpp"
 
+#include <SFML/System/Time.hpp>
 #include <unordered_map>
 
 class MovementSystem : System
@@ -21,7 +22,7 @@ public:
 					std::unordered_map<int,PhysicsComponent>& physicsComponents);
 	MovementSystem(const MovementSystem& orig);
 	virtual ~MovementSystem();
-	void move(double deltaT);
+	void move(sf::Time time);
     void addEntity(int entity);
 private:
 	std::unordered_map<int,PositionComponent>& positionComponents;

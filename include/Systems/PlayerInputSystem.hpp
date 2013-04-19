@@ -18,15 +18,13 @@
 class PlayerInputSystem : System
 {
 public:
-    PlayerInputSystem(	const sf::Input& input,
-						std::unordered_map<int,PositionComponent>& positionComponents,
-						std::unordered_map<int,PhysicsComponent>& physicsComponents);
+    PlayerInputSystem(std::unordered_map<int,PositionComponent>& positionComponents,
+			std::unordered_map<int,PhysicsComponent>& physicsComponents);
     PlayerInputSystem(const PlayerInputSystem& orig);
     virtual ~PlayerInputSystem();
 	void handleInput();
     void addEntity(int entity);
 private:
-	const sf::Input& input;
 	std::unordered_map<int,PositionComponent>& positionComponents;
 	std::unordered_map<int,PhysicsComponent>& physicsComponents;
 };

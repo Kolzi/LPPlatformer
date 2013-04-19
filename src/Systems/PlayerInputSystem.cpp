@@ -5,21 +5,20 @@
  * Created on 18 luty 2013, 21:19
  */
 
-#include <SFML/Window/Input.hpp>
 #include <assert.h>
+#include <SFML/Window/Keyboard.hpp>
 
 #include "Systems/PlayerInputSystem.hpp"
 
-PlayerInputSystem::PlayerInputSystem(const sf::Input& input,
-					std::unordered_map<int,PositionComponent>& positionComponents,
+PlayerInputSystem::PlayerInputSystem(std::unordered_map<int,PositionComponent>& positionComponents,
 					std::unordered_map<int,PhysicsComponent>& physicsComponents)
-:input(input),positionComponents(positionComponents),
+:positionComponents(positionComponents),
 	physicsComponents(physicsComponents)
 {
 }
 
 PlayerInputSystem::PlayerInputSystem(const PlayerInputSystem& orig)
-:input(orig.input),positionComponents(orig.positionComponents),
+:positionComponents(orig.positionComponents),
 	physicsComponents(orig.physicsComponents)
 {
 }
@@ -40,22 +39,22 @@ void PlayerInputSystem::handleInput()
     for(auto eid: entities)
     {
 		PhysicsComponent& pC=physicsComponents.at(eid);
-		if(input.IsKeyDown(sf::Key::Left))
+		if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
 		{
 			pC.ax=-200;
 		}
-		else if(input.IsKeyDown(sf::Key::Right))
+		else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
 		{
 			pC.ax=200;
 		}
 		else
 			pC.ax=0;
 
-		if(input.IsKeyDown(sf::Key::Up))
+		if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
 		{
 			pC.ay=-200;
 		}
-		else if(input.IsKeyDown(sf::Key::Down))
+		else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
 		{
 			pC.ay=200;
 		}

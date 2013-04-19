@@ -33,8 +33,8 @@ void RenderSystem::render()
     {
         PositionComponent& pC=positionComponents.at(*it);
         SpriteComponent& sC=spriteComponents.at(*it);
-        sC.sprite.SetPosition(pC.x,pC.y);
-        window.Draw(sC.getSprite());
+        sC.sprite.setPosition(pC.x,pC.y);
+        window.draw(sC.getSprite());
     }
 }
 

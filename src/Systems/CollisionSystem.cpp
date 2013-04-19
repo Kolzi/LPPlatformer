@@ -62,11 +62,13 @@ void CollisionSystem::detectCollisions()
 			sf::Rect<double> bbi=bbCi.boundingBox;
 			sf::Rect<double> bbj=bbCj.boundingBox;
 			
-			bbi.Offset(posCi.x, posCi.y);
-			bbj.Offset(posCj.x, posCj.y);
+                        bbi.left+=posCi.x;
+                        bbi.top +=posCi.y;
+                        bbj.left+=posCj.x;
+                        bbj.top +=posCj.y;
 		
 			
-			if(bbi.Intersects(bbj))
+			if(bbi.intersects(bbj))
 			{
 				std::cerr<<"Collision!\n";
 			//	std::cerr<<bbi.Left<<" "<<bbi.Top<<" "<<bbi.Right<<" "<<bbi.Bottom<<"\n";
@@ -75,14 +77,14 @@ void CollisionSystem::detectCollisions()
 				double ty=999999;
 				double relVx=physCi.vx-physCj.vx;
 				if(relVx>0)
-					tx=(bbi.Right-bbj.Left)/relVx;
+					tx=(bbi.left+bbi.width-bbj.left)/relVx;
 				if(relVx<0)
-					tx=(bbi.Left-bbj.Right)/relVx;
+					tx=(bbi.left-bbj.left-bbj.width)/relVx;
 				double relVy=physCi.vy-physCj.vy;
 				if(relVy>0)
-					ty=(bbi.Bottom-bbj.Top)/relVy;
+					ty=(bbi.top+bbi.height-bbj.top)/relVy;
 				if(relVy<0)
-					ty=(bbi.Top-bbj.Bottom)/relVy;
+					ty=(bbi.top-bbj.top-bbj.height)/relVy;
 				std::cerr<<tx<<" "<<ty<<"\n";
 				std::cerr<<physCi.ax<<" "<<physCi.ay<<"\n";
 				std::cerr<<physCi.vx<<" "<<physCi.vy<<"\n";

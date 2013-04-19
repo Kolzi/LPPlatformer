@@ -9,6 +9,7 @@
 #include <iostream>
 #include <unordered_map>
 #include <assert.h>
+#include <SFML/System/Time.hpp>
 
 
 MovementSystem::MovementSystem(
@@ -36,8 +37,9 @@ void MovementSystem::addEntity(int EID)
 	entities.push_back(EID);
 }
 
-void MovementSystem::move(double deltaT)
+void MovementSystem::move(sf::Time time)
 {
+    double deltaT=time.asSeconds();
 	for(auto it=entities.begin();it!=entities.end();it++)
     {
         PositionComponent& posC=positionComponents.at(*it);
