@@ -17,10 +17,17 @@
 #include "Components/BoundingBoxComponent.hpp"
 #include "Systems/CollisionSystem.hpp"
 #include "Systems/GravitySystem.hpp"
+#include "General/ArchetypesManager.h"
 #include <iostream>
+#include <fstream>
 
 int main(int argc, char** argv)
 {
+	ArchetypesManager archMan;
+	std::ifstream file("resources/archetypes.data");
+	archMan.read(file);
+	
+	
     sf::RenderWindow app(sf::VideoMode(800, 600, 32), "SFML Graphics");
 
     std::unordered_map <int, SpriteComponent> spriteComponents;

@@ -10,11 +10,17 @@
 
 #include "Components/Component.hpp"
 #include <SFML/Graphics/Rect.hpp>
+#include "rapidxml/rapidxml.hpp"
 
-struct ViewportComponent : Component
+struct ViewportComponent : public Component
 {
-	ViewportComponent(int x1, int y1, int x2, int y2, int EID);
+	ViewportComponent(int x1, int y1, int w, int h, int EID);
 	ViewportComponent(const sf::Rect<int>& rectangle, int EID);
+    ViewportComponent(rapidxml::xml_node<>* componentNode);
+    
+	Component* clone();
+	void read(rapidxml::xml_node<>* componentNode);
+	
 	sf::Rect<int> destination;
 };
 

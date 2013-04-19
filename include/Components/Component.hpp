@@ -8,6 +8,7 @@
 #ifndef COMPONENT_HPP
 #define	COMPONENT_HPP
 
+#include "rapidxml/rapidxml.hpp"
 #include <list>
 #include <Systems/System.hpp>
 
@@ -17,8 +18,10 @@ public:
     Component(int EID);
     Component(const Component& orig);
     virtual ~Component();
- //   std::list<System&> attachedTo;
-	int EID;
+ //   std::list<System&> attachedTo
+    virtual Component* clone()=0;
+	virtual void read(rapidxml::xml_node<>* componentNode)=0;
+    int EID;
 private:
 
 };

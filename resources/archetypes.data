@@ -1,0 +1,30 @@
+<Archetype name="Player">
+	<Components>
+		<Position x="125" y="125" z="0" />
+		<Sprite file="player.png" />
+		<Viewport x="0" y="0" w="max" h="max" />
+		<CameraSource offsetX="100" offsetY="100" offsetZ="0" w="max" h="max" />
+		<Physics />
+		<BoundingBox x="0" y="0" w="50" h="50" />
+		<Gravity g="500"/>
+	</Components>
+	<Systems>
+		<Render />
+		<PlayerInput />
+		<Collision />
+		<Movement />
+		<Gravity />
+		<Camera />
+	</Systems>
+</Archetype>
+<Archetype name="Player">
+	<Components>
+		<Position x="0" y="0" z="0" />
+		<Sprite file="ground.png" />
+		<BoundingBox x="0" y="0" w="50" h="50" />
+	</Components>
+	<Systems>
+		<Render />
+		<Collision />
+	</Systems>
+</Archetype>	

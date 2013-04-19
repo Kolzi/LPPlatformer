@@ -9,12 +9,19 @@
 #define	GRAVITYCOMPONENT_HPP
 
 #include <Components/Component.hpp>
+#include "rapidxml/rapidxml.hpp"
 
-struct GravityComponent : Component
+struct GravityComponent : public Component
 {
 public:
 	GravityComponent(int EID);
 	GravityComponent(int EID, double g);
+    GravityComponent(rapidxml::xml_node<>* componentNode);
+	
+	Component* clone();
+	void read(rapidxml::xml_node<>* componentNode);
+	
+	static constexpr double defaultG=500;
 	double g;
 };
 

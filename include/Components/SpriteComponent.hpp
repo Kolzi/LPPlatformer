@@ -10,14 +10,20 @@
 
 #include <SFML/Graphics.hpp>
 #include "Components/Component.hpp"
+#include "rapidxml/rapidxml.hpp"
 
-class SpriteComponent : Component
+class SpriteComponent : public Component
 {
 public:
     SpriteComponent(sf::Sprite sprite, int EID);
     SpriteComponent(const SpriteComponent& orig);
+    SpriteComponent(rapidxml::xml_node<>* componentNode);
     virtual ~SpriteComponent();
-
+	
+	Component* clone();
+	void read(rapidxml::xml_node<>* componentNode);
+	
+	
     sf::Sprite getSprite() const
     {
         return sprite;

@@ -9,12 +9,17 @@
 #define	CAMERASOURCECOMPONENT_HPP
 
 #include "Components/Component.hpp"
+#include "rapidxml/rapidxml.hpp"
 
-struct CameraSourceComponent : Component
+struct CameraSourceComponent : public Component
 {
 	CameraSourceComponent(float offsetX, float offsetY, float offsetZ, 
 							float sourceWidth, float sourceHeight, int EID);
-
+    CameraSourceComponent(rapidxml::xml_node<>* componentNode);
+	
+	Component* clone();
+	void read(rapidxml::xml_node<>* componentNode);
+	
 	float offsetX, offsetY, offsetZ;
 	float sourceHeight, sourceWidth;
 };

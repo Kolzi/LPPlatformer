@@ -1,46 +1,72 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configurationDescriptor version="88">
   <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
-    <logicalFolder name="HeaderFiles"
-                   displayName="Header Files"
-                   projectFiles="true">
+    <logicalFolder name="f1"
+                   displayName="Components"
+                   projectFiles="true"
+                   kind="ROOT">
+      <itemPath>src/Components/BoundingBoxComponent.cpp</itemPath>
       <itemPath>include/Components/BoundingBoxComponent.hpp</itemPath>
+      <itemPath>src/Components/CameraSourceComponent.cpp</itemPath>
       <itemPath>include/Components/CameraSourceComponent.hpp</itemPath>
-      <itemPath>include/Systems/CameraSystem.hpp</itemPath>
-      <itemPath>include/Systems/CollisionSystem.hpp</itemPath>
+      <itemPath>src/Components/Component.cpp</itemPath>
       <itemPath>include/Components/Component.hpp</itemPath>
-      <itemPath>include/Systems/MovementSystem.hpp</itemPath>
+      <itemPath>src/Components/GravityComponent.cpp</itemPath>
+      <itemPath>include/Components/GravityComponent.hpp</itemPath>
+      <itemPath>src/Components/PhysicsComponent.cpp</itemPath>
       <itemPath>include/Components/PhysicsComponent.hpp</itemPath>
-      <itemPath>include/Systems/PlayerInputSystem.hpp</itemPath>
+      <itemPath>src/Components/PositionComponent.cpp</itemPath>
       <itemPath>include/Components/PositionComponent.hpp</itemPath>
-      <itemPath>include/Systems/RenderSystem.hpp</itemPath>
+      <itemPath>src/Components/SpriteComponent.cpp</itemPath>
       <itemPath>include/Components/SpriteComponent.hpp</itemPath>
-      <itemPath>include/Systems/System.hpp</itemPath>
+      <itemPath>src/Components/ViewportComponent.cpp</itemPath>
       <itemPath>include/Components/ViewportComponent.hpp</itemPath>
+    </logicalFolder>
+    <logicalFolder name="f5"
+                   displayName="Exceptions"
+                   projectFiles="true"
+                   kind="ROOT">
+      <itemPath>include/Exceptions/NoSuchComponentName.hpp</itemPath>
+      <itemPath>include/Exceptions/RequiredAttributeNotFound.hpp</itemPath>
+    </logicalFolder>
+    <logicalFolder name="f3" displayName="General" projectFiles="true" kind="ROOT">
+      <itemPath>src/General/Archetype.cpp</itemPath>
+      <itemPath>include/General/Archetype.h</itemPath>
+      <itemPath>src/General/ArchetypesManager.cpp</itemPath>
+      <itemPath>include/General/ArchetypesManager.h</itemPath>
+      <itemPath>src/General/StringComponentConverter.cpp</itemPath>
+      <itemPath>include/General/StringComponentConverter.h</itemPath>
+    </logicalFolder>
+    <logicalFolder name="f4" displayName="RapidXML" projectFiles="true" kind="ROOT">
+      <itemPath>rapidxml-1.13/license.txt</itemPath>
+      <itemPath>include/rapidxml/manual.html</itemPath>
+      <itemPath>rapidxml-1.13/rapidxml.hpp</itemPath>
+      <itemPath>include/rapidxml/rapidxml_iterators.hpp</itemPath>
+      <itemPath>include/rapidxml/rapidxml_print.hpp</itemPath>
+      <itemPath>include/rapidxml/rapidxml_utils.hpp</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
                    projectFiles="true">
+      <itemPath>resources/archetypes.data</itemPath>
       <itemPath>resources/ground.png</itemPath>
       <itemPath>resources/player.png</itemPath>
     </logicalFolder>
-    <logicalFolder name="SourceFiles"
-                   displayName="Source Files"
-                   projectFiles="true">
-      <itemPath>src/Components/BoundingBoxComponent.cpp</itemPath>
-      <itemPath>src/Components/CameraSourceComponent.cpp</itemPath>
+    <logicalFolder name="f2" displayName="Systems" projectFiles="true" kind="ROOT">
       <itemPath>src/Systems/CameraSystem.cpp</itemPath>
+      <itemPath>include/Systems/CameraSystem.hpp</itemPath>
       <itemPath>src/Systems/CollisionSystem.cpp</itemPath>
-      <itemPath>src/Components/Component.cpp</itemPath>
+      <itemPath>include/Systems/CollisionSystem.hpp</itemPath>
+      <itemPath>src/Systems/GravitySystem.cpp</itemPath>
+      <itemPath>include/Systems/GravitySystem.hpp</itemPath>
       <itemPath>src/Systems/MovementSystem.cpp</itemPath>
-      <itemPath>src/Components/PhysicsComponent.cpp</itemPath>
+      <itemPath>include/Systems/MovementSystem.hpp</itemPath>
       <itemPath>src/Systems/PlayerInputSystem.cpp</itemPath>
-      <itemPath>src/Components/PositionComponent.cpp</itemPath>
+      <itemPath>include/Systems/PlayerInputSystem.hpp</itemPath>
       <itemPath>src/Systems/RenderSystem.cpp</itemPath>
-      <itemPath>src/Components/SpriteComponent.cpp</itemPath>
+      <itemPath>include/Systems/RenderSystem.hpp</itemPath>
       <itemPath>src/Systems/System.cpp</itemPath>
-      <itemPath>src/Components/ViewportComponent.cpp</itemPath>
-      <itemPath>main.cpp</itemPath>
+      <itemPath>include/Systems/System.hpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
                    displayName="Test Files"
@@ -53,10 +79,7 @@
                    kind="IMPORTANT_FILES_FOLDER">
       <itemPath>Makefile</itemPath>
     </logicalFolder>
-    <itemPath>src/Components/GravityComponent.cpp</itemPath>
-    <itemPath>include/Components/GravityComponent.hpp</itemPath>
-    <itemPath>src/Systems/GravitySystem.cpp</itemPath>
-    <itemPath>include/Systems/GravitySystem.hpp</itemPath>
+    <itemPath>main.cpp</itemPath>
   </logicalFolder>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
@@ -117,6 +140,28 @@
             tool="3"
             flavor2="0">
       </item>
+      <item path="include/Exceptions/NoSuchComponentName.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="include/Exceptions/RequiredAttributeNotFound.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="include/General/Archetype.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/General/ArchetypesManager.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="include/General/StringComponentConverter.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="include/Systems/CameraSystem.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="include/Systems/CollisionSystem.hpp"
@@ -137,7 +182,30 @@
       </item>
       <item path="include/Systems/System.hpp" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="include/rapidxml/manual.html" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/rapidxml/rapidxml_iterators.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="include/rapidxml/rapidxml_print.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="include/rapidxml/rapidxml_utils.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="rapidxml-1.13/license.txt" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="rapidxml-1.13/rapidxml.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="resources/archetypes.data" ex="false" tool="3" flavor2="0">
       </item>
       <item path="resources/ground.png" ex="false" tool="3" flavor2="0">
       </item>
@@ -173,6 +241,15 @@
       <item path="src/Components/SpriteComponent.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/Components/ViewportComponent.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/General/Archetype.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/General/ArchetypesManager.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/General/StringComponentConverter.cpp"
             ex="false"
             tool="1"
             flavor2="0">
@@ -248,6 +325,28 @@
             tool="3"
             flavor2="0">
       </item>
+      <item path="include/Exceptions/NoSuchComponentName.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="include/Exceptions/RequiredAttributeNotFound.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="include/General/Archetype.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/General/ArchetypesManager.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="include/General/StringComponentConverter.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="include/Systems/CameraSystem.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="include/Systems/CollisionSystem.hpp"
@@ -268,7 +367,30 @@
       </item>
       <item path="include/Systems/System.hpp" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="include/rapidxml/manual.html" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/rapidxml/rapidxml_iterators.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="include/rapidxml/rapidxml_print.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="include/rapidxml/rapidxml_utils.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="rapidxml-1.13/license.txt" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="rapidxml-1.13/rapidxml.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="resources/archetypes.data" ex="false" tool="3" flavor2="0">
       </item>
       <item path="resources/ground.png" ex="false" tool="3" flavor2="0">
       </item>
@@ -304,6 +426,15 @@
       <item path="src/Components/SpriteComponent.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/Components/ViewportComponent.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/General/Archetype.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/General/ArchetypesManager.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/General/StringComponentConverter.cpp"
             ex="false"
             tool="1"
             flavor2="0">

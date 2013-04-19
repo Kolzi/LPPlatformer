@@ -10,11 +10,16 @@
 
 #include "Component.hpp"
 #include "SFML/Graphics/Rect.hpp"
+#include "rapidxml/rapidxml.hpp"
 
-struct BoundingBoxComponent : Component
+struct BoundingBoxComponent : public Component
 {
 	BoundingBoxComponent(sf::Rect<double> boundingBox, int EID);
-	sf::Rect<double> boundingBox;
+    BoundingBoxComponent(rapidxml::xml_node<>* componentNode);
+	Component* clone();
+	void read(rapidxml::xml_node<>* componentNode);
+	
+    sf::Rect<double> boundingBox;
 };
 
 #endif	/* BOUNDINGBOXCOMPONENT_HPP */

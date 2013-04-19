@@ -44,6 +44,9 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/Components/PositionComponent.o \
 	${OBJECTDIR}/src/Components/SpriteComponent.o \
 	${OBJECTDIR}/src/Components/ViewportComponent.o \
+	${OBJECTDIR}/src/General/Archetype.o \
+	${OBJECTDIR}/src/General/ArchetypesManager.o \
+	${OBJECTDIR}/src/General/StringComponentConverter.o \
 	${OBJECTDIR}/src/Systems/CameraSystem.o \
 	${OBJECTDIR}/src/Systems/CollisionSystem.o \
 	${OBJECTDIR}/src/Systems/GravitySystem.o \
@@ -121,6 +124,21 @@ ${OBJECTDIR}/src/Components/ViewportComponent.o: src/Components/ViewportComponen
 	${MKDIR} -p ${OBJECTDIR}/src/Components
 	${RM} $@.d
 	$(COMPILE.cc) -g -Wall -Iinclude -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/Components/ViewportComponent.o src/Components/ViewportComponent.cpp
+
+${OBJECTDIR}/src/General/Archetype.o: src/General/Archetype.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/General
+	${RM} $@.d
+	$(COMPILE.cc) -g -Wall -Iinclude -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/General/Archetype.o src/General/Archetype.cpp
+
+${OBJECTDIR}/src/General/ArchetypesManager.o: src/General/ArchetypesManager.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/General
+	${RM} $@.d
+	$(COMPILE.cc) -g -Wall -Iinclude -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/General/ArchetypesManager.o src/General/ArchetypesManager.cpp
+
+${OBJECTDIR}/src/General/StringComponentConverter.o: src/General/StringComponentConverter.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/General
+	${RM} $@.d
+	$(COMPILE.cc) -g -Wall -Iinclude -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/General/StringComponentConverter.o src/General/StringComponentConverter.cpp
 
 ${OBJECTDIR}/src/Systems/CameraSystem.o: src/Systems/CameraSystem.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/Systems

@@ -21,3 +21,19 @@ SpriteComponent::~SpriteComponent()
 {
 }
 
+
+SpriteComponent::SpriteComponent(rapidxml::xml_node<>* componentNode)
+:Component(-1)
+{
+	read(componentNode);
+}
+
+void SpriteComponent::read(rapidxml::xml_node<>* componentNode)
+{
+	///FIXME: ImageManager!
+}
+
+Component* SpriteComponent::clone()
+{
+	return new SpriteComponent(*this);
+}

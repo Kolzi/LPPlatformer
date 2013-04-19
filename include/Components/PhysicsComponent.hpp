@@ -9,10 +9,15 @@
 #define	PHYSICSCOMPONENT_HPP
 
 #include "Components/Component.hpp"
+#include "rapidxml/rapidxml.hpp"
 
-struct PhysicsComponent : Component
+struct PhysicsComponent : public Component
 {
 	PhysicsComponent(int EID);
+	PhysicsComponent(rapidxml::xml_node<>* componentNode);
+    
+	Component* clone();
+	void read(rapidxml::xml_node<>* componentNode);
 	
 	double vx, vy, vz;
 	double ax, ay, az;

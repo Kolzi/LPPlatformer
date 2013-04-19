@@ -9,16 +9,19 @@
 #define	POSITIONCOMPONENT_HPP
 
 #include "Components/Component.hpp"
+#include "rapidxml/rapidxml.hpp"
 
-class PositionComponent : Component
+class PositionComponent : public Component
 {
 public:
     PositionComponent(double x, double y, double z, int EID);
     PositionComponent(const PositionComponent& orig);
+    PositionComponent(rapidxml::xml_node<>* componentNode);
     virtual ~PositionComponent();
 
-
-
+	Component* clone();
+	void read(rapidxml::xml_node<>* componentNode);
+	
     double x, y, z;
     int EID;
 };
