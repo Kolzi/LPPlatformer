@@ -10,19 +10,16 @@
 #include <unordered_map>
 #include <assert.h>
 #include <SFML/System/Time.hpp>
+#include <boost/cast.hpp>
 
 
-MovementSystem::MovementSystem(
-	std::unordered_map<int,PositionComponent>& positionComponents,
-	std::unordered_map<int,PhysicsComponent>& physicsComponents)
-:positionComponents(positionComponents),
-	physicsComponents(physicsComponents)
+MovementSystem::MovementSystem(Level::CompMap& components)
+:System(components)
 {
 }
 
 MovementSystem::MovementSystem(const MovementSystem& orig)
-:positionComponents(orig.positionComponents),
-	physicsComponents(orig.physicsComponents)
+:System(orig)
 {
 }
 
@@ -32,24 +29,24 @@ MovementSystem::~MovementSystem()
 
 void MovementSystem::addEntity(int EID)
 {
-	assert( positionComponents.find(EID) != positionComponents.end() &&
-			physicsComponents.find(EID) != physicsComponents.end());
+	assert( components.find(Level::CompKey(EID, "Position")) != components.end() &&
+			components.find(Level::CompKey(EID, "Physics")) != components.end());
 	entities.push_back(EID);
 }
 
-void MovementSystem::move(sf::Time time)
+void MovementSystem::update(sf::Time time)
 {
     double deltaT=time.asSeconds();
 	for(auto it=entities.begin();it!=entities.end();it++)
     {
-        PositionComponent& posC=positionComponents.at(*it);
-        PhysicsComponent& physC=physicsComponents.at(*it);
-        physC.vx+=physC.ax*deltaT;
-		physC.vy+=physC.ay*deltaT;
-		physC.vz+=physC.az*deltaT;
-		posC.x+=deltaT*physC.vx;
-		posC.y+=deltaT*physC.vy;
-		posC.z+=deltaT*physC.vz;
+        PositionComponent* posC=boost::polymorphic_downcast<PositionComponent*>(components.at(Level::CompKey(*it, "Position")));
+        PhysicsComponent* physC=boost::polymorphic_downcast<PhysicsComponent*>(components.at(Level::CompKey(*it, "Physics")));
+        physC->vx+=physC->ax*deltaT;
+		physC->vy+=physC->ay*deltaT;
+		physC->vz+=physC->az*deltaT;
+		posC->x+=deltaT*physC->vx;
+		posC->y+=deltaT*physC->vy;
+		posC->z+=deltaT*physC->vz;
 	}
 	
 }

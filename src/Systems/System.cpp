@@ -9,11 +9,13 @@
 
 #include "Systems/System.hpp"
 
-System::System()
+System::System(Level::CompMap& components)
+:components(components)
 {
 }
 
 System::System(const System& orig)
+:components(orig.components), entities(orig.entities)
 {
 }
 

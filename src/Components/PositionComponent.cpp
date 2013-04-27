@@ -40,7 +40,9 @@ void PositionComponent::read(rapidxml::xml_node<>* componentNode)
 		z=boost::lexical_cast<double>(componentNode->first_attribute("z")->value());
 }
 
-Component* PositionComponent::clone()
+Component* PositionComponent::clone(int newEID)
 {
-	return new PositionComponent(*this);
+	Component* comp= new PositionComponent(*this);
+	comp->EID=newEID;
+	return comp;
 }

@@ -7,19 +7,17 @@
 
 #include <assert.h>
 #include <SFML/Window/Keyboard.hpp>
+#include <boost/cast.hpp>
 
 #include "Systems/PlayerInputSystem.hpp"
 
-PlayerInputSystem::PlayerInputSystem(std::unordered_map<int,PositionComponent>& positionComponents,
-					std::unordered_map<int,PhysicsComponent>& physicsComponents)
-:positionComponents(positionComponents),
-	physicsComponents(physicsComponents)
+PlayerInputSystem::PlayerInputSystem(Level::CompMap& components)
+:System(components)
 {
 }
 
 PlayerInputSystem::PlayerInputSystem(const PlayerInputSystem& orig)
-:positionComponents(orig.positionComponents),
-	physicsComponents(orig.physicsComponents)
+:System(orig)
 {
 }
 
@@ -29,36 +27,35 @@ PlayerInputSystem::~PlayerInputSystem()
 
 void PlayerInputSystem::addEntity(int EID)
 {
-    assert( positionComponents.find(EID) != positionComponents.end() &&
-			physicsComponents.find(EID) != physicsComponents.end());
+    assert(components.find(Level::CompKey(EID, "Physics")) != components.end());
 	entities.push_back(EID);
 }
 
-void PlayerInputSystem::handleInput()
+void PlayerInputSystem::update(sf::Time deltaTime)
 {
     for(auto eid: entities)
     {
-		PhysicsComponent& pC=physicsComponents.at(eid);
+		PhysicsComponent* pC=boost::polymorphic_downcast<PhysicsComponent*>(components.at(Level::CompKey(eid, "Physics")));
 		if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
 		{
-			pC.ax=-200;
+			pC->ax=-200;
 		}
 		else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
 		{
-			pC.ax=200;
+			pC->ax=200;
 		}
 		else
-			pC.ax=0;
+			pC->ax=0;
 
 		if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
 		{
-			pC.ay=-200;
+			pC->ay=-200;
 		}
 		else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
 		{
-			pC.ay=200;
+			pC->ay=200;
 		}
 		else
-			pC.ay=0;
+			pC->ay=0;
     }
 }

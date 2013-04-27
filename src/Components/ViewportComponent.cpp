@@ -49,7 +49,9 @@ void ViewportComponent::read(rapidxml::xml_node<>* componentNode)
 		destination.height=destination.left=boost::lexical_cast<int>(componentNode->first_attribute("h")->value());
 }
 
-Component* ViewportComponent::clone()
+Component* ViewportComponent::clone(int newEID)
 {
-	return new ViewportComponent(*this);
+	Component* comp= new ViewportComponent(*this);
+	comp->EID=newEID;
+	return comp;
 }

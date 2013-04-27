@@ -33,7 +33,9 @@ void SpriteComponent::read(rapidxml::xml_node<>* componentNode)
 	///FIXME: ImageManager!
 }
 
-Component* SpriteComponent::clone()
+Component* SpriteComponent::clone(int newEID)
 {
-	return new SpriteComponent(*this);
+	Component* comp= new SpriteComponent(*this);
+	comp->EID=newEID;
+	return comp;
 }

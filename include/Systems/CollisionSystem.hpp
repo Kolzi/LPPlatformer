@@ -14,20 +14,14 @@
 #include "Systems/System.hpp"
 #include <unordered_map>
 
-class CollisionSystem : System
+class CollisionSystem : public System
 {
 public:
-	CollisionSystem(std::unordered_map<int,PositionComponent>& positionComponents,
-		std::unordered_map<int,PhysicsComponent>& physicsComponents,
-		std::unordered_map<int,BoundingBoxComponent>& boundingBoxComponents);
+	CollisionSystem(Level::CompMap& components);
 	CollisionSystem(const CollisionSystem& orig);
 	virtual ~CollisionSystem();
 	void addEntity(int EID);
-	void detectCollisions();
-private:
-	std::unordered_map<int,PositionComponent>& positionComponents;
-	std::unordered_map<int,PhysicsComponent>& physicsComponents;
-	std::unordered_map<int,BoundingBoxComponent>& boundingBoxComponents;	
+	void update(sf::Time deltaTime);
 };
 
 #endif	/* COLLISIONSYSTEM_HPP */

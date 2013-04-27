@@ -18,17 +18,13 @@
 class RenderSystem : public System
 {
 public:
-    RenderSystem(	sf::RenderWindow& window, 
-					std::unordered_map<int,PositionComponent>& positionComponents,
-					std::unordered_map<int,SpriteComponent>& spriteComponents);
+    RenderSystem(	sf::RenderWindow& window, Level::CompMap& components);
     RenderSystem(const RenderSystem& orig);
     virtual ~RenderSystem();
-    void render();
+    void update(sf::Time deltaTime);
     void addEntity(int EID);
 private:
     sf::RenderWindow& window;
-	std::unordered_map<int,PositionComponent>& positionComponents;
-	std::unordered_map<int,SpriteComponent>& spriteComponents;
 };
 
 #endif	/* RENDERSYSTEM_HPP */

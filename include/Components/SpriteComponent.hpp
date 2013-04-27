@@ -20,7 +20,7 @@ public:
     SpriteComponent(rapidxml::xml_node<>* componentNode);
     virtual ~SpriteComponent();
 	
-	Component* clone();
+	Component* clone(int newEID);
 	void read(rapidxml::xml_node<>* componentNode);
 	
 	

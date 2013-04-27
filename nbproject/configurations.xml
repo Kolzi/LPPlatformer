@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configurationDescriptor version="88">
   <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
-    <logicalFolder name="f1"
-                   displayName="Components"
-                   projectFiles="true"
-                   kind="ROOT">
+    <logicalFolder name="f1" displayName="Components" projectFiles="true">
       <itemPath>src/Components/BoundingBoxComponent.cpp</itemPath>
       <itemPath>include/Components/BoundingBoxComponent.hpp</itemPath>
       <itemPath>src/Components/CameraSourceComponent.cpp</itemPath>
@@ -22,22 +19,24 @@
       <itemPath>src/Components/ViewportComponent.cpp</itemPath>
       <itemPath>include/Components/ViewportComponent.hpp</itemPath>
     </logicalFolder>
-    <logicalFolder name="f5"
-                   displayName="Exceptions"
-                   projectFiles="true"
-                   kind="ROOT">
+    <logicalFolder name="f5" displayName="Exceptions" projectFiles="true">
       <itemPath>include/Exceptions/NoSuchComponentName.hpp</itemPath>
       <itemPath>include/Exceptions/RequiredAttributeNotFound.hpp</itemPath>
     </logicalFolder>
-    <logicalFolder name="f3" displayName="General" projectFiles="true" kind="ROOT">
+    <logicalFolder name="f3" displayName="General" projectFiles="true">
       <itemPath>src/General/Archetype.cpp</itemPath>
       <itemPath>include/General/Archetype.h</itemPath>
       <itemPath>src/General/ArchetypesManager.cpp</itemPath>
       <itemPath>include/General/ArchetypesManager.h</itemPath>
+      <itemPath>include/General/IDGenerator.hpp</itemPath>
+      <itemPath>src/General/Level.cpp</itemPath>
+      <itemPath>include/General/Level.hpp</itemPath>
+      <itemPath>src/General/SimpleIDGenerator.cpp</itemPath>
+      <itemPath>include/General/SimpleIDGenerator.hpp</itemPath>
       <itemPath>src/General/StringComponentConverter.cpp</itemPath>
       <itemPath>include/General/StringComponentConverter.h</itemPath>
     </logicalFolder>
-    <logicalFolder name="f4" displayName="RapidXML" projectFiles="true" kind="ROOT">
+    <logicalFolder name="f4" displayName="RapidXML" projectFiles="true">
       <itemPath>rapidxml-1.13/license.txt</itemPath>
       <itemPath>include/rapidxml/manual.html</itemPath>
       <itemPath>rapidxml-1.13/rapidxml.hpp</itemPath>
@@ -48,11 +47,12 @@
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
                    projectFiles="true">
-      <itemPath>resources/archetypes.data</itemPath>
+      <itemPath>resources/archetypes.xml</itemPath>
       <itemPath>resources/ground.png</itemPath>
       <itemPath>resources/player.png</itemPath>
+      <itemPath>resources/testlevel.xml</itemPath>
     </logicalFolder>
-    <logicalFolder name="f2" displayName="Systems" projectFiles="true" kind="ROOT">
+    <logicalFolder name="f2" displayName="Systems" projectFiles="true">
       <itemPath>src/Systems/CameraSystem.cpp</itemPath>
       <itemPath>include/Systems/CameraSystem.hpp</itemPath>
       <itemPath>src/Systems/CollisionSystem.cpp</itemPath>
@@ -67,6 +67,12 @@
       <itemPath>include/Systems/RenderSystem.hpp</itemPath>
       <itemPath>src/Systems/System.cpp</itemPath>
       <itemPath>include/Systems/System.hpp</itemPath>
+    </logicalFolder>
+    <logicalFolder name="f6"
+                   displayName="TechnicalShit"
+                   projectFiles="true"
+                   kind="ROOT">
+      <itemPath>include/TechnicalShit/PairIntStringHash.hpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
                    displayName="Test Files"
@@ -157,6 +163,15 @@
             tool="3"
             flavor2="0">
       </item>
+      <item path="include/General/IDGenerator.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/General/Level.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/General/SimpleIDGenerator.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="include/General/StringComponentConverter.h"
             ex="false"
             tool="3"
@@ -182,6 +197,11 @@
       </item>
       <item path="include/Systems/System.hpp" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="include/TechnicalShit/PairIntStringHash.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="include/rapidxml/manual.html" ex="false" tool="3" flavor2="0">
       </item>
       <item path="include/rapidxml/rapidxml_iterators.hpp"
@@ -205,11 +225,13 @@
       </item>
       <item path="rapidxml-1.13/rapidxml.hpp" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="resources/archetypes.data" ex="false" tool="3" flavor2="0">
+      <item path="resources/archetypes.xml" ex="false" tool="3" flavor2="0">
       </item>
       <item path="resources/ground.png" ex="false" tool="3" flavor2="0">
       </item>
       <item path="resources/player.png" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="resources/testlevel.xml" ex="false" tool="3" flavor2="0">
       </item>
       <item path="src/Components/BoundingBoxComponent.cpp"
             ex="false"
@@ -248,6 +270,10 @@
       <item path="src/General/Archetype.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/General/ArchetypesManager.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/General/Level.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/General/SimpleIDGenerator.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/General/StringComponentConverter.cpp"
             ex="false"
@@ -342,6 +368,15 @@
             tool="3"
             flavor2="0">
       </item>
+      <item path="include/General/IDGenerator.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/General/Level.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/General/SimpleIDGenerator.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="include/General/StringComponentConverter.h"
             ex="false"
             tool="3"
@@ -367,6 +402,11 @@
       </item>
       <item path="include/Systems/System.hpp" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="include/TechnicalShit/PairIntStringHash.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="include/rapidxml/manual.html" ex="false" tool="3" flavor2="0">
       </item>
       <item path="include/rapidxml/rapidxml_iterators.hpp"
@@ -390,11 +430,13 @@
       </item>
       <item path="rapidxml-1.13/rapidxml.hpp" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="resources/archetypes.data" ex="false" tool="3" flavor2="0">
+      <item path="resources/archetypes.xml" ex="false" tool="3" flavor2="0">
       </item>
       <item path="resources/ground.png" ex="false" tool="3" flavor2="0">
       </item>
       <item path="resources/player.png" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="resources/testlevel.xml" ex="false" tool="3" flavor2="0">
       </item>
       <item path="src/Components/BoundingBoxComponent.cpp"
             ex="false"
@@ -433,6 +475,10 @@
       <item path="src/General/Archetype.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/General/ArchetypesManager.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/General/Level.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/General/SimpleIDGenerator.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/General/StringComponentConverter.cpp"
             ex="false"

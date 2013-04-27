@@ -18,7 +18,7 @@ public:
 	GravityComponent(int EID, double g);
     GravityComponent(rapidxml::xml_node<>* componentNode);
 	
-	Component* clone();
+	Component* clone(int newEID);
 	void read(rapidxml::xml_node<>* componentNode);
 	
 	static constexpr double defaultG=500;

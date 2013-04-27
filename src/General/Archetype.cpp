@@ -6,9 +6,11 @@
  */
 
 #include <list>
+#include <iostream>
 
 #include "General/Archetype.h"
 #include "Components/Component.hpp"
+#include "General/StringComponentConverter.h"
 
 
 Archetype::Archetype(rapidxml::xml_node<>* archetypeNode)
@@ -30,6 +32,8 @@ void Archetype::read(rapidxml::xml_node<>* archetypeNode)
             archetypeNode->first_node("Components")->first_node(); 
             componentNode; componentNode = componentNode->next_sibling())
     {
-        //components.push_back(std::pair<std::string, Component*>(componentNode->name(), new )
+		std::cerr<<componentNode->name()<<"\n";
+		StringComponentConverter conv;
+        components.push_back(std::pair<std::string, Component*>(componentNode->name(), conv.stringToComponent(componentNode->name(), componentNode)));
     }
 }

@@ -39,7 +39,9 @@ void BoundingBoxComponent::read(rapidxml::xml_node<>* componentNode)
 		throw RequiredAttributeNotFound("h", "BoundingBox");
 }
 
-Component* BoundingBoxComponent::clone()
+Component* BoundingBoxComponent::clone(int newEID)
 {
-	return new BoundingBoxComponent(*this);
+	Component* comp= new BoundingBoxComponent(*this);
+	comp->EID=newEID;
+	return comp;
 }

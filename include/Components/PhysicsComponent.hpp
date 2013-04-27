@@ -16,7 +16,7 @@ struct PhysicsComponent : public Component
 	PhysicsComponent(int EID);
 	PhysicsComponent(rapidxml::xml_node<>* componentNode);
     
-	Component* clone();
+	Component* clone(int newEID);
 	void read(rapidxml::xml_node<>* componentNode);
 	
 	double vx, vy, vz;

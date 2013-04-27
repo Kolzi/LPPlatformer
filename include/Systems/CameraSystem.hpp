@@ -15,23 +15,17 @@
 
 #include <SFML/Graphics.hpp>
 #include <unordered_map>
-class CameraSystem : System
+class CameraSystem : public System
 {
 public:
-	CameraSystem(sf::RenderWindow& window,
-				 std::unordered_map<int,PositionComponent>& positionComponents, 
-				 std::unordered_map<int,CameraSourceComponent>& cameraSourceComponents,
-				 std::unordered_map<int,ViewportComponent>& viewportComponents);
+	CameraSystem(sf::RenderWindow& window, Level::CompMap& components);
 	CameraSystem(const CameraSystem& orig);
 	virtual ~CameraSystem();
-	void applyView();
+	void update(sf::Time deltaTime);
 	void addEntity(int EID);
 private:
 	sf::RenderWindow& window;
 	sf::View view;
-	std::unordered_map<int,PositionComponent>& positionComponents;
-	std::unordered_map<int,CameraSourceComponent>& cameraSourceComponents;
-	std::unordered_map<int,ViewportComponent>& viewportComponents;
 };
 
 #endif	/* CAMERASYSTEM_HPP */

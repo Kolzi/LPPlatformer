@@ -15,18 +15,14 @@
 #include <SFML/System/Time.hpp>
 #include <unordered_map>
 
-class MovementSystem : System
+class MovementSystem : public System
 {
 public:
-	MovementSystem(	std::unordered_map<int,PositionComponent>& positionComponents,
-					std::unordered_map<int,PhysicsComponent>& physicsComponents);
+	MovementSystem(Level::CompMap& components );
 	MovementSystem(const MovementSystem& orig);
 	virtual ~MovementSystem();
-	void move(sf::Time time);
+	void update(sf::Time deltaTime);
     void addEntity(int entity);
-private:
-	std::unordered_map<int,PositionComponent>& positionComponents;
-	std::unordered_map<int,PhysicsComponent>& physicsComponents;
 };
 
 #endif	/* PHYSICSSYSTEM_HPP */

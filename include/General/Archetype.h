@@ -21,9 +21,8 @@ public:
     Archetype(rapidxml::xml_node<>* archetypeNode);
     Archetype(const Archetype& orig);
     virtual ~Archetype();
-private:
     std::list <std::pair<std::string, Component*>> components;
-    std::list <std::string> Systems;
+    std::list <std::string> systems;
     void read(rapidxml::xml_node<>* archetypeNode);
 };
 

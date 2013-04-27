@@ -6,20 +6,20 @@
  */
 
 #include <assert.h>
+#include <boost/cast.hpp>
 
 #include "Systems/GravitySystem.hpp"
 #include "Systems/System.hpp"
 #include "Components/GravityComponent.hpp"
 #include "Systems/GravitySystem.hpp"
 
-GravitySystem::GravitySystem(std::unordered_map<int,PhysicsComponent>& physicsComponents,
-					std::unordered_map<int,GravityComponent>& gravityComponents)
-:physicsComponents(physicsComponents), gravityComponents(gravityComponents)
+GravitySystem::GravitySystem(Level::CompMap& components)
+:System(components)
 {
 }
 
 GravitySystem::GravitySystem(const GravitySystem& orig)
-:physicsComponents(orig.physicsComponents), gravityComponents(orig.gravityComponents)
+:System(orig)
 {
 }
 
@@ -27,19 +27,19 @@ GravitySystem::~GravitySystem()
 {
 }
 
-void GravitySystem::apply()
+void GravitySystem::update(sf::Time deltaTime)
 {
 	for(int EID : entities)
 	{
-		GravityComponent& gC= gravityComponents.at(EID);
-		PhysicsComponent& pC=physicsComponents.at(EID);
-		pC.ay+=gC.g;
+		GravityComponent* gC=boost::polymorphic_downcast<GravityComponent*>(components.at(Level::CompKey(EID, "Gravity")));
+		PhysicsComponent* pC=boost::polymorphic_downcast<PhysicsComponent*>(components.at(Level::CompKey(EID, "Physics")));;
+		pC->ay+=gC->g;
 	}
 }
 
 void GravitySystem::addEntity(int EID)
 {
-	assert( physicsComponents.find(EID) != physicsComponents.end() &&
-			gravityComponents.find(EID) != gravityComponents.end() );
+	assert( components.find(Level::CompKey(EID, "Physics")) != components.end() &&
+			components.find(Level::CompKey(EID, "Gravity")) != components.end() );
     entities.push_back(EID);
 }

@@ -11,18 +11,15 @@
 #include <iostream>
 #include <algorithm>
 #include <assert.h>
+#include <boost/cast.hpp>
 
-CollisionSystem::CollisionSystem(std::unordered_map<int,PositionComponent>& positionComponents,
-		std::unordered_map<int,PhysicsComponent>& physicsComponents,
-		std::unordered_map<int,BoundingBoxComponent>& boundingBoxComponents)
-:positionComponents(positionComponents), physicsComponents(physicsComponents),
-		boundingBoxComponents(boundingBoxComponents)
+CollisionSystem::CollisionSystem(Level::CompMap& components)
+:System(components)
 {
 }
 
 CollisionSystem::CollisionSystem(const CollisionSystem& orig)
-:positionComponents(orig.positionComponents), physicsComponents(orig.physicsComponents),
-		boundingBoxComponents(orig.boundingBoxComponents)
+:System(orig)
 {
 }
 
@@ -32,12 +29,12 @@ CollisionSystem::~CollisionSystem()
 
 void CollisionSystem::addEntity(int EID)
 {
-	assert( positionComponents.find(EID) != positionComponents.end() &&
-			boundingBoxComponents.find(EID) != boundingBoxComponents.end() );
+	assert( components.find(Level::CompKey(EID, "Position")) != components.end() &&
+			components.find(Level::CompKey(EID, "BoundingBox")) != components.end() );
     entities.push_back(EID);
 }
 
-void CollisionSystem::detectCollisions()
+void CollisionSystem::update(sf::Time deltaTime)
 {
 	for(auto it=entities.begin();it!=entities.end();it++)
 	{
@@ -46,69 +43,65 @@ void CollisionSystem::detectCollisions()
 		for(jt;jt!=entities.end();jt++)
 		{
 	//		std::cerr<<*it<<" "<<*jt<<"\n";
-			PositionComponent& posCi=positionComponents.find(*it)->second;
+			PositionComponent* posCi=boost::polymorphic_downcast<PositionComponent*>(components.at(Level::CompKey(*it, "Position")));
 			PhysicsComponent empty(*it);
-			PhysicsComponent& physCi=
-			physicsComponents.find(*it) != physicsComponents.end() ?
-				physicsComponents.find(*it)->second : empty;
-			BoundingBoxComponent& bbCi=boundingBoxComponents.find(*it)->second;
+			PhysicsComponent* physCi=
+			(components.find(Level::CompKey(*it, "Physics")) != components.end() ?
+				boost::polymorphic_downcast<PhysicsComponent*>(components.at(Level::CompKey(*it, "Physics"))) : &empty);
 			
-			PositionComponent& posCj=positionComponents.find(*jt)->second;
-			PhysicsComponent& physCj=
-			physicsComponents.find(*jt) != physicsComponents.end() ?
-				physicsComponents.find(*jt)->second : empty;
-			BoundingBoxComponent& bbCj=boundingBoxComponents.find(*jt)->second;
+			BoundingBoxComponent* bbCi=boost::polymorphic_downcast<BoundingBoxComponent*>(components.at(Level::CompKey(*it, "BoundingBox")));
 			
-			sf::Rect<double> bbi=bbCi.boundingBox;
-			sf::Rect<double> bbj=bbCj.boundingBox;
+			PositionComponent* posCj=boost::polymorphic_downcast<PositionComponent*>(components.at(Level::CompKey(*jt, "Position")));
+			PhysicsComponent* physCj=
+			(components.find(Level::CompKey(*jt, "Physics")) != components.end() ?
+				boost::polymorphic_downcast<PhysicsComponent*>(components.at(Level::CompKey(*jt, "Physics"))) : &empty);
 			
-                        bbi.left+=posCi.x;
-                        bbi.top +=posCi.y;
-                        bbj.left+=posCj.x;
-                        bbj.top +=posCj.y;
+			BoundingBoxComponent* bbCj=boost::polymorphic_downcast<BoundingBoxComponent*>(components.at(Level::CompKey(*jt, "BoundingBox")));
+			
+			sf::Rect<double> bbi=bbCi->boundingBox;
+			sf::Rect<double> bbj=bbCj->boundingBox;
+			
+                        bbi.left+=posCi->x;
+                        bbi.top +=posCi->y;
+                        bbj.left+=posCj->x;
+                        bbj.top +=posCj->y;
 		
 			
 			if(bbi.intersects(bbj))
 			{
-				std::cerr<<"Collision!\n";
-			//	std::cerr<<bbi.Left<<" "<<bbi.Top<<" "<<bbi.Right<<" "<<bbi.Bottom<<"\n";
-			//	std::cerr<<bbj.Left<<" "<<bbj.Top<<" "<<bbj.Right<<" "<<bbj.Bottom<<"\n";
 				double tx=999999;
 				double ty=999999;
-				double relVx=physCi.vx-physCj.vx;
+				double relVx=physCi->vx-physCj->vx;
 				if(relVx>0)
 					tx=(bbi.left+bbi.width-bbj.left)/relVx;
 				if(relVx<0)
 					tx=(bbi.left-bbj.left-bbj.width)/relVx;
-				double relVy=physCi.vy-physCj.vy;
+				double relVy=physCi->vy-physCj->vy;
 				if(relVy>0)
 					ty=(bbi.top+bbi.height-bbj.top)/relVy;
 				if(relVy<0)
 					ty=(bbi.top-bbj.top-bbj.height)/relVy;
-				std::cerr<<tx<<" "<<ty<<"\n";
-				std::cerr<<physCi.ax<<" "<<physCi.ay<<"\n";
-				std::cerr<<physCi.vx<<" "<<physCi.vy<<"\n";
 				double t=std::min(tx,ty);
 
 				if(t==tx)
 				{
 					std::cerr<<"x\n";
-					posCi.x-=(t*physCi.vx);
-					posCj.x-=(t*physCj.vx);
-					physCi.vx=0;
-					physCi.ax=0;
-					physCj.ax=0;
-					physCj.vx=0;posCi.x-=(t*physCi.vx);
+					posCi->x-=(t*physCi->vx);
+					posCj->x-=(t*physCj->vx);
+					physCi->vx=0;
+					physCi->ax=0;
+					physCj->ax=0;
+					physCj->vx=0;
 				}
 				else if(t==ty)
 				{
 					std::cerr<<"y\n";
-					posCi.y-=(t*physCi.vy);
-					posCj.y-=(t*physCj.vy);
-					physCi.ay=0;
-					physCi.vy=0;
-					physCj.vy=0;
-					physCj.ay=0;
+					posCi->y-=(t*physCi->vy);
+					posCj->y-=(t*physCj->vy);
+					physCi->ay=0;
+					physCi->vy=0;
+					physCj->vy=0;
+					physCj->ay=0;
 				}
 			}
 		}

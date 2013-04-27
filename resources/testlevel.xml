@@ -1,0 +1,35 @@
+<Object name="Player">
+	<Position x="125" y="125" z="0" />
+</Object>
+
+<Object name="Ground">
+	<Position x="-200" y="-200" z="0" />
+</Object>
+
+<Object name="Ground">
+	<Position x="-200" y="0" z="0" />
+</Object>
+
+<Object name="Ground">
+	<Position x="-200" y="200" z="0" />
+</Object>
+
+<Object name="Ground">
+	<Position x="-200" y="400" z="0" />
+</Object>
+
+<Object name="Ground">
+	<Position x="-200" y="600" z="0" />
+</Object>
+
+<Object name="Ground">
+	<Position x="-200" y="800" z="0" />
+</Object>
+
+<Object name="Ground">
+	<Position x="-200" y="1000" z="0" />
+</Object>
+
+<Object name="Ground">
+	<Position x="-200" y="1200" z="0" />
+</Object>

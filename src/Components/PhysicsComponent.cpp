@@ -36,7 +36,9 @@ void PhysicsComponent::read(rapidxml::xml_node<>* componentNode)
 		az=boost::lexical_cast<double>(componentNode->first_attribute("az")->value());
 }
 
-Component* PhysicsComponent::clone()
+Component* PhysicsComponent::clone(int newEID)
 {
-	return new PhysicsComponent(*this);
+	Component* comp= new PhysicsComponent(*this);
+	comp->EID=newEID;
+	return comp;
 }

@@ -34,7 +34,9 @@ void GravityComponent::read(rapidxml::xml_node<>* componentNode)
 		g=boost::lexical_cast<double>(componentNode->first_attribute("g")->value());
 }
 
-Component* GravityComponent::clone()
+Component* GravityComponent::clone(int newEID)
 {
-	return new GravityComponent(*this);
+	Component* comp= new GravityComponent(*this);
+	comp->EID=newEID;
+	return comp;
 }

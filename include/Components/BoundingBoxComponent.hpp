@@ -16,7 +16,7 @@ struct BoundingBoxComponent : public Component
 {
 	BoundingBoxComponent(sf::Rect<double> boundingBox, int EID);
     BoundingBoxComponent(rapidxml::xml_node<>* componentNode);
-	Component* clone();
+	Component* clone(int newEID);
 	void read(rapidxml::xml_node<>* componentNode);
 	
     sf::Rect<double> boundingBox;

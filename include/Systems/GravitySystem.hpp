@@ -14,18 +14,14 @@
 #include "Components/PhysicsComponent.hpp"
 #include "Components/GravityComponent.hpp"
 
-class GravitySystem : System
+class GravitySystem : public System
 {
 public:
-	GravitySystem(std::unordered_map<int,PhysicsComponent>& physicsComponents,
-					std::unordered_map<int,GravityComponent>& gravityComponents);
+	GravitySystem(Level::CompMap& components);
 	GravitySystem(const GravitySystem& orig);
 	virtual ~GravitySystem();
-	void apply();
+	void update(sf::Time deltaTime);
     void addEntity(int EID);
-private:
-	std::unordered_map<int,PhysicsComponent>& physicsComponents;
-	std::unordered_map<int,GravityComponent>& gravityComponents;
 };
 
 #endif	/* GRAVITYSYSTEM_HPP */

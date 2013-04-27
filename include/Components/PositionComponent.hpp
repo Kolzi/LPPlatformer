@@ -19,7 +19,7 @@ public:
     PositionComponent(rapidxml::xml_node<>* componentNode);
     virtual ~PositionComponent();
 
-	Component* clone();
+	Component* clone(int newEID);
 	void read(rapidxml::xml_node<>* componentNode);
 	
     double x, y, z;

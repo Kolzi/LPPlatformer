@@ -10,16 +10,21 @@
 
 #include <list>
 
+#include "General/Level.hpp"
+
 class System
 {
 public:
-    System();
+    System(Level::CompMap& components);
     System(const System& orig);
     virtual ~System();
     void removeEntity(int EID);
 	virtual void addEntity(int EID)=0;
+	virtual void update(sf::Time deltaTime)=0;
 protected:
+	Level::CompMap& components;
     std::list<int> entities;
+	
 };
 
 #endif	/* SYSTEM_HPP */

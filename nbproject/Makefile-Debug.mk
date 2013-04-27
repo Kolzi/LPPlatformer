@@ -46,6 +46,8 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/Components/ViewportComponent.o \
 	${OBJECTDIR}/src/General/Archetype.o \
 	${OBJECTDIR}/src/General/ArchetypesManager.o \
+	${OBJECTDIR}/src/General/Level.o \
+	${OBJECTDIR}/src/General/SimpleIDGenerator.o \
 	${OBJECTDIR}/src/General/StringComponentConverter.o \
 	${OBJECTDIR}/src/Systems/CameraSystem.o \
 	${OBJECTDIR}/src/Systems/CollisionSystem.o \
@@ -134,6 +136,16 @@ ${OBJECTDIR}/src/General/ArchetypesManager.o: src/General/ArchetypesManager.cpp
 	${MKDIR} -p ${OBJECTDIR}/src/General
 	${RM} $@.d
 	$(COMPILE.cc) -g -Wall -Iinclude -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/General/ArchetypesManager.o src/General/ArchetypesManager.cpp
+
+${OBJECTDIR}/src/General/Level.o: src/General/Level.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/General
+	${RM} $@.d
+	$(COMPILE.cc) -g -Wall -Iinclude -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/General/Level.o src/General/Level.cpp
+
+${OBJECTDIR}/src/General/SimpleIDGenerator.o: src/General/SimpleIDGenerator.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/General
+	${RM} $@.d
+	$(COMPILE.cc) -g -Wall -Iinclude -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/General/SimpleIDGenerator.o src/General/SimpleIDGenerator.cpp
 
 ${OBJECTDIR}/src/General/StringComponentConverter.o: src/General/StringComponentConverter.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/General

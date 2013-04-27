@@ -17,7 +17,7 @@ struct CameraSourceComponent : public Component
 							float sourceWidth, float sourceHeight, int EID);
     CameraSourceComponent(rapidxml::xml_node<>* componentNode);
 	
-	Component* clone();
+	Component* clone(int newEID);
 	void read(rapidxml::xml_node<>* componentNode);
 	
 	float offsetX, offsetY, offsetZ;

@@ -7,19 +7,16 @@
 
 #include "Systems/RenderSystem.hpp"
 #include <assert.h>
+#include <boost/cast.hpp>
 
-RenderSystem::RenderSystem(	sf::RenderWindow& window,
-							std::unordered_map<int,PositionComponent>& positionComponents,
-							std::unordered_map<int,SpriteComponent>& spriteComponents)
-:window(window), positionComponents(positionComponents), 
-		spriteComponents(spriteComponents)
+RenderSystem::RenderSystem(	sf::RenderWindow& window,Level::CompMap& components)
+:System(components),window(window)
 {
     
 }
 
 RenderSystem::RenderSystem(const RenderSystem& orig)
-:window(orig.window), positionComponents(orig.positionComponents), 
-		spriteComponents(orig.spriteComponents)
+:System(orig), window(orig.window)
 {
 }
 
@@ -27,22 +24,24 @@ RenderSystem::~RenderSystem()
 {
 }
 
-void RenderSystem::render()
+void RenderSystem::update(sf::Time deltaTime)
 {
+	window.clear();
     for(auto it=entities.begin();it!=entities.end();it++)
     {
-        PositionComponent& pC=positionComponents.at(*it);
-        SpriteComponent& sC=spriteComponents.at(*it);
-        sC.sprite.setPosition(pC.x,pC.y);
-        window.draw(sC.getSprite());
+        PositionComponent* pC=boost::polymorphic_downcast<PositionComponent*>(components.at(Level::CompKey(*it, "Position")));
+        SpriteComponent* sC=boost::polymorphic_downcast<SpriteComponent*>(components.at(Level::CompKey(*it, "Sprite")));
+        sC->sprite.setPosition(pC->x,pC->y);
+        window.draw(sC->sprite);
     }
+	window.display();
 }
 
 void RenderSystem::addEntity(int EID)
 {
 //	std::cerr<<(positionComponents.find(EID)!=positionComponents.end())<<" ";
 //			std::cerr<<(spriteComponents.find(EID) != spriteComponents.end())<<"\n";
-	assert( positionComponents.find(EID) != positionComponents.end() &&
-			spriteComponents.find(EID) != spriteComponents.end() );
+	assert( components.find(Level::CompKey(EID, "Position")) != components.end() &&
+			components.find(Level::CompKey(EID, "Sprite")) != components.end() );
     entities.push_back(EID);
 }

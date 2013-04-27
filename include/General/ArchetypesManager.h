@@ -11,6 +11,8 @@
 #include <istream>
 #include <unordered_map>
 
+#include "Level.hpp"
+
 class Archetype;
 
 class ArchetypesManager
@@ -20,6 +22,7 @@ public:
     ArchetypesManager(const ArchetypesManager& orig);
     virtual ~ArchetypesManager();
     void read(std::istream& str);
+	void addEntity(int EID, std::string archetype, Level::CompMap components, Level::SysMap systems);
 private:
     std::unordered_map<std::string, Archetype*> archetypes;
 };

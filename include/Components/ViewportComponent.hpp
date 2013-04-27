@@ -18,7 +18,7 @@ struct ViewportComponent : public Component
 	ViewportComponent(const sf::Rect<int>& rectangle, int EID);
     ViewportComponent(rapidxml::xml_node<>* componentNode);
     
-	Component* clone();
+	Component* clone(int newEID);
 	void read(rapidxml::xml_node<>* componentNode);
 	
 	sf::Rect<int> destination;

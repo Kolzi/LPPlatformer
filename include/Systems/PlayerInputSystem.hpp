@@ -15,18 +15,14 @@
 
 #include <unordered_map>
 
-class PlayerInputSystem : System
+class PlayerInputSystem : public System
 {
 public:
-    PlayerInputSystem(std::unordered_map<int,PositionComponent>& positionComponents,
-			std::unordered_map<int,PhysicsComponent>& physicsComponents);
+    PlayerInputSystem(Level::CompMap& components);
     PlayerInputSystem(const PlayerInputSystem& orig);
     virtual ~PlayerInputSystem();
-	void handleInput();
+	void update(sf::Time deltaTime);
     void addEntity(int entity);
-private:
-	std::unordered_map<int,PositionComponent>& positionComponents;
-	std::unordered_map<int,PhysicsComponent>& physicsComponents;
 };
 
 #endif	/* PLAYERINPUTSYSTEM_HPP */
