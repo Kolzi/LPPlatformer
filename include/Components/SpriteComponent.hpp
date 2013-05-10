@@ -22,18 +22,6 @@ public:
 	
 	Component* clone(int newEID);
 	void read(rapidxml::xml_node<>* componentNode);
-	
-	
-    sf::Sprite getSprite() const
-    {
-        return sprite;
-    }
-
-    void setSprite(sf::Sprite sprite)
-    {
-        this->sprite = sprite;
-    }
-
     sf::Sprite sprite;
 };
 

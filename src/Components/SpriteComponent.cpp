@@ -6,6 +6,8 @@
  */
 
 #include "Components/SpriteComponent.hpp"
+#include "General/ImageManager.hpp"
+#include "Exceptions/RequiredAttributeNotFound.hpp"
 
 SpriteComponent::SpriteComponent(sf::Sprite sprite, int EID)
 :Component(EID),sprite(sprite)
@@ -30,7 +32,9 @@ SpriteComponent::SpriteComponent(rapidxml::xml_node<>* componentNode)
 
 void SpriteComponent::read(rapidxml::xml_node<>* componentNode)
 {
-	///FIXME: ImageManager!
+	if(componentNode->first_attribute("file")==0)
+		throw RequiredAttributeNotFound("file", "SpriteComponent");
+	sprite=ImageManager::getSprite(componentNode->first_attribute("file")->value());
 }
 
 Component* SpriteComponent::clone(int newEID)

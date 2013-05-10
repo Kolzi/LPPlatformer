@@ -24,7 +24,7 @@ CLEAN_SUBPROJECTS=${CLEAN_SUBPROJECTS_${SUBPROJECTS}}
 
 
 # Project Name
-PROJECTNAME=LPPlatformer
+PROJECTNAME=Platformer
 
 # Active Configuration
 DEFAULTCONF=Debug
