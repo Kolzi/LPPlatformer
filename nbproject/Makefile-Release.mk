@@ -35,7 +35,6 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/_ext/1581688695/ImageManager.o \
 	${OBJECTDIR}/src/Systems/RenderSystem.o \
 	${OBJECTDIR}/main.o \
 	${OBJECTDIR}/src/General/Level.o \
@@ -51,6 +50,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/Components/CameraSourceComponent.o \
 	${OBJECTDIR}/src/Components/PhysicsComponent.o \
 	${OBJECTDIR}/src/Systems/GravitySystem.o \
+	${OBJECTDIR}/src/General/ImageManager.o \
 	${OBJECTDIR}/src/Components/PositionComponent.o \
 	${OBJECTDIR}/src/Systems/CameraSystem.o \
 	${OBJECTDIR}/src/General/ArchetypesManager.o \
@@ -82,11 +82,6 @@ LDLIBSOPTIONS=
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/platformer: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/platformer ${OBJECTFILES} ${LDLIBSOPTIONS} 
-
-${OBJECTDIR}/_ext/1581688695/ImageManager.o: /home/marzena/NetBeansProjects/Platformer/src/General/ImageManager.cpp 
-	${MKDIR} -p ${OBJECTDIR}/_ext/1581688695
-	${RM} $@.d
-	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/1581688695/ImageManager.o /home/marzena/NetBeansProjects/Platformer/src/General/ImageManager.cpp
 
 ${OBJECTDIR}/src/Systems/RenderSystem.o: src/Systems/RenderSystem.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/Systems
@@ -162,6 +157,11 @@ ${OBJECTDIR}/src/Systems/GravitySystem.o: src/Systems/GravitySystem.cpp
 	${MKDIR} -p ${OBJECTDIR}/src/Systems
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/Systems/GravitySystem.o src/Systems/GravitySystem.cpp
+
+${OBJECTDIR}/src/General/ImageManager.o: src/General/ImageManager.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/General
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/General/ImageManager.o src/General/ImageManager.cpp
 
 ${OBJECTDIR}/src/Components/PositionComponent.o: src/Components/PositionComponent.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/Components

@@ -29,8 +29,8 @@
       <itemPath>src/General/ArchetypesManager.cpp</itemPath>
       <itemPath>include/General/ArchetypesManager.h</itemPath>
       <itemPath>include/General/IDGenerator.hpp</itemPath>
-      <itemPath>/home/marzena/NetBeansProjects/Platformer/src/General/ImageManager.cpp</itemPath>
-      <itemPath>/home/marzena/NetBeansProjects/Platformer/include/General/ImageManager.hpp</itemPath>
+      <itemPath>src/General/ImageManager.cpp</itemPath>
+      <itemPath>include/General/ImageManager.hpp</itemPath>
       <itemPath>src/General/Level.cpp</itemPath>
       <itemPath>include/General/Level.hpp</itemPath>
       <itemPath>src/General/SimpleIDGenerator.cpp</itemPath>
