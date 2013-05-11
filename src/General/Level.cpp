@@ -7,6 +7,7 @@
 
 #include <vector>
 #include <istream>
+#include <iostream>
 #include <SFML/Graphics/RenderWindow.hpp>
 #include "rapidxml/rapidxml.hpp"
 
@@ -65,10 +66,15 @@ void Level::read(std::istream& str)
     for (rapidxml::xml_node<> * objectNode = doc.first_node("Object"); objectNode; objectNode = objectNode->next_sibling("Object"))
     {
 		int EID=idGenerator->nextID();
-        archetypesManager.addEntity(EID, objectNode->name(), components, systemsMap);
+	//	std::cerr<<"Level read, new entity: "<<EID<<" "<<objectNode->first_attribute("name")->value()<<"\n";
+        archetypesManager.addEntity(EID, objectNode->first_attribute("name")->value(), components, systemsMap);
+	//	std::cerr<<"Added entity\n";
 		for(rapidxml::xml_node<> * componentNode = objectNode->first_node(); componentNode; componentNode = componentNode->next_sibling())
 		{
+	//		std::cerr<<"Level reading: "<<componentNode->name()<<"|||\n";
+	//		std::cerr<<(components.find(CompKey(EID,componentNode->name()))!=components.end())<<"\n";
 			components[CompKey(EID,componentNode->name())]->read(componentNode);
+	//		std::cerr<<"Finished reading\n";
 		}
     }
 }

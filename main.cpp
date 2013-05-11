@@ -26,10 +26,11 @@ int main(int argc, char** argv)
 	ArchetypesManager archMan;
 	std::ifstream file("resources/archetypes.xml");
 	archMan.read(file);
-	
     sf::RenderWindow app(sf::VideoMode(800, 600, 32), "SFML Graphics");
 
+	std::ifstream levelFile("resources/testlevel.xml");
 	Level level(app, archMan);
+	level.read(levelFile);
   /*  sf::Texture texture1, texture2;
     texture1.loadFromFile("resources/player.png");
     texture2.loadFromFile("resources/ground.png");

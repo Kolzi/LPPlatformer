@@ -36,4 +36,11 @@ void Archetype::read(rapidxml::xml_node<>* archetypeNode)
 		StringComponentConverter conv;
         components.push_back(std::pair<std::string, Component*>(componentNode->name(), conv.stringToComponent(componentNode->name(), componentNode)));
     }
+	for (rapidxml::xml_node<> * componentNode = 
+            archetypeNode->first_node("Systems")->first_node(); 
+            componentNode; componentNode = componentNode->next_sibling())
+    {
+		std::cerr<<componentNode->name()<<"\n";
+        systems.push_back(componentNode->name());
+    }
 }

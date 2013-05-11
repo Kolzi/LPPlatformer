@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<configurationDescriptor version="84">
+<configurationDescriptor version="88">
   <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
     <logicalFolder name="f1" displayName="Components" projectFiles="true">
       <itemPath>src/Components/BoundingBoxComponent.cpp</itemPath>
@@ -104,14 +104,199 @@
         </ccTool>
         <linkerTool>
           <linkerLibItems>
-            <linkerLibFileItem>/home/marzena/Programowanie/SFML2Build/lib/libsfml-audio.so</linkerLibFileItem>
-            <linkerLibFileItem>/home/marzena/Programowanie/SFML2Build/lib/libsfml-graphics.so</linkerLibFileItem>
-            <linkerLibFileItem>/home/marzena/Programowanie/SFML2Build/lib/libsfml-network.so</linkerLibFileItem>
-            <linkerLibFileItem>/home/marzena/Programowanie/SFML2Build/lib/libsfml-system.so</linkerLibFileItem>
-            <linkerLibFileItem>/home/marzena/Programowanie/SFML2Build/lib/libsfml-window.so</linkerLibFileItem>
+            <linkerOptionItem>-lsfml-graphics -lsfml-window -lsfml-system</linkerOptionItem>
           </linkerLibItems>
         </linkerTool>
       </compileType>
+      <item path="include/Components/BoundingBoxComponent.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="include/Components/CameraSourceComponent.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="include/Components/Component.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/Components/GravityComponent.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="include/Components/PhysicsComponent.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="include/Components/PositionComponent.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="include/Components/SpriteComponent.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="include/Components/ViewportComponent.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="include/Exceptions/NoSuchComponentName.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="include/Exceptions/RequiredAttributeNotFound.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="include/General/Archetype.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/General/ArchetypesManager.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="include/General/IDGenerator.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/General/ImageManager.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/General/Level.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/General/SimpleIDGenerator.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="include/General/StringComponentConverter.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="include/Systems/CameraSystem.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/Systems/CollisionSystem.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="include/Systems/GravitySystem.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/Systems/MovementSystem.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/Systems/PlayerInputSystem.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="include/Systems/RenderSystem.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/Systems/System.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/TechnicalShit/PairIntStringHash.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="include/rapidxml/manual.html" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/rapidxml/rapidxml_iterators.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="include/rapidxml/rapidxml_print.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="include/rapidxml/rapidxml_utils.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="main.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="rapidxml-1.13/license.txt" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="rapidxml-1.13/rapidxml.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="resources/archetypes.xml" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="resources/ground.png" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="resources/player.png" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="resources/testlevel.xml" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/Components/BoundingBoxComponent.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/Components/CameraSourceComponent.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/Components/Component.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Components/GravityComponent.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/Components/PhysicsComponent.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/Components/PositionComponent.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/Components/SpriteComponent.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Components/ViewportComponent.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/General/Archetype.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/General/ArchetypesManager.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/General/ImageManager.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/General/Level.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/General/SimpleIDGenerator.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/General/StringComponentConverter.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/Systems/CameraSystem.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Systems/CollisionSystem.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Systems/GravitySystem.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Systems/MovementSystem.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Systems/PlayerInputSystem.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Systems/RenderSystem.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Systems/System.cpp" ex="false" tool="1" flavor2="0">
+      </item>
     </conf>
     <conf name="Release" type="1">
       <toolsSet>
@@ -132,6 +317,195 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
+      <item path="include/Components/BoundingBoxComponent.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="include/Components/CameraSourceComponent.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="include/Components/Component.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/Components/GravityComponent.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="include/Components/PhysicsComponent.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="include/Components/PositionComponent.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="include/Components/SpriteComponent.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="include/Components/ViewportComponent.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="include/Exceptions/NoSuchComponentName.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="include/Exceptions/RequiredAttributeNotFound.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="include/General/Archetype.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/General/ArchetypesManager.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="include/General/IDGenerator.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/General/ImageManager.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/General/Level.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/General/SimpleIDGenerator.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="include/General/StringComponentConverter.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="include/Systems/CameraSystem.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/Systems/CollisionSystem.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="include/Systems/GravitySystem.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/Systems/MovementSystem.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/Systems/PlayerInputSystem.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="include/Systems/RenderSystem.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/Systems/System.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/TechnicalShit/PairIntStringHash.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="include/rapidxml/manual.html" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/rapidxml/rapidxml_iterators.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="include/rapidxml/rapidxml_print.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="include/rapidxml/rapidxml_utils.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="main.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="rapidxml-1.13/license.txt" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="rapidxml-1.13/rapidxml.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="resources/archetypes.xml" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="resources/ground.png" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="resources/player.png" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="resources/testlevel.xml" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/Components/BoundingBoxComponent.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/Components/CameraSourceComponent.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/Components/Component.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Components/GravityComponent.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/Components/PhysicsComponent.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/Components/PositionComponent.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/Components/SpriteComponent.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Components/ViewportComponent.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/General/Archetype.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/General/ArchetypesManager.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/General/ImageManager.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/General/Level.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/General/SimpleIDGenerator.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/General/StringComponentConverter.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/Systems/CameraSystem.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Systems/CollisionSystem.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Systems/GravitySystem.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Systems/MovementSystem.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Systems/PlayerInputSystem.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Systems/RenderSystem.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Systems/System.cpp" ex="false" tool="1" flavor2="0">
+      </item>
     </conf>
   </confs>
 </configurationDescriptor>

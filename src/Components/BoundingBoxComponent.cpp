@@ -34,7 +34,7 @@ void BoundingBoxComponent::read(rapidxml::xml_node<>* componentNode)
 	else
 		throw RequiredAttributeNotFound("w", "BoundingBox");
 	if(componentNode->first_attribute("h")!=0)
-		boundingBox.width=boost::lexical_cast<double>(componentNode->first_attribute("h")->value());
+		boundingBox.height=boost::lexical_cast<double>(componentNode->first_attribute("h")->value());
 	else
 		throw RequiredAttributeNotFound("h", "BoundingBox");
 }

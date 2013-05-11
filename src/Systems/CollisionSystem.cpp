@@ -42,7 +42,6 @@ void CollisionSystem::update(sf::Time deltaTime)
 		jt++;
 		for(jt;jt!=entities.end();jt++)
 		{
-	//		std::cerr<<*it<<" "<<*jt<<"\n";
 			PositionComponent* posCi=boost::polymorphic_downcast<PositionComponent*>(components.at(Level::CompKey(*it, "Position")));
 			PhysicsComponent empty(*it);
 			PhysicsComponent* physCi=
@@ -61,11 +60,10 @@ void CollisionSystem::update(sf::Time deltaTime)
 			sf::Rect<double> bbi=bbCi->boundingBox;
 			sf::Rect<double> bbj=bbCj->boundingBox;
 			
-                        bbi.left+=posCi->x;
-                        bbi.top +=posCi->y;
-                        bbj.left+=posCj->x;
-                        bbj.top +=posCj->y;
-		
+            bbi.left+=posCi->x;
+            bbi.top +=posCi->y;
+            bbj.left+=posCj->x;
+            bbj.top +=posCj->y;
 			
 			if(bbi.intersects(bbj))
 			{
@@ -85,7 +83,6 @@ void CollisionSystem::update(sf::Time deltaTime)
 
 				if(t==tx)
 				{
-					std::cerr<<"x\n";
 					posCi->x-=(t*physCi->vx);
 					posCj->x-=(t*physCj->vx);
 					physCi->vx=0;
@@ -95,7 +92,6 @@ void CollisionSystem::update(sf::Time deltaTime)
 				}
 				else if(t==ty)
 				{
-					std::cerr<<"y\n";
 					posCi->y-=(t*physCi->vy);
 					posCj->y-=(t*physCj->vy);
 					physCi->ay=0;

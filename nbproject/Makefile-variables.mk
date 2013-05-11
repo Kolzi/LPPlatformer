@@ -9,19 +9,19 @@ CND_DISTDIR=dist
 # Debug configuration
 CND_PLATFORM_Debug=GNU-Linux-x86
 CND_ARTIFACT_DIR_Debug=dist/Debug/GNU-Linux-x86
-CND_ARTIFACT_NAME_Debug=platformer
-CND_ARTIFACT_PATH_Debug=dist/Debug/GNU-Linux-x86/platformer
+CND_ARTIFACT_NAME_Debug=lpplatformer
+CND_ARTIFACT_PATH_Debug=dist/Debug/GNU-Linux-x86/lpplatformer
 CND_PACKAGE_DIR_Debug=dist/Debug/GNU-Linux-x86/package
-CND_PACKAGE_NAME_Debug=platformer.tar
-CND_PACKAGE_PATH_Debug=dist/Debug/GNU-Linux-x86/package/platformer.tar
+CND_PACKAGE_NAME_Debug=lpplatformer.tar
+CND_PACKAGE_PATH_Debug=dist/Debug/GNU-Linux-x86/package/lpplatformer.tar
 # Release configuration
 CND_PLATFORM_Release=GNU-Linux-x86
 CND_ARTIFACT_DIR_Release=dist/Release/GNU-Linux-x86
-CND_ARTIFACT_NAME_Release=platformer
-CND_ARTIFACT_PATH_Release=dist/Release/GNU-Linux-x86/platformer
+CND_ARTIFACT_NAME_Release=lpplatformer
+CND_ARTIFACT_PATH_Release=dist/Release/GNU-Linux-x86/lpplatformer
 CND_PACKAGE_DIR_Release=dist/Release/GNU-Linux-x86/package
-CND_PACKAGE_NAME_Release=platformer.tar
-CND_PACKAGE_PATH_Release=dist/Release/GNU-Linux-x86/package/platformer.tar
+CND_PACKAGE_NAME_Release=lpplatformer.tar
+CND_PACKAGE_PATH_Release=dist/Release/GNU-Linux-x86/package/lpplatformer.tar
 #
 # include compiler specific variables
 #

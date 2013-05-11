@@ -21,7 +21,7 @@
 	<Components>
 		<Position x="0" y="0" z="0" />
 		<Sprite file="ground.png" />
-		<BoundingBox x="0" y="0" w="50" h="50" />
+		<BoundingBox x="0" y="0" w="100" h="100" />
 	</Components>
 	<Systems>
 		<Render />

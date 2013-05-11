@@ -9,7 +9,9 @@
 #include "General/ArchetypesManager.h"
 #include "rapidxml/rapidxml.hpp"
 #include "Components/Component.hpp"
+
 #include <vector>
+#include <iostream>
 
 ArchetypesManager::ArchetypesManager()
 {
@@ -36,15 +38,17 @@ void ArchetypesManager::read(std::istream& str)
     }
 }
 
-void ArchetypesManager::addEntity(int EID, std::string archName,Level::CompMap components, Level::SysMap systems)
+void ArchetypesManager::addEntity(int EID, std::string archName,Level::CompMap& components, Level::SysMap& systems)
 {
 	Archetype* archetype=archetypes.at(archName);
 	for(auto comp:archetype->components)
 	{
+	//	std::cerr<<"ArchMan adding component: "<<EID<<" "<< comp.first<<"||\n";
 		components[Level::CompKey(EID, comp.first)]=comp.second->clone(EID);
 	}
 	for(auto sys:archetype->systems)
 	{
+	//	std::cerr<<"ArchMan adding system: "<<sys<<"||\n";
 		systems.at(sys)->addEntity(EID);
 	}
 }

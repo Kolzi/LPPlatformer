@@ -1,5 +1,5 @@
 <Object name="Player">
-	<Position x="125" y="125" z="0" />
+	<Position x="-180" y="125" z="0" />
 </Object>
 
 <Object name="Ground">

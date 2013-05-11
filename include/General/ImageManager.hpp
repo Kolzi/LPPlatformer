@@ -13,6 +13,7 @@
 
 class ImageManager
 {
+public:
 	static sf::Sprite getSprite(std::string filename);
 	static void releaseSprite(std::string filename);
 private:

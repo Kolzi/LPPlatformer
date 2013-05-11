@@ -6,7 +6,7 @@
  */
 
 #include "Components/SpriteComponent.hpp"
-#include "General/ImageManager2.hpp"
+#include "General/ImageManager.hpp"
 #include "Exceptions/RequiredAttributeNotFound.hpp"
 
 SpriteComponent::SpriteComponent(sf::Sprite sprite, int EID)

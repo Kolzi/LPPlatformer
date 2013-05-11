@@ -39,8 +39,6 @@ void RenderSystem::update(sf::Time deltaTime)
 
 void RenderSystem::addEntity(int EID)
 {
-//	std::cerr<<(positionComponents.find(EID)!=positionComponents.end())<<" ";
-//			std::cerr<<(spriteComponents.find(EID) != spriteComponents.end())<<"\n";
 	assert( components.find(Level::CompKey(EID, "Position")) != components.end() &&
 			components.find(Level::CompKey(EID, "Sprite")) != components.end() );
     entities.push_back(EID);
