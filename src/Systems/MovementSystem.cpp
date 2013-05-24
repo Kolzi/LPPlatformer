@@ -6,6 +6,8 @@
  */
 
 #include "Systems/MovementSystem.hpp"
+#include "Components/StandsOnComponent.hpp"
+#include "Components/StandableComponent.hpp"
 #include <iostream>
 #include <unordered_map>
 #include <assert.h>
@@ -30,7 +32,8 @@ MovementSystem::~MovementSystem()
 void MovementSystem::addEntity(int EID)
 {
 	assert( components.find(Level::CompKey(EID, "Position")) != components.end() &&
-			components.find(Level::CompKey(EID, "Physics")) != components.end());
+			components.find(Level::CompKey(EID, "Physics")) != components.end() && 
+			components.find(Level::CompKey(EID, "StandsOn")) != components.end() );
 	entities.push_back(EID);
 }
 
@@ -39,14 +42,28 @@ void MovementSystem::update(sf::Time time)
     double deltaT=time.asSeconds();
 	for(auto it=entities.begin();it!=entities.end();it++)
     {
-        PositionComponent* posC=boost::polymorphic_downcast<PositionComponent*>(components.at(Level::CompKey(*it, "Position")));
-        PhysicsComponent* physC=boost::polymorphic_downcast<PhysicsComponent*>(components.at(Level::CompKey(*it, "Physics")));
-        physC->vx+=physC->ax*deltaT;
-		physC->vy+=physC->ay*deltaT;
-		physC->vz+=physC->az*deltaT;
-		posC->x+=deltaT*physC->vx;
-		posC->y+=deltaT*physC->vy;
-		posC->z+=deltaT*physC->vz;
+        PositionComponent& posC = *boost::polymorphic_downcast<PositionComponent*>(components.at(Level::CompKey(*it, "Position")));
+        PhysicsComponent& physC = *boost::polymorphic_downcast<PhysicsComponent*>(components.at(Level::CompKey(*it, "Physics")));
+        StandsOnComponent& standsOnC = *boost::polymorphic_downcast<StandsOnComponent*>(components.at(Level::CompKey(*it, "StandsOn")));
+		
+		StandableComponent groundC(-1, 0, 1000, 0,0, 0);
+		if(standsOnC.standing)
+			groundC = *boost::polymorphic_downcast<StandableComponent*>(components.at(Level::CompKey(standsOnC.standsOn, "Standable")));
+		else
+			groundC=StandableComponent(-1);
+		
+		physC.vx+=physC.ax*deltaT;
+		physC.vy+=physC.ay*deltaT;
+		physC.vz+=physC.az*deltaT;
+		
+		if(physC.vx > physC.maxSpeed*groundC.maxSpeedMultiplier)
+		{
+			physC.vx=physC.maxSpeed*groundC.maxSpeedMultiplier;
+		}
+		
+		posC.x+=deltaT*physC.vx;
+		posC.y+=deltaT*physC.vy;
+		posC.z+=deltaT*physC.vz;
 	}
 	
 }

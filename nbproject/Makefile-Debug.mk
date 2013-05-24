@@ -43,6 +43,8 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/Components/PhysicsComponent.o \
 	${OBJECTDIR}/src/Components/PositionComponent.o \
 	${OBJECTDIR}/src/Components/SpriteComponent.o \
+	${OBJECTDIR}/src/Components/StandableComponent.o \
+	${OBJECTDIR}/src/Components/StandsOnComponent.o \
 	${OBJECTDIR}/src/Components/ViewportComponent.o \
 	${OBJECTDIR}/src/General/Archetype.o \
 	${OBJECTDIR}/src/General/ArchetypesManager.o \
@@ -122,6 +124,16 @@ ${OBJECTDIR}/src/Components/SpriteComponent.o: src/Components/SpriteComponent.cp
 	${MKDIR} -p ${OBJECTDIR}/src/Components
 	${RM} $@.d
 	$(COMPILE.cc) -g -Wall -Iinclude -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/Components/SpriteComponent.o src/Components/SpriteComponent.cpp
+
+${OBJECTDIR}/src/Components/StandableComponent.o: src/Components/StandableComponent.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/Components
+	${RM} $@.d
+	$(COMPILE.cc) -g -Wall -Iinclude -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/Components/StandableComponent.o src/Components/StandableComponent.cpp
+
+${OBJECTDIR}/src/Components/StandsOnComponent.o: src/Components/StandsOnComponent.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/Components
+	${RM} $@.d
+	$(COMPILE.cc) -g -Wall -Iinclude -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/Components/StandsOnComponent.o src/Components/StandsOnComponent.cpp
 
 ${OBJECTDIR}/src/Components/ViewportComponent.o: src/Components/ViewportComponent.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/Components

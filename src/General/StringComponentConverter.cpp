@@ -14,7 +14,10 @@
 #include "Components/PositionComponent.hpp"
 #include "Components/SpriteComponent.hpp"
 #include "Components/ViewportComponent.hpp"
+#include "Components/StandsOnComponent.hpp"
+#include "Components/StandableComponent.hpp"
 #include "Exceptions/NoSuchComponentName.hpp"
+
 
 
 Component* StringComponentConverter::stringToComponent(std::string componentName, 
@@ -34,6 +37,11 @@ Component* StringComponentConverter::stringToComponent(std::string componentName
         return new SpriteComponent(archetypeNode);
     if(componentName=="Viewport")
         return new ViewportComponent(archetypeNode);
+    if(componentName=="StandsOn")
+        return new StandsOnComponent(archetypeNode);
+	if(componentName=="Standable")
+        return new StandableComponent(archetypeNode);
+	
 	throw NoSuchComponentName(componentName);
 }
 

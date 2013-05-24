@@ -18,10 +18,14 @@
 #include "Systems/CollisionSystem.hpp"
 #include "Systems/GravitySystem.hpp"
 #include "General/ArchetypesManager.h"
+#include "Exceptions/NoSuchComponentName.hpp"
+#include "Exceptions/RequiredAttributeNotFound.hpp"
 #include <iostream>
 #include <fstream>
 
 int main(int argc, char** argv)
+{
+try
 {
 	ArchetypesManager archMan;
 	std::ifstream file("resources/archetypes.xml");
@@ -55,5 +59,10 @@ int main(int argc, char** argv)
     }
 
     return EXIT_SUCCESS;
+} catch(const std::exception& e)
+{
+	std::cerr<<"CATCH\n";
+	std::cerr<<e.what()<<"\n";
+}
 }
 

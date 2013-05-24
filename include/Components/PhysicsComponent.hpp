@@ -13,7 +13,7 @@
 
 struct PhysicsComponent : public Component
 {
-	PhysicsComponent(int EID);
+	PhysicsComponent(int EID, double acceleration, double maxSpeed, double stoppingSpeed);
 	PhysicsComponent(rapidxml::xml_node<>* componentNode);
     
 	Component* clone(int newEID);
@@ -21,6 +21,10 @@ struct PhysicsComponent : public Component
 	
 	double vx, vy, vz;
 	double ax, ay, az;
+	
+	double acceleration;
+	double maxSpeed;
+	double stoppingSpeed;
 };
 
 #endif	/* PHYSICSCOMPONENT_HPP */

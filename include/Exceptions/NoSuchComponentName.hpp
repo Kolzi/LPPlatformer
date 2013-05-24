@@ -8,14 +8,14 @@
 #ifndef NOSUCHCOMPONENTNAME_HPP
 #define	NOSUCHCOMPONENTNAME_HPP
 
-#include <exception>
+#include <stdexcept>
 
-class NoSuchComponentName :public std::exception
+class NoSuchComponentName : public std::runtime_error
 {
 	std::string name;
 public:
-	const char* what(){return ("No such component name: "+name).c_str();}
-	NoSuchComponentName(std::string name):name(name){}
+	NoSuchComponentName(std::string name):
+		std::runtime_error("No such component name: "+name), name(name){}
 };
 
 #endif	/* NOSUCHCOMPONENTNAME_HPP */

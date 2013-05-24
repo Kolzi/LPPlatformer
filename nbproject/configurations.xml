@@ -16,6 +16,10 @@
       <itemPath>include/Components/PositionComponent.hpp</itemPath>
       <itemPath>src/Components/SpriteComponent.cpp</itemPath>
       <itemPath>include/Components/SpriteComponent.hpp</itemPath>
+      <itemPath>src/Components/StandableComponent.cpp</itemPath>
+      <itemPath>include/Components/StandableComponent.hpp</itemPath>
+      <itemPath>src/Components/StandsOnComponent.cpp</itemPath>
+      <itemPath>include/Components/StandsOnComponent.hpp</itemPath>
       <itemPath>src/Components/ViewportComponent.cpp</itemPath>
       <itemPath>include/Components/ViewportComponent.hpp</itemPath>
     </logicalFolder>
@@ -85,6 +89,7 @@
       <itemPath>Makefile</itemPath>
     </logicalFolder>
     <itemPath>main.cpp</itemPath>
+    <itemPath>todos</itemPath>
   </logicalFolder>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
@@ -140,6 +145,16 @@
             tool="3"
             flavor2="0">
       </item>
+      <item path="include/Components/StandableComponent.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="include/Components/StandsOnComponent.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="include/Components/ViewportComponent.hpp"
             ex="false"
             tool="3"
@@ -263,6 +278,16 @@
       </item>
       <item path="src/Components/SpriteComponent.cpp" ex="false" tool="1" flavor2="0">
       </item>
+      <item path="src/Components/StandableComponent.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/Components/StandsOnComponent.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
       <item path="src/Components/ViewportComponent.cpp"
             ex="false"
             tool="1"
@@ -296,6 +321,8 @@
       <item path="src/Systems/RenderSystem.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/Systems/System.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="todos" ex="false" tool="3" flavor2="0">
       </item>
     </conf>
     <conf name="Release" type="1">
@@ -349,6 +376,16 @@
             tool="3"
             flavor2="0">
       </item>
+      <item path="include/Components/StandableComponent.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="include/Components/StandsOnComponent.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="include/Components/ViewportComponent.hpp"
             ex="false"
             tool="3"
@@ -472,6 +509,16 @@
       </item>
       <item path="src/Components/SpriteComponent.cpp" ex="false" tool="1" flavor2="0">
       </item>
+      <item path="src/Components/StandableComponent.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/Components/StandsOnComponent.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
       <item path="src/Components/ViewportComponent.cpp"
             ex="false"
             tool="1"
@@ -505,6 +552,8 @@
       <item path="src/Systems/RenderSystem.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/Systems/System.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="todos" ex="false" tool="3" flavor2="0">
       </item>
     </conf>
   </confs>

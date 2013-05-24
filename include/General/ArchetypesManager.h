@@ -11,6 +11,7 @@
 #include <istream>
 #include <unordered_map>
 
+#include "Exceptions/RequiredAttributeNotFound.hpp"
 #include "Level.hpp"
 
 class Archetype;
@@ -18,7 +19,7 @@ class Archetype;
 class ArchetypesManager
 {
 public:
-    ArchetypesManager();
+    ArchetypesManager() throw(RequiredAttributeNotFound);
     ArchetypesManager(const ArchetypesManager& orig);
     virtual ~ArchetypesManager();
     void read(std::istream& str);

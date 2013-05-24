@@ -9,11 +9,12 @@
 #include "General/ArchetypesManager.h"
 #include "rapidxml/rapidxml.hpp"
 #include "Components/Component.hpp"
+#include "Exceptions/RequiredAttributeNotFound.hpp"
 
 #include <vector>
 #include <iostream>
 
-ArchetypesManager::ArchetypesManager()
+ArchetypesManager::ArchetypesManager() throw(RequiredAttributeNotFound)
 {
 }
 
