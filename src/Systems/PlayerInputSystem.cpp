@@ -10,6 +10,8 @@
 #include <boost/cast.hpp>
 
 #include "Systems/PlayerInputSystem.hpp"
+#include "Components/StandsOnComponent.hpp"
+#include "Components/StandableComponent.hpp"
 
 PlayerInputSystem::PlayerInputSystem(Level::CompMap& components)
 :System(components)
@@ -35,27 +37,53 @@ void PlayerInputSystem::update(sf::Time deltaTime)
 {
     for(auto eid: entities)
     {
-		PhysicsComponent* pC=boost::polymorphic_downcast<PhysicsComponent*>(components.at(Level::CompKey(eid, "Physics")));
+		PhysicsComponent& pC=*boost::polymorphic_downcast<PhysicsComponent*>(components.at(Level::CompKey(eid, "Physics")));
+		StandsOnComponent soEmpty(-1);
+		StandsOnComponent& soC = components.find(Level::CompKey(eid, "StandsOn"))!=components.end()?
+			*boost::polymorphic_downcast<StandsOnComponent*>(components.at(Level::CompKey(eid, "StandsOn"))) : soEmpty;
+		
+		StandableComponent sEmpty(-1);
+		StandableComponent sC = components.find(Level::CompKey(soC.standsOn, "Standable"))!=components.end()?
+			*boost::polymorphic_downcast<StandableComponent*>(components.at(Level::CompKey(soC.standsOn, "Standable"))) : sEmpty;
+		
 		if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
 		{
-			pC->ax=-200;
+			if(soC.standing)
+			{
+				pC.ax=-pC.acceleration*sC.accelerationMultiplier;
+			}
 		}
 		else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
 		{
-			pC->ax=200;
+			if(soC.standing)
+			{
+				pC.ax=pC.acceleration*sC.accelerationMultiplier;
+			}
 		}
 		else
-			pC->ax=0;
+		{
+			if(soC.standing)
+			{
+				double sign;
+				if(pC.vx>0)
+					sign=-1;
+				else if(pC.vx<0)
+					sign=11;
+				else
+					sign=0; //direction of decceleration
+				pC.ax=sign*pC.stoppingSpeed*sC.stoppingMultiplier;
+			}
+		}
 
-		if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+		if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && soC.jumpingTimeLeft>0)
 		{
-			pC->ay=-200;
-		}
-		else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
-		{
-			pC->ay=200;
+				pC.ax=0;
+				pC.vy=-soC.baseJumpingPower*sC.jumpingAccelerationMultiplier;
+				soC.jumpingTimeLeft-=deltaTime.asSeconds();
 		}
 		else
-			pC->ay=0;
+		{
+			soC.jumpingTimeLeft=0;
+		}
     }
 }

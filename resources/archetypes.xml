@@ -6,8 +6,8 @@
 		<CameraSource offsetX="100" offsetY="100" offsetZ="0" w="max" h="max" />
 		<Physics acceleration="200" stoppingSpeed="500" maxSpeed="1000"/>
 		<BoundingBox x="0" y="0" w="50" h="50" />
-		<Gravity g="500"/>
-		<StandsOn />
+		<Gravity g="200"/>
+		<StandsOn jumpingPower="300" jumpingTime="0.3"/>
 	</Components>
 	<Systems>
 		<Render />
@@ -23,7 +23,7 @@
 		<Position x="0" y="0" z="0" />
 		<Sprite file="ground.png" />
 		<BoundingBox x="0" y="0" w="100" h="100" />
-		<Standable />
+		<Standable accelerationMultiplier="2"/>
 	</Components>
 	<Systems>
 		<Render />

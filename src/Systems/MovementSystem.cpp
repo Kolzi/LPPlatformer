@@ -52,9 +52,15 @@ void MovementSystem::update(sf::Time time)
 		else
 			groundC=StandableComponent(-1);
 		
+		double oldVx=physC.vx;
 		physC.vx+=physC.ax*deltaT;
 		physC.vy+=physC.ay*deltaT;
 		physC.vz+=physC.az*deltaT;
+		
+		if(oldVx*physC.vx<0)
+		{
+			physC.vx=0;
+		}
 		
 		if(physC.vx > physC.maxSpeed*groundC.maxSpeedMultiplier)
 		{

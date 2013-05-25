@@ -8,6 +8,7 @@
 #include "Systems/CollisionSystem.hpp"
 #include "Components/BoundingBoxComponent.hpp"
 #include "Components/StandsOnComponent.hpp"
+#include "Components/StandableComponent.hpp"
 
 #include <iostream>
 #include <algorithm>
@@ -37,6 +38,11 @@ void CollisionSystem::addEntity(int EID)
 
 void CollisionSystem::update(sf::Time deltaTime)
 {
+	for(auto it=entities.begin();it!=entities.end();it++)
+	{
+		if(components.find(Level::CompKey(*it, "StandsOn")) != components.end())
+			boost::polymorphic_downcast<StandsOnComponent*>(components.at(Level::CompKey(*it, "StandsOn")))->standing=false;
+	}
 	for(auto it=entities.begin();it!=entities.end();it++)
 	{
 		PositionComponent& posCi=*boost::polymorphic_downcast<PositionComponent*>(components.at(Level::CompKey(*it, "Position")));
@@ -88,8 +94,10 @@ void CollisionSystem::update(sf::Time deltaTime)
 				if(relVy<0)
 					ty=(bbi.top-bbj.top-bbj.height)/relVy;
 				double t=std::min(tx,ty);
-
-				if(t==tx)
+				
+				const double eps=0.00001;
+				
+				if(t==tx && t<=deltaTime.asSeconds()+eps)
 				{
 					posCi.x-=(t*physCi.vx);
 					posCj.x-=(t*physCj.vx);
@@ -98,11 +106,12 @@ void CollisionSystem::update(sf::Time deltaTime)
 					physCj.ax=0;
 					physCj.vx=0;
 				}
-				else if(t==ty)
+				else if(t==ty && t<=deltaTime.asSeconds()+eps)
 				{
+					bool iOnj=posCi.y-t*physCi.vy < posCj.y-t*physCj.vy && iCanStand && jStandable;
+					bool jOni=posCi.y-t*physCi.vy > posCj.y-t*physCj.vy && jCanStand && iStandable;
 					//i stands on j or j stands on i
-					if( (posCi.y-t*physCi.vy < posCj.y-t*physCj.vy && iCanStand && jStandable) ||
-						(posCi.y-t*physCi.vy > posCj.y-t*physCj.vy && jCanStand && iStandable) )
+					if( iOnj || jOni )
 					{
 						posCi.y-=(t*physCi.vy);
 						posCj.y-=(t*physCj.vy);
@@ -110,6 +119,22 @@ void CollisionSystem::update(sf::Time deltaTime)
 						physCi.vy=0;
 						physCj.vy=0;
 						physCj.ay=0;
+						if(iOnj)
+						{
+							StandsOnComponent& standsOn=*boost::polymorphic_downcast<StandsOnComponent*>(components.at(Level::CompKey(*it, "StandsOn")));
+							StandableComponent& standable=*boost::polymorphic_downcast<StandableComponent*>(components.at(Level::CompKey(*jt, "Standable")));
+							standsOn.jumpingTimeLeft=standsOn.baseJumpingTime*standable.jumpingTimeMultiplier;
+							standsOn.standing=true;
+							standsOn.standsOn=*jt;
+						}
+						else
+						{
+							StandsOnComponent& standsOn=*boost::polymorphic_downcast<StandsOnComponent*>(components.at(Level::CompKey(*jt, "StandsOn")));
+							StandableComponent& standable=*boost::polymorphic_downcast<StandableComponent*>(components.at(Level::CompKey(*it, "Standable")));
+							standsOn.jumpingTimeLeft=standsOn.baseJumpingTime*standable.jumpingTimeMultiplier;
+							standsOn.standing=true;
+							standsOn.standsOn=*it;
+						}
 					}
 				}
 			}
