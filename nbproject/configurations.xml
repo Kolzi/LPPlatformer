@@ -10,6 +10,8 @@
       <itemPath>include/Components/Component.hpp</itemPath>
       <itemPath>src/Components/GravityComponent.cpp</itemPath>
       <itemPath>include/Components/GravityComponent.hpp</itemPath>
+      <itemPath>src/Components/MusicComponent.cpp</itemPath>
+      <itemPath>include/Components/MusicComponent.hpp</itemPath>
       <itemPath>src/Components/PhysicsComponent.cpp</itemPath>
       <itemPath>include/Components/PhysicsComponent.hpp</itemPath>
       <itemPath>src/Components/PositionComponent.cpp</itemPath>
@@ -37,8 +39,12 @@
       <itemPath>include/General/ImageManager.hpp</itemPath>
       <itemPath>src/General/Level.cpp</itemPath>
       <itemPath>include/General/Level.hpp</itemPath>
+      <itemPath>src/General/MusicManager.cpp</itemPath>
+      <itemPath>include/General/MusicManager.h</itemPath>
       <itemPath>src/General/SimpleIDGenerator.cpp</itemPath>
       <itemPath>include/General/SimpleIDGenerator.hpp</itemPath>
+      <itemPath>src/General/SoundManager.cpp</itemPath>
+      <itemPath>include/General/SoundManager.h</itemPath>
       <itemPath>src/General/StringComponentConverter.cpp</itemPath>
       <itemPath>include/General/StringComponentConverter.h</itemPath>
     </logicalFolder>
@@ -67,6 +73,8 @@
       <itemPath>include/Systems/GravitySystem.hpp</itemPath>
       <itemPath>src/Systems/MovementSystem.cpp</itemPath>
       <itemPath>include/Systems/MovementSystem.hpp</itemPath>
+      <itemPath>src/Systems/MusicSystem.cpp</itemPath>
+      <itemPath>include/Systems/MusicSystem.hpp</itemPath>
       <itemPath>src/Systems/PlayerInputSystem.cpp</itemPath>
       <itemPath>include/Systems/PlayerInputSystem.hpp</itemPath>
       <itemPath>src/Systems/RenderSystem.cpp</itemPath>
@@ -110,6 +118,7 @@
         <linkerTool>
           <linkerLibItems>
             <linkerOptionItem>-lsfml-graphics -lsfml-window -lsfml-system</linkerOptionItem>
+            <linkerOptionItem>-lsfml-audio</linkerOptionItem>
           </linkerLibItems>
         </linkerTool>
       </compileType>
@@ -126,6 +135,11 @@
       <item path="include/Components/Component.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="include/Components/GravityComponent.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="include/Components/MusicComponent.hpp"
             ex="false"
             tool="3"
             flavor2="0">
@@ -183,10 +197,14 @@
       </item>
       <item path="include/General/Level.hpp" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="include/General/MusicManager.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="include/General/SimpleIDGenerator.hpp"
             ex="false"
             tool="3"
             flavor2="0">
+      </item>
+      <item path="include/General/SoundManager.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="include/General/StringComponentConverter.h"
             ex="false"
@@ -203,6 +221,8 @@
       <item path="include/Systems/GravitySystem.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="include/Systems/MovementSystem.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/Systems/MusicSystem.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="include/Systems/PlayerInputSystem.hpp"
             ex="false"
@@ -266,6 +286,8 @@
             tool="1"
             flavor2="0">
       </item>
+      <item path="src/Components/MusicComponent.cpp" ex="false" tool="1" flavor2="0">
+      </item>
       <item path="src/Components/PhysicsComponent.cpp"
             ex="false"
             tool="1"
@@ -301,7 +323,11 @@
       </item>
       <item path="src/General/Level.cpp" ex="false" tool="1" flavor2="0">
       </item>
+      <item path="src/General/MusicManager.cpp" ex="false" tool="1" flavor2="0">
+      </item>
       <item path="src/General/SimpleIDGenerator.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/General/SoundManager.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/General/StringComponentConverter.cpp"
             ex="false"
@@ -315,6 +341,8 @@
       <item path="src/Systems/GravitySystem.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/Systems/MovementSystem.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Systems/MusicSystem.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/Systems/PlayerInputSystem.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -361,6 +389,11 @@
             tool="3"
             flavor2="0">
       </item>
+      <item path="include/Components/MusicComponent.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="include/Components/PhysicsComponent.hpp"
             ex="false"
             tool="3"
@@ -414,10 +447,14 @@
       </item>
       <item path="include/General/Level.hpp" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="include/General/MusicManager.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="include/General/SimpleIDGenerator.hpp"
             ex="false"
             tool="3"
             flavor2="0">
+      </item>
+      <item path="include/General/SoundManager.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="include/General/StringComponentConverter.h"
             ex="false"
@@ -434,6 +471,8 @@
       <item path="include/Systems/GravitySystem.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="include/Systems/MovementSystem.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/Systems/MusicSystem.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="include/Systems/PlayerInputSystem.hpp"
             ex="false"
@@ -497,6 +536,8 @@
             tool="1"
             flavor2="0">
       </item>
+      <item path="src/Components/MusicComponent.cpp" ex="false" tool="1" flavor2="0">
+      </item>
       <item path="src/Components/PhysicsComponent.cpp"
             ex="false"
             tool="1"
@@ -532,7 +573,11 @@
       </item>
       <item path="src/General/Level.cpp" ex="false" tool="1" flavor2="0">
       </item>
+      <item path="src/General/MusicManager.cpp" ex="false" tool="1" flavor2="0">
+      </item>
       <item path="src/General/SimpleIDGenerator.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/General/SoundManager.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/General/StringComponentConverter.cpp"
             ex="false"
@@ -546,6 +591,8 @@
       <item path="src/Systems/GravitySystem.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/Systems/MovementSystem.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Systems/MusicSystem.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/Systems/PlayerInputSystem.cpp" ex="false" tool="1" flavor2="0">
       </item>

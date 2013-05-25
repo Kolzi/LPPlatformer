@@ -20,10 +20,14 @@
 #include "Systems/GravitySystem.hpp"
 #include "Systems/MovementSystem.hpp"
 #include "Systems/PlayerInputSystem.hpp"
+#include "Systems/MusicSystem.hpp"
 
 Level::Level(sf::RenderWindow& app, ArchetypesManager& archetypesManager)
 :app(app), archetypesManager(archetypesManager), idGenerator(new SimpleIDGenerator())
 {
+	systemsMap.insert(std::pair<std::string, System*>("Music", new MusicSystem(components)));
+	systems.push_back(systemsMap.at("Music"));
+	
 	systemsMap.insert(std::pair<std::string, System*>("PlayerInput", new PlayerInputSystem(components)));
 	systems.push_back(systemsMap.at("PlayerInput"));
 	
@@ -40,9 +44,7 @@ Level::Level(sf::RenderWindow& app, ArchetypesManager& archetypesManager)
 	systems.push_back(systemsMap.at("Camera"));
 	
 	systemsMap.insert(std::pair<std::string, System*>("Render", new RenderSystem(app, components)));
-	systems.push_back(systemsMap.at("Render"));
-	
-	
+	systems.push_back(systemsMap.at("Render"));	
 	
 }
 
