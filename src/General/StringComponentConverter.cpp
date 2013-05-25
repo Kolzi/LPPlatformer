@@ -16,8 +16,8 @@
 #include "Components/ViewportComponent.hpp"
 #include "Components/StandsOnComponent.hpp"
 #include "Components/StandableComponent.hpp"
+#include "Components/MusicComponent.hpp"
 #include "Exceptions/NoSuchComponentName.hpp"
-
 
 
 Component* StringComponentConverter::stringToComponent(std::string componentName, 
@@ -41,6 +41,8 @@ Component* StringComponentConverter::stringToComponent(std::string componentName
         return new StandsOnComponent(archetypeNode);
 	if(componentName=="Standable")
         return new StandableComponent(archetypeNode);
+	if(componentName=="Music")
+		return new MusicComponent(archetypeNode);
 	
 	throw NoSuchComponentName(componentName);
 }

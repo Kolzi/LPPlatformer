@@ -40,6 +40,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/Components/CameraSourceComponent.o \
 	${OBJECTDIR}/src/Components/Component.o \
 	${OBJECTDIR}/src/Components/GravityComponent.o \
+	${OBJECTDIR}/src/Components/MusicComponent.o \
 	${OBJECTDIR}/src/Components/PhysicsComponent.o \
 	${OBJECTDIR}/src/Components/PositionComponent.o \
 	${OBJECTDIR}/src/Components/SpriteComponent.o \
@@ -50,12 +51,15 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/General/ArchetypesManager.o \
 	${OBJECTDIR}/src/General/ImageManager.o \
 	${OBJECTDIR}/src/General/Level.o \
+	${OBJECTDIR}/src/General/MusicManager.o \
 	${OBJECTDIR}/src/General/SimpleIDGenerator.o \
+	${OBJECTDIR}/src/General/SoundManager.o \
 	${OBJECTDIR}/src/General/StringComponentConverter.o \
 	${OBJECTDIR}/src/Systems/CameraSystem.o \
 	${OBJECTDIR}/src/Systems/CollisionSystem.o \
 	${OBJECTDIR}/src/Systems/GravitySystem.o \
 	${OBJECTDIR}/src/Systems/MovementSystem.o \
+	${OBJECTDIR}/src/Systems/MusicSystem.o \
 	${OBJECTDIR}/src/Systems/PlayerInputSystem.o \
 	${OBJECTDIR}/src/Systems/RenderSystem.o \
 	${OBJECTDIR}/src/Systems/System.o
@@ -75,7 +79,7 @@ FFLAGS=
 ASFLAGS=
 
 # Link Libraries and Options
-LDLIBSOPTIONS=-lsfml-graphics -lsfml-window -lsfml-system
+LDLIBSOPTIONS=-lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
@@ -109,6 +113,11 @@ ${OBJECTDIR}/src/Components/GravityComponent.o: src/Components/GravityComponent.
 	${MKDIR} -p ${OBJECTDIR}/src/Components
 	${RM} $@.d
 	$(COMPILE.cc) -g -Wall -Iinclude -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/Components/GravityComponent.o src/Components/GravityComponent.cpp
+
+${OBJECTDIR}/src/Components/MusicComponent.o: src/Components/MusicComponent.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/Components
+	${RM} $@.d
+	$(COMPILE.cc) -g -Wall -Iinclude -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/Components/MusicComponent.o src/Components/MusicComponent.cpp
 
 ${OBJECTDIR}/src/Components/PhysicsComponent.o: src/Components/PhysicsComponent.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/Components
@@ -160,10 +169,20 @@ ${OBJECTDIR}/src/General/Level.o: src/General/Level.cpp
 	${RM} $@.d
 	$(COMPILE.cc) -g -Wall -Iinclude -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/General/Level.o src/General/Level.cpp
 
+${OBJECTDIR}/src/General/MusicManager.o: src/General/MusicManager.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/General
+	${RM} $@.d
+	$(COMPILE.cc) -g -Wall -Iinclude -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/General/MusicManager.o src/General/MusicManager.cpp
+
 ${OBJECTDIR}/src/General/SimpleIDGenerator.o: src/General/SimpleIDGenerator.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/General
 	${RM} $@.d
 	$(COMPILE.cc) -g -Wall -Iinclude -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/General/SimpleIDGenerator.o src/General/SimpleIDGenerator.cpp
+
+${OBJECTDIR}/src/General/SoundManager.o: src/General/SoundManager.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/General
+	${RM} $@.d
+	$(COMPILE.cc) -g -Wall -Iinclude -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/General/SoundManager.o src/General/SoundManager.cpp
 
 ${OBJECTDIR}/src/General/StringComponentConverter.o: src/General/StringComponentConverter.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/General
@@ -189,6 +208,11 @@ ${OBJECTDIR}/src/Systems/MovementSystem.o: src/Systems/MovementSystem.cpp
 	${MKDIR} -p ${OBJECTDIR}/src/Systems
 	${RM} $@.d
 	$(COMPILE.cc) -g -Wall -Iinclude -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/Systems/MovementSystem.o src/Systems/MovementSystem.cpp
+
+${OBJECTDIR}/src/Systems/MusicSystem.o: src/Systems/MusicSystem.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/Systems
+	${RM} $@.d
+	$(COMPILE.cc) -g -Wall -Iinclude -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/Systems/MusicSystem.o src/Systems/MusicSystem.cpp
 
 ${OBJECTDIR}/src/Systems/PlayerInputSystem.o: src/Systems/PlayerInputSystem.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/Systems

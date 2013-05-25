@@ -33,3 +33,5 @@
 <Object name="Ground">
 	<Position x="-200" y="1200" z="0" />
 </Object>
+
+<Object name="LevelMusic" />

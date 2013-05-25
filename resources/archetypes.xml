@@ -30,3 +30,11 @@
 		<Collision />
 	</Systems>
 </Archetype>	
+<Archetype name="LevelMusic">
+	<Components>
+		<Music file="muzyka.ogg" />
+	</Components>
+	<Systems>
+		<Music />
+	</Systems>
+</Archetype>

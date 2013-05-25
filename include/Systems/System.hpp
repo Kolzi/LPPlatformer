@@ -19,10 +19,10 @@ public:
     System(const System& orig);
     virtual ~System();
     void removeEntity(int EID);
-	virtual void addEntity(int EID)=0;
-	virtual void update(sf::Time deltaTime)=0;
+    virtual void addEntity(int EID)=0;
+    virtual void update(sf::Time deltaTime)=0;
 protected:
-	Level::CompMap& components;
+    Level::CompMap& components;
     std::list<int> entities;
 	
 };

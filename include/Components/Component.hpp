@@ -18,7 +18,6 @@ public:
     Component(int EID);
     Component(const Component& orig);
     virtual ~Component();
- //   std::list<System&> attachedTo
     virtual Component* clone(int newEID)=0;
 	virtual void read(rapidxml::xml_node<>* componentNode)=0;
     int EID;
