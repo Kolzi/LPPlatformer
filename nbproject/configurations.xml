@@ -61,6 +61,7 @@
                    projectFiles="true">
       <itemPath>resources/archetypes.xml</itemPath>
       <itemPath>resources/ground.png</itemPath>
+      <itemPath>resources/muzyka.ogg</itemPath>
       <itemPath>resources/player.png</itemPath>
       <itemPath>resources/testlevel.xml</itemPath>
     </logicalFolder>
@@ -264,6 +265,8 @@
       <item path="resources/archetypes.xml" ex="false" tool="3" flavor2="0">
       </item>
       <item path="resources/ground.png" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="resources/muzyka.ogg" ex="false" tool="3" flavor2="0">
       </item>
       <item path="resources/player.png" ex="false" tool="3" flavor2="0">
       </item>
@@ -514,6 +517,8 @@
       <item path="resources/archetypes.xml" ex="false" tool="3" flavor2="0">
       </item>
       <item path="resources/ground.png" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="resources/muzyka.ogg" ex="false" tool="3" flavor2="0">
       </item>
       <item path="resources/player.png" ex="false" tool="3" flavor2="0">
       </item>
