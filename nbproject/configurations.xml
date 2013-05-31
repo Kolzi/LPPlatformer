@@ -8,20 +8,28 @@
       <itemPath>include/Components/CameraSourceComponent.hpp</itemPath>
       <itemPath>src/Components/Component.cpp</itemPath>
       <itemPath>include/Components/Component.hpp</itemPath>
+      <itemPath>src/Components/DamageComponent.cpp</itemPath>
+      <itemPath>include/Components/DamageComponent.hpp</itemPath>
       <itemPath>src/Components/GravityComponent.cpp</itemPath>
       <itemPath>include/Components/GravityComponent.hpp</itemPath>
+      <itemPath>src/Components/HasScoreComponent.cpp</itemPath>
+      <itemPath>include/Components/HasScoreComponent.hpp</itemPath>
       <itemPath>src/Components/MusicComponent.cpp</itemPath>
       <itemPath>include/Components/MusicComponent.hpp</itemPath>
       <itemPath>src/Components/PhysicsComponent.cpp</itemPath>
       <itemPath>include/Components/PhysicsComponent.hpp</itemPath>
       <itemPath>src/Components/PositionComponent.cpp</itemPath>
       <itemPath>include/Components/PositionComponent.hpp</itemPath>
+      <itemPath>src/Components/ScoreComponent.cpp</itemPath>
+      <itemPath>include/Components/ScoreComponent.hpp</itemPath>
       <itemPath>src/Components/SpriteComponent.cpp</itemPath>
       <itemPath>include/Components/SpriteComponent.hpp</itemPath>
       <itemPath>src/Components/StandableComponent.cpp</itemPath>
       <itemPath>include/Components/StandableComponent.hpp</itemPath>
       <itemPath>src/Components/StandsOnComponent.cpp</itemPath>
       <itemPath>include/Components/StandsOnComponent.hpp</itemPath>
+      <itemPath>src/Components/TextComponent.cpp</itemPath>
+      <itemPath>include/Components/TextComponent.hpp</itemPath>
       <itemPath>src/Components/ViewportComponent.cpp</itemPath>
       <itemPath>include/Components/ViewportComponent.hpp</itemPath>
     </logicalFolder>
@@ -34,6 +42,8 @@
       <itemPath>include/General/Archetype.h</itemPath>
       <itemPath>src/General/ArchetypesManager.cpp</itemPath>
       <itemPath>include/General/ArchetypesManager.h</itemPath>
+      <itemPath>src/General/FontManager.cpp</itemPath>
+      <itemPath>include/General/FontManager.hpp</itemPath>
       <itemPath>include/General/IDGenerator.hpp</itemPath>
       <itemPath>src/General/ImageManager.cpp</itemPath>
       <itemPath>include/General/ImageManager.hpp</itemPath>
@@ -60,6 +70,7 @@
                    displayName="Resource Files"
                    projectFiles="true">
       <itemPath>resources/archetypes.xml</itemPath>
+      <itemPath>resources/burningGround.png</itemPath>
       <itemPath>resources/ground.png</itemPath>
       <itemPath>resources/muzyka.ogg</itemPath>
       <itemPath>resources/player.png</itemPath>
@@ -80,8 +91,12 @@
       <itemPath>include/Systems/PlayerInputSystem.hpp</itemPath>
       <itemPath>src/Systems/RenderSystem.cpp</itemPath>
       <itemPath>include/Systems/RenderSystem.hpp</itemPath>
+      <itemPath>src/Systems/ScoreToTextSystem.cpp</itemPath>
+      <itemPath>include/Systems/ScoreToTextSystem.hpp</itemPath>
       <itemPath>src/Systems/System.cpp</itemPath>
       <itemPath>include/Systems/System.hpp</itemPath>
+      <itemPath>src/Systems/TextRenderSystem.cpp</itemPath>
+      <itemPath>include/Systems/TextRenderSystem.hpp</itemPath>
     </logicalFolder>
     <logicalFolder name="f6" displayName="TechnicalShit" projectFiles="true">
       <itemPath>include/TechnicalShit/PairIntStringHash.hpp</itemPath>
@@ -106,6 +121,8 @@
       <toolsSet>
         <remote-sources-mode>LOCAL_SOURCES</remote-sources-mode>
         <compilerSet>default</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
       </toolsSet>
       <compileType>
         <ccTool>
@@ -135,7 +152,17 @@
       </item>
       <item path="include/Components/Component.hpp" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="include/Components/DamageComponent.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="include/Components/GravityComponent.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="include/Components/HasScoreComponent.hpp"
             ex="false"
             tool="3"
             flavor2="0">
@@ -155,6 +182,11 @@
             tool="3"
             flavor2="0">
       </item>
+      <item path="include/Components/ScoreComponent.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="include/Components/SpriteComponent.hpp"
             ex="false"
             tool="3"
@@ -166,6 +198,11 @@
             flavor2="0">
       </item>
       <item path="include/Components/StandsOnComponent.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="include/Components/TextComponent.hpp"
             ex="false"
             tool="3"
             flavor2="0">
@@ -191,6 +228,8 @@
             ex="false"
             tool="3"
             flavor2="0">
+      </item>
+      <item path="include/General/FontManager.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="include/General/IDGenerator.hpp" ex="false" tool="3" flavor2="0">
       </item>
@@ -232,7 +271,17 @@
       </item>
       <item path="include/Systems/RenderSystem.hpp" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="include/Systems/ScoreToTextSystem.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="include/Systems/System.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/Systems/TextRenderSystem.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
       </item>
       <item path="include/TechnicalShit/PairIntStringHash.hpp"
             ex="false"
@@ -264,6 +313,8 @@
       </item>
       <item path="resources/archetypes.xml" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="resources/burningGround.png" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="resources/ground.png" ex="false" tool="3" flavor2="0">
       </item>
       <item path="resources/muzyka.ogg" ex="false" tool="3" flavor2="0">
@@ -284,7 +335,14 @@
       </item>
       <item path="src/Components/Component.cpp" ex="false" tool="1" flavor2="0">
       </item>
+      <item path="src/Components/DamageComponent.cpp" ex="false" tool="1" flavor2="0">
+      </item>
       <item path="src/Components/GravityComponent.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/Components/HasScoreComponent.cpp"
             ex="false"
             tool="1"
             flavor2="0">
@@ -301,6 +359,8 @@
             tool="1"
             flavor2="0">
       </item>
+      <item path="src/Components/ScoreComponent.cpp" ex="false" tool="1" flavor2="0">
+      </item>
       <item path="src/Components/SpriteComponent.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/Components/StandableComponent.cpp"
@@ -313,6 +373,8 @@
             tool="1"
             flavor2="0">
       </item>
+      <item path="src/Components/TextComponent.cpp" ex="false" tool="1" flavor2="0">
+      </item>
       <item path="src/Components/ViewportComponent.cpp"
             ex="false"
             tool="1"
@@ -321,6 +383,8 @@
       <item path="src/General/Archetype.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/General/ArchetypesManager.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/General/FontManager.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/General/ImageManager.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -351,7 +415,11 @@
       </item>
       <item path="src/Systems/RenderSystem.cpp" ex="false" tool="1" flavor2="0">
       </item>
+      <item path="src/Systems/ScoreToTextSystem.cpp" ex="false" tool="1" flavor2="0">
+      </item>
       <item path="src/Systems/System.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Systems/TextRenderSystem.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="todos" ex="false" tool="3" flavor2="0">
       </item>
@@ -360,6 +428,8 @@
       <toolsSet>
         <remote-sources-mode>LOCAL_SOURCES</remote-sources-mode>
         <compilerSet>default</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
       </toolsSet>
       <compileType>
         <cTool>
@@ -387,7 +457,17 @@
       </item>
       <item path="include/Components/Component.hpp" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="include/Components/DamageComponent.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="include/Components/GravityComponent.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="include/Components/HasScoreComponent.hpp"
             ex="false"
             tool="3"
             flavor2="0">
@@ -407,6 +487,11 @@
             tool="3"
             flavor2="0">
       </item>
+      <item path="include/Components/ScoreComponent.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="include/Components/SpriteComponent.hpp"
             ex="false"
             tool="3"
@@ -418,6 +503,11 @@
             flavor2="0">
       </item>
       <item path="include/Components/StandsOnComponent.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="include/Components/TextComponent.hpp"
             ex="false"
             tool="3"
             flavor2="0">
@@ -443,6 +533,8 @@
             ex="false"
             tool="3"
             flavor2="0">
+      </item>
+      <item path="include/General/FontManager.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="include/General/IDGenerator.hpp" ex="false" tool="3" flavor2="0">
       </item>
@@ -484,7 +576,17 @@
       </item>
       <item path="include/Systems/RenderSystem.hpp" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="include/Systems/ScoreToTextSystem.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="include/Systems/System.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/Systems/TextRenderSystem.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
       </item>
       <item path="include/TechnicalShit/PairIntStringHash.hpp"
             ex="false"
@@ -516,6 +618,8 @@
       </item>
       <item path="resources/archetypes.xml" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="resources/burningGround.png" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="resources/ground.png" ex="false" tool="3" flavor2="0">
       </item>
       <item path="resources/muzyka.ogg" ex="false" tool="3" flavor2="0">
@@ -536,7 +640,14 @@
       </item>
       <item path="src/Components/Component.cpp" ex="false" tool="1" flavor2="0">
       </item>
+      <item path="src/Components/DamageComponent.cpp" ex="false" tool="1" flavor2="0">
+      </item>
       <item path="src/Components/GravityComponent.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/Components/HasScoreComponent.cpp"
             ex="false"
             tool="1"
             flavor2="0">
@@ -553,6 +664,8 @@
             tool="1"
             flavor2="0">
       </item>
+      <item path="src/Components/ScoreComponent.cpp" ex="false" tool="1" flavor2="0">
+      </item>
       <item path="src/Components/SpriteComponent.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/Components/StandableComponent.cpp"
@@ -565,6 +678,8 @@
             tool="1"
             flavor2="0">
       </item>
+      <item path="src/Components/TextComponent.cpp" ex="false" tool="1" flavor2="0">
+      </item>
       <item path="src/Components/ViewportComponent.cpp"
             ex="false"
             tool="1"
@@ -573,6 +688,8 @@
       <item path="src/General/Archetype.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/General/ArchetypesManager.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/General/FontManager.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/General/ImageManager.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -603,7 +720,11 @@
       </item>
       <item path="src/Systems/RenderSystem.cpp" ex="false" tool="1" flavor2="0">
       </item>
+      <item path="src/Systems/ScoreToTextSystem.cpp" ex="false" tool="1" flavor2="0">
+      </item>
       <item path="src/Systems/System.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Systems/TextRenderSystem.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="todos" ex="false" tool="3" flavor2="0">
       </item>

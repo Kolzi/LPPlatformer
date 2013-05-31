@@ -55,7 +55,9 @@ try
             if (event.type == sf::Event::Closed)
                 app.close();
         }
+		app.clear();
 		level.update(clock.restart());
+		app.display();
     }
 
     return EXIT_SUCCESS;

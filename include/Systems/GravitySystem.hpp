@@ -11,8 +11,6 @@
 #include <unordered_map>
 
 #include "Systems/System.hpp"
-#include "Components/PhysicsComponent.hpp"
-#include "Components/GravityComponent.hpp"
 
 class GravitySystem : public System
 {

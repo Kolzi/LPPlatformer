@@ -21,6 +21,8 @@
 #include "Systems/MovementSystem.hpp"
 #include "Systems/PlayerInputSystem.hpp"
 #include "Systems/MusicSystem.hpp"
+#include "Systems/ScoreToTextSystem.hpp"
+#include "Systems/TextRenderSystem.hpp"
 
 Level::Level(sf::RenderWindow& app, ArchetypesManager& archetypesManager)
 :app(app), archetypesManager(archetypesManager), idGenerator(new SimpleIDGenerator())
@@ -40,11 +42,17 @@ Level::Level(sf::RenderWindow& app, ArchetypesManager& archetypesManager)
 	systemsMap.insert(std::pair<std::string, System*>("Collision", new CollisionSystem(components)));
 	systems.push_back(systemsMap.at("Collision"));
 	
+	systemsMap.insert(std::pair<std::string, System*>("ScoreToText", new ScoreToTextSystem(components)));
+	systems.push_back(systemsMap.at("ScoreToText"));
+	
 	systemsMap.insert(std::pair<std::string, System*>("Camera", new CameraSystem(app, components)));
 	systems.push_back(systemsMap.at("Camera"));
 	
 	systemsMap.insert(std::pair<std::string, System*>("Render", new RenderSystem(app, components)));
 	systems.push_back(systemsMap.at("Render"));	
+	
+	systemsMap.insert(std::pair<std::string, System*>("TextRender", new TextRenderSystem(app, components)));
+	systems.push_back(systemsMap.at("TextRender"));
 	
 }
 

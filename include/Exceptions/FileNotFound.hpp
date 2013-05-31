@@ -9,6 +9,7 @@
 #define	FILENOTFOUNDEXCEPTION_HPP
 
 #include <exception>
+#include <string>
 
 class FileNotFound :public std::exception
 {

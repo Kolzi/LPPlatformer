@@ -28,19 +28,25 @@ Archetype::~Archetype()
 
 void Archetype::read(rapidxml::xml_node<>* archetypeNode)
 {
-    for (rapidxml::xml_node<> * componentNode = 
-            archetypeNode->first_node("Components")->first_node(); 
-            componentNode; componentNode = componentNode->next_sibling())
-    {
-		std::cerr<<componentNode->name()<<"\n";
-		StringComponentConverter conv;
-        components.push_back(std::pair<std::string, Component*>(componentNode->name(), conv.stringToComponent(componentNode->name(), componentNode)));
-    }
-	for (rapidxml::xml_node<> * componentNode = 
-            archetypeNode->first_node("Systems")->first_node(); 
-            componentNode; componentNode = componentNode->next_sibling())
-    {
-		std::cerr<<componentNode->name()<<"\n";
-        systems.push_back(componentNode->name());
-    }
+	if(archetypeNode->first_node("Components")!=0)
+	{
+		for (rapidxml::xml_node<> * componentNode = 
+				archetypeNode->first_node("Components")->first_node(); 
+				componentNode; componentNode = componentNode->next_sibling())
+		{
+			std::cerr<<componentNode->name()<<"\n";
+			StringComponentConverter conv;
+			components.push_back(std::pair<std::string, Component*>(componentNode->name(), conv.stringToComponent(componentNode->name(), componentNode)));
+		}
+	}
+	if(archetypeNode->first_node("Systems")!=0)
+	{
+		for (rapidxml::xml_node<> * systemNode = 
+				archetypeNode->first_node("Systems")->first_node(); 
+				systemNode; systemNode = systemNode->next_sibling())
+		{
+			std::cerr<<systemNode->name()<<"\n";
+			systems.push_back(systemNode->name());
+		}
+	}
 }

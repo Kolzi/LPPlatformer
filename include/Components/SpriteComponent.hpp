@@ -12,9 +12,8 @@
 #include "Components/Component.hpp"
 #include "rapidxml/rapidxml.hpp"
 
-class SpriteComponent : public Component
+struct SpriteComponent : public Component
 {
-public:
     SpriteComponent(sf::Sprite sprite, int EID);
     SpriteComponent(const SpriteComponent& orig);
     SpriteComponent(rapidxml::xml_node<>* componentNode);

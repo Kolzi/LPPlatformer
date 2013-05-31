@@ -8,7 +8,6 @@
 #include "Components/GravityComponent.hpp"
 
 #include <boost/lexical_cast.hpp>
-#include <iostream>
 
 GravityComponent::GravityComponent(int EID)
 :Component(EID)

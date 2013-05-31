@@ -11,7 +11,8 @@
 #include "Systems/GravitySystem.hpp"
 #include "Systems/System.hpp"
 #include "Components/GravityComponent.hpp"
-#include "Systems/GravitySystem.hpp"
+#include "Components/PhysicsComponent.hpp"
+
 
 GravitySystem::GravitySystem(Level::CompMap& components)
 :System(components)
@@ -32,7 +33,7 @@ void GravitySystem::update(sf::Time deltaTime)
 	for(int EID : entities)
 	{
 		GravityComponent* gC=boost::polymorphic_downcast<GravityComponent*>(components.at(Level::CompKey(EID, "Gravity")));
-		PhysicsComponent* pC=boost::polymorphic_downcast<PhysicsComponent*>(components.at(Level::CompKey(EID, "Physics")));;
+		PhysicsComponent* pC=boost::polymorphic_downcast<PhysicsComponent*>(components.at(Level::CompKey(EID, "Physics")));
 		pC->ay+=gC->g;
 	}
 }

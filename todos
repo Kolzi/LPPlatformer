@@ -2,6 +2,7 @@ Fix:
 -initialize default component values in constructor, not in read
 -initialize required component values in xml-contructor to NULL or something
 -check in read if the node is empty and value is NULL and then throw exception
+-add possibility to set EID in XML
 
 Add:
 -sound system

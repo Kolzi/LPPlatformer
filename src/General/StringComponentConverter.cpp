@@ -18,6 +18,10 @@
 #include "Components/StandableComponent.hpp"
 #include "Components/MusicComponent.hpp"
 #include "Exceptions/NoSuchComponentName.hpp"
+#include "Components/ScoreComponent.hpp"
+#include "Components/HasScoreComponent.hpp"
+#include "Components/TextComponent.hpp"
+#include "Components/DamageComponent.hpp"
 
 
 Component* StringComponentConverter::stringToComponent(std::string componentName, 
@@ -43,6 +47,15 @@ Component* StringComponentConverter::stringToComponent(std::string componentName
         return new StandableComponent(archetypeNode);
 	if(componentName=="Music")
 		return new MusicComponent(archetypeNode);
+	if(componentName=="Score")
+		return new ScoreComponent(archetypeNode);
+	if(componentName=="HasScore")
+		return new HasScoreComponent(archetypeNode);
+	if(componentName=="Text")
+		return new TextComponent(archetypeNode);
+	if(componentName=="Damage")
+		return new DamageComponent(archetypeNode);
+	
 	
 	throw NoSuchComponentName(componentName);
 }

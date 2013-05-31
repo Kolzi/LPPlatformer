@@ -39,16 +39,21 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/Components/BoundingBoxComponent.o \
 	${OBJECTDIR}/src/Components/CameraSourceComponent.o \
 	${OBJECTDIR}/src/Components/Component.o \
+	${OBJECTDIR}/src/Components/DamageComponent.o \
 	${OBJECTDIR}/src/Components/GravityComponent.o \
+	${OBJECTDIR}/src/Components/HasScoreComponent.o \
 	${OBJECTDIR}/src/Components/MusicComponent.o \
 	${OBJECTDIR}/src/Components/PhysicsComponent.o \
 	${OBJECTDIR}/src/Components/PositionComponent.o \
+	${OBJECTDIR}/src/Components/ScoreComponent.o \
 	${OBJECTDIR}/src/Components/SpriteComponent.o \
 	${OBJECTDIR}/src/Components/StandableComponent.o \
 	${OBJECTDIR}/src/Components/StandsOnComponent.o \
+	${OBJECTDIR}/src/Components/TextComponent.o \
 	${OBJECTDIR}/src/Components/ViewportComponent.o \
 	${OBJECTDIR}/src/General/Archetype.o \
 	${OBJECTDIR}/src/General/ArchetypesManager.o \
+	${OBJECTDIR}/src/General/FontManager.o \
 	${OBJECTDIR}/src/General/ImageManager.o \
 	${OBJECTDIR}/src/General/Level.o \
 	${OBJECTDIR}/src/General/MusicManager.o \
@@ -62,7 +67,9 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/Systems/MusicSystem.o \
 	${OBJECTDIR}/src/Systems/PlayerInputSystem.o \
 	${OBJECTDIR}/src/Systems/RenderSystem.o \
-	${OBJECTDIR}/src/Systems/System.o
+	${OBJECTDIR}/src/Systems/ScoreToTextSystem.o \
+	${OBJECTDIR}/src/Systems/System.o \
+	${OBJECTDIR}/src/Systems/TextRenderSystem.o
 
 
 # C Compiler Flags
@@ -109,10 +116,20 @@ ${OBJECTDIR}/src/Components/Component.o: src/Components/Component.cpp
 	${RM} $@.d
 	$(COMPILE.cc) -g -Wall -Iinclude -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/Components/Component.o src/Components/Component.cpp
 
+${OBJECTDIR}/src/Components/DamageComponent.o: src/Components/DamageComponent.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/Components
+	${RM} $@.d
+	$(COMPILE.cc) -g -Wall -Iinclude -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/Components/DamageComponent.o src/Components/DamageComponent.cpp
+
 ${OBJECTDIR}/src/Components/GravityComponent.o: src/Components/GravityComponent.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/Components
 	${RM} $@.d
 	$(COMPILE.cc) -g -Wall -Iinclude -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/Components/GravityComponent.o src/Components/GravityComponent.cpp
+
+${OBJECTDIR}/src/Components/HasScoreComponent.o: src/Components/HasScoreComponent.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/Components
+	${RM} $@.d
+	$(COMPILE.cc) -g -Wall -Iinclude -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/Components/HasScoreComponent.o src/Components/HasScoreComponent.cpp
 
 ${OBJECTDIR}/src/Components/MusicComponent.o: src/Components/MusicComponent.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/Components
@@ -129,6 +146,11 @@ ${OBJECTDIR}/src/Components/PositionComponent.o: src/Components/PositionComponen
 	${RM} $@.d
 	$(COMPILE.cc) -g -Wall -Iinclude -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/Components/PositionComponent.o src/Components/PositionComponent.cpp
 
+${OBJECTDIR}/src/Components/ScoreComponent.o: src/Components/ScoreComponent.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/Components
+	${RM} $@.d
+	$(COMPILE.cc) -g -Wall -Iinclude -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/Components/ScoreComponent.o src/Components/ScoreComponent.cpp
+
 ${OBJECTDIR}/src/Components/SpriteComponent.o: src/Components/SpriteComponent.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/Components
 	${RM} $@.d
@@ -144,6 +166,11 @@ ${OBJECTDIR}/src/Components/StandsOnComponent.o: src/Components/StandsOnComponen
 	${RM} $@.d
 	$(COMPILE.cc) -g -Wall -Iinclude -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/Components/StandsOnComponent.o src/Components/StandsOnComponent.cpp
 
+${OBJECTDIR}/src/Components/TextComponent.o: src/Components/TextComponent.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/Components
+	${RM} $@.d
+	$(COMPILE.cc) -g -Wall -Iinclude -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/Components/TextComponent.o src/Components/TextComponent.cpp
+
 ${OBJECTDIR}/src/Components/ViewportComponent.o: src/Components/ViewportComponent.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/Components
 	${RM} $@.d
@@ -158,6 +185,11 @@ ${OBJECTDIR}/src/General/ArchetypesManager.o: src/General/ArchetypesManager.cpp
 	${MKDIR} -p ${OBJECTDIR}/src/General
 	${RM} $@.d
 	$(COMPILE.cc) -g -Wall -Iinclude -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/General/ArchetypesManager.o src/General/ArchetypesManager.cpp
+
+${OBJECTDIR}/src/General/FontManager.o: src/General/FontManager.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/General
+	${RM} $@.d
+	$(COMPILE.cc) -g -Wall -Iinclude -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/General/FontManager.o src/General/FontManager.cpp
 
 ${OBJECTDIR}/src/General/ImageManager.o: src/General/ImageManager.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/General
@@ -224,10 +256,20 @@ ${OBJECTDIR}/src/Systems/RenderSystem.o: src/Systems/RenderSystem.cpp
 	${RM} $@.d
 	$(COMPILE.cc) -g -Wall -Iinclude -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/Systems/RenderSystem.o src/Systems/RenderSystem.cpp
 
+${OBJECTDIR}/src/Systems/ScoreToTextSystem.o: src/Systems/ScoreToTextSystem.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/Systems
+	${RM} $@.d
+	$(COMPILE.cc) -g -Wall -Iinclude -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/Systems/ScoreToTextSystem.o src/Systems/ScoreToTextSystem.cpp
+
 ${OBJECTDIR}/src/Systems/System.o: src/Systems/System.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/Systems
 	${RM} $@.d
 	$(COMPILE.cc) -g -Wall -Iinclude -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/Systems/System.o src/Systems/System.cpp
+
+${OBJECTDIR}/src/Systems/TextRenderSystem.o: src/Systems/TextRenderSystem.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/Systems
+	${RM} $@.d
+	$(COMPILE.cc) -g -Wall -Iinclude -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/Systems/TextRenderSystem.o src/Systems/TextRenderSystem.cpp
 
 # Subprojects
 .build-subprojects:

@@ -9,6 +9,9 @@
 #include "Components/BoundingBoxComponent.hpp"
 #include "Components/StandsOnComponent.hpp"
 #include "Components/StandableComponent.hpp"
+#include "Components/HasScoreComponent.hpp"
+#include "Components/ScoreComponent.hpp"
+#include "Components/DamageComponent.hpp"
 
 #include <iostream>
 #include <algorithm>
@@ -56,6 +59,10 @@ void CollisionSystem::update(sf::Time deltaTime)
 		bool iCanStand = components.find(Level::CompKey(*it, "StandsOn")) != components.end();
 		bool iStandable = components.find(Level::CompKey(*it, "Standable")) != components.end();
 		
+		bool iHasScore = components.find(Level::CompKey(*it, "HasScore")) != components.end();
+		bool iDamage = components.find(Level::CompKey(*it, "Damage")) != components.end();
+		
+		
 		auto jt=it;
 		jt++;
 		for(jt;jt!=entities.end();jt++)
@@ -70,6 +77,8 @@ void CollisionSystem::update(sf::Time deltaTime)
 			bool jCanStand = components.find(Level::CompKey(*jt, "StandsOn")) != components.end();
 			bool jStandable = components.find(Level::CompKey(*jt, "Standable")) != components.end();
 			
+			bool jHasScore = components.find(Level::CompKey(*jt, "HasScore")) != components.end();
+			bool jDamage = components.find(Level::CompKey(*jt, "Damage")) != components.end();
 			
 			sf::Rect<double> bbi=bbCi.boundingBox;
 			sf::Rect<double> bbj=bbCj.boundingBox;
@@ -137,6 +146,25 @@ void CollisionSystem::update(sf::Time deltaTime)
 						}
 					}
 				}
+				
+				double currT=std::min(t,(double)deltaTime.asSeconds());
+				if(iHasScore && jDamage)
+				{
+					HasScoreComponent& hasScore=*boost::polymorphic_downcast<HasScoreComponent*>(components.at(Level::CompKey(*it, "HasScore")));
+					DamageComponent& damage=*boost::polymorphic_downcast<DamageComponent*>(components.at(Level::CompKey(*jt, "Damage")));
+					ScoreComponent& score=*boost::polymorphic_downcast<ScoreComponent*>(components.at(Level::CompKey(hasScore.scoreEID, "Score")));
+					
+					score.score-=damage.damagePerSecond* currT;
+				}
+				if(jHasScore && iDamage)
+				{
+					HasScoreComponent& hasScore=*boost::polymorphic_downcast<HasScoreComponent*>(components.at(Level::CompKey(*jt, "HasScore")));
+					DamageComponent& damage=*boost::polymorphic_downcast<DamageComponent*>(components.at(Level::CompKey(*it, "Damage")));
+					ScoreComponent& score=*boost::polymorphic_downcast<ScoreComponent*>(components.at(Level::CompKey(hasScore.scoreEID, "Score")));
+					
+					score.score-=damage.damagePerSecond* currT;
+				}
+				
 			}
 		}
 	}

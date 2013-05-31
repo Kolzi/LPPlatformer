@@ -26,7 +26,6 @@ RenderSystem::~RenderSystem()
 
 void RenderSystem::update(sf::Time deltaTime)
 {
-	window.clear();
     for(auto it=entities.begin();it!=entities.end();it++)
     {
         PositionComponent* pC=boost::polymorphic_downcast<PositionComponent*>(components.at(Level::CompKey(*it, "Position")));
@@ -34,7 +33,6 @@ void RenderSystem::update(sf::Time deltaTime)
         sC->sprite.setPosition(pC->x,pC->y);
         window.draw(sC->sprite);
     }
-	window.display();
 }
 
 void RenderSystem::addEntity(int EID)
