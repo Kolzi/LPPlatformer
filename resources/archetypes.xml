@@ -1,7 +1,7 @@
 <Archetype name="Player">
 	<Components>
 		<Position x="0" y="0" z="0" />
-		<Sprite file="player.png" />
+		<Sprite file="animatedplayer.png" frameWidth="50" loopTime="0.5"/>
 		<Viewport x="0" y="0" w="max" h="max" />
 		<CameraSource offsetX="100" offsetY="100" offsetZ="0" w="max" h="max" />
 		<Physics acceleration="400" stoppingSpeed="500" maxSpeed="1000"/>

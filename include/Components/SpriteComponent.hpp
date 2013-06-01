@@ -22,6 +22,10 @@ struct SpriteComponent : public Component
 	Component* clone(int newEID);
 	void read(rapidxml::xml_node<>* componentNode);
     sf::Sprite sprite;
+	/** the time one animation loop takes*/
+	double loopTime;
+	int numberOfFrames;
+	double currentFrameTime;
 };
 
 #endif	/* SPRITECOMPONENT_HPP */

@@ -34,6 +34,7 @@
       <itemPath>include/Components/ViewportComponent.hpp</itemPath>
     </logicalFolder>
     <logicalFolder name="f5" displayName="Exceptions" projectFiles="true">
+      <itemPath>include/Exceptions/IncorrentFrameWidth.hpp</itemPath>
       <itemPath>include/Exceptions/NoSuchComponentName.hpp</itemPath>
       <itemPath>include/Exceptions/RequiredAttributeNotFound.hpp</itemPath>
     </logicalFolder>
@@ -208,6 +209,11 @@
             flavor2="0">
       </item>
       <item path="include/Components/ViewportComponent.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="include/Exceptions/IncorrentFrameWidth.hpp"
             ex="false"
             tool="3"
             flavor2="0">
@@ -513,6 +519,11 @@
             flavor2="0">
       </item>
       <item path="include/Components/ViewportComponent.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="include/Exceptions/IncorrentFrameWidth.hpp"
             ex="false"
             tool="3"
             flavor2="0">

@@ -8,6 +8,7 @@
 #include "Systems/RenderSystem.hpp"
 #include <assert.h>
 #include <boost/cast.hpp>
+#include <X11/X.h>
 
 RenderSystem::RenderSystem(	sf::RenderWindow& window,Level::CompMap& components)
 :System(components),window(window)
@@ -31,6 +32,16 @@ void RenderSystem::update(sf::Time deltaTime)
         PositionComponent* pC=boost::polymorphic_downcast<PositionComponent*>(components.at(Level::CompKey(*it, "Position")));
         SpriteComponent* sC=boost::polymorphic_downcast<SpriteComponent*>(components.at(Level::CompKey(*it, "Sprite")));
         sC->sprite.setPosition(pC->x,pC->y);
+		sC->currentFrameTime+=deltaTime.asSeconds();
+		int i=0;
+		while(sC->currentFrameTime>sC->loopTime/double(sC->numberOfFrames))
+		{
+			i++;
+			sC->currentFrameTime-=sC->loopTime/double(sC->numberOfFrames);
+		}
+		sf::IntRect textRect=sC->sprite.getTextureRect();	
+		textRect.left = (textRect.left+i*textRect.width) % int(sC->sprite.getTexture()->getSize().x);
+		sC->sprite.setTextureRect(textRect);
         window.draw(sC->sprite);
     }
 }

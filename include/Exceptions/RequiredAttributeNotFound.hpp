@@ -9,7 +9,6 @@
 #define	REQUIREDATTRIBUTENOTFOUND_HPP
 
 #include <stdexcept>
-#include <iostream>
 class RequiredAttributeNotFound : public std::runtime_error
 {
 	public:
