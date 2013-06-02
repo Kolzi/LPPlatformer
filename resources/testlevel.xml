@@ -4,6 +4,10 @@
 	<Position x="-180" y="125" z="0" />
 </Object>
 
+<Object name="ParticleEmiter">
+	<Position x="-250" y="125" />
+</Object>
+
 <Object name="Ground">
 	<Position x="-200" y="-200" z="0" />
 </Object>

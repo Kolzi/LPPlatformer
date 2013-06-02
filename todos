@@ -3,6 +3,8 @@ Fix:
 -initialize required component values in xml-contructor to NULL or something
 -check in read if the node is empty and value is NULL and then throw exception
 -add possibility to set EID in XML
+-probably systems (and ArchetypesManager) should take Level as argument, not maps of components ???
 
 Add:
 -sound system
+-object orientation (angle)

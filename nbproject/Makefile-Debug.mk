@@ -43,6 +43,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/Components/GravityComponent.o \
 	${OBJECTDIR}/src/Components/HasScoreComponent.o \
 	${OBJECTDIR}/src/Components/MusicComponent.o \
+	${OBJECTDIR}/src/Components/ParticleComponent.o \
 	${OBJECTDIR}/src/Components/PhysicsComponent.o \
 	${OBJECTDIR}/src/Components/PositionComponent.o \
 	${OBJECTDIR}/src/Components/ScoreComponent.o \
@@ -65,6 +66,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/Systems/GravitySystem.o \
 	${OBJECTDIR}/src/Systems/MovementSystem.o \
 	${OBJECTDIR}/src/Systems/MusicSystem.o \
+	${OBJECTDIR}/src/Systems/ParticleSystem.o \
 	${OBJECTDIR}/src/Systems/PlayerInputSystem.o \
 	${OBJECTDIR}/src/Systems/RenderSystem.o \
 	${OBJECTDIR}/src/Systems/ScoreToTextSystem.o \
@@ -135,6 +137,11 @@ ${OBJECTDIR}/src/Components/MusicComponent.o: src/Components/MusicComponent.cpp
 	${MKDIR} -p ${OBJECTDIR}/src/Components
 	${RM} $@.d
 	$(COMPILE.cc) -g -Wall -Iinclude -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/Components/MusicComponent.o src/Components/MusicComponent.cpp
+
+${OBJECTDIR}/src/Components/ParticleComponent.o: src/Components/ParticleComponent.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/Components
+	${RM} $@.d
+	$(COMPILE.cc) -g -Wall -Iinclude -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/Components/ParticleComponent.o src/Components/ParticleComponent.cpp
 
 ${OBJECTDIR}/src/Components/PhysicsComponent.o: src/Components/PhysicsComponent.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/Components
@@ -245,6 +252,11 @@ ${OBJECTDIR}/src/Systems/MusicSystem.o: src/Systems/MusicSystem.cpp
 	${MKDIR} -p ${OBJECTDIR}/src/Systems
 	${RM} $@.d
 	$(COMPILE.cc) -g -Wall -Iinclude -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/Systems/MusicSystem.o src/Systems/MusicSystem.cpp
+
+${OBJECTDIR}/src/Systems/ParticleSystem.o: src/Systems/ParticleSystem.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/Systems
+	${RM} $@.d
+	$(COMPILE.cc) -g -Wall -Iinclude -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/Systems/ParticleSystem.o src/Systems/ParticleSystem.cpp
 
 ${OBJECTDIR}/src/Systems/PlayerInputSystem.o: src/Systems/PlayerInputSystem.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/Systems

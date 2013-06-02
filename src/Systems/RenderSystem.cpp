@@ -8,7 +8,7 @@
 #include "Systems/RenderSystem.hpp"
 #include <assert.h>
 #include <boost/cast.hpp>
-#include <X11/X.h>
+
 
 RenderSystem::RenderSystem(	sf::RenderWindow& window,Level::CompMap& components)
 :System(components),window(window)
@@ -27,6 +27,7 @@ RenderSystem::~RenderSystem()
 
 void RenderSystem::update(sf::Time deltaTime)
 {
+	std::cerr<<"Render\n";
     for(auto it=entities.begin();it!=entities.end();it++)
     {
         PositionComponent* pC=boost::polymorphic_downcast<PositionComponent*>(components.at(Level::CompKey(*it, "Position")));
@@ -44,6 +45,7 @@ void RenderSystem::update(sf::Time deltaTime)
 		sC->sprite.setTextureRect(textRect);
         window.draw(sC->sprite);
     }
+	std::cerr<<"Render end\n";
 }
 
 void RenderSystem::addEntity(int EID)

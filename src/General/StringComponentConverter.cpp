@@ -22,6 +22,7 @@
 #include "Components/HasScoreComponent.hpp"
 #include "Components/TextComponent.hpp"
 #include "Components/DamageComponent.hpp"
+#include "Components/ParticleComponent.hpp"
 
 
 Component* StringComponentConverter::stringToComponent(std::string componentName, 
@@ -55,6 +56,8 @@ Component* StringComponentConverter::stringToComponent(std::string componentName
 		return new TextComponent(archetypeNode);
 	if(componentName=="Damage")
 		return new DamageComponent(archetypeNode);
+	if(componentName=="Particle")
+		return new ParticleComponent(archetypeNode);
 	
 	
 	throw NoSuchComponentName(componentName);

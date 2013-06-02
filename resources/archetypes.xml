@@ -67,3 +67,13 @@
 		<TextRender />
 	</Systems>
 </Archetype>
+
+<Archetype name="ParticleEmiter">
+	<Components>
+		<Position />
+		<Particle particleImage="particle.png"/>
+	</Components>
+	<Systems>
+		<Particle/>
+	</Systems>
+</Archetype>

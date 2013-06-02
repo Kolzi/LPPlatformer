@@ -32,19 +32,26 @@ MovementSystem::~MovementSystem()
 void MovementSystem::addEntity(int EID)
 {
 	assert( components.find(Level::CompKey(EID, "Position")) != components.end() &&
-			components.find(Level::CompKey(EID, "Physics")) != components.end() && 
-			components.find(Level::CompKey(EID, "StandsOn")) != components.end() );
+			components.find(Level::CompKey(EID, "Physics")) != components.end() ); 
+		//	components.find(Level::CompKey(EID, "StandsOn")) != components.end() );
 	entities.push_back(EID);
 }
 
 void MovementSystem::update(sf::Time time)
 {
+	std::cerr<<"Movement\n";
     double deltaT=time.asSeconds();
 	for(auto it=entities.begin();it!=entities.end();it++)
     {
         PositionComponent& posC = *boost::polymorphic_downcast<PositionComponent*>(components.at(Level::CompKey(*it, "Position")));
         PhysicsComponent& physC = *boost::polymorphic_downcast<PhysicsComponent*>(components.at(Level::CompKey(*it, "Physics")));
-        StandsOnComponent& standsOnC = *boost::polymorphic_downcast<StandsOnComponent*>(components.at(Level::CompKey(*it, "StandsOn")));
+        
+		StandsOnComponent empty(*it);
+		StandsOnComponent& standsOnC=
+		(components.find(Level::CompKey(*it, "StandsOn")) != components.end() ?
+			*boost::polymorphic_downcast<StandsOnComponent*>(components.at(Level::CompKey(*it, "StandsOn"))) : empty);
+		
+		//StandsOnComponent& standsOnC = *boost::polymorphic_downcast<StandsOnComponent*>(components.at(Level::CompKey(*it, "StandsOn")));
 		
 		StandableComponent groundC(-1, 0, 1000, 0,0, 0);
 		if(standsOnC.standing)
@@ -71,5 +78,5 @@ void MovementSystem::update(sf::Time time)
 		posC.y+=deltaT*physC.vy;
 		posC.z+=deltaT*physC.vz;
 	}
-	
+	std::cerr<<"Movement end\n";
 }

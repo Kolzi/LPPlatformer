@@ -14,7 +14,7 @@
 
 
 SpriteComponent::SpriteComponent(sf::Sprite sprite, int EID)
-:Component(EID),sprite(sprite)
+:Component(EID),sprite(sprite), loopTime(1), numberOfFrames(1), currentFrameTime(0)
 {
 }
 

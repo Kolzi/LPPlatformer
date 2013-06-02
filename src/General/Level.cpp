@@ -23,12 +23,16 @@
 #include "Systems/MusicSystem.hpp"
 #include "Systems/ScoreToTextSystem.hpp"
 #include "Systems/TextRenderSystem.hpp"
+#include "Systems/ParticleSystem.hpp"
 
 Level::Level(sf::RenderWindow& app, ArchetypesManager& archetypesManager)
 :app(app), archetypesManager(archetypesManager), idGenerator(new SimpleIDGenerator())
 {
 	systemsMap.insert(std::pair<std::string, System*>("Music", new MusicSystem(components)));
 	systems.push_back(systemsMap.at("Music"));
+	
+	systemsMap.insert(std::pair<std::string, System*>("Particle", new ParticleSystem(components, *this)));
+	systems.push_back(systemsMap.at("Particle"));
 	
 	systemsMap.insert(std::pair<std::string, System*>("PlayerInput", new PlayerInputSystem(components)));
 	systems.push_back(systemsMap.at("PlayerInput"));
@@ -57,7 +61,7 @@ Level::Level(sf::RenderWindow& app, ArchetypesManager& archetypesManager)
 }
 
 Level::Level(const Level& orig)
-:app(app),archetypesManager(orig.archetypesManager), idGenerator(orig.idGenerator), 
+:app(app),archetypesManager(orig.archetypesManager), idGenerator(orig.idGenerator.get()), 
 		systems(orig.systems),systemsMap(orig.systemsMap), components(orig.components)
 {
 }
@@ -91,8 +95,24 @@ void Level::read(std::istream& str)
 
 void Level::update(sf::Time deltaTime)
 {
+	std::cerr<<"Update\n";
 	for(auto system:systems)
 	{
 		system->update(deltaTime);
 	}
+}
+
+void Level::addComponent(int EID, std::string compName, Component* comp)
+{
+	components.insert(std::pair<CompKey, Component*>(CompKey(EID, compName), comp));
+}
+
+void Level::addEntityToSystem(int EID, std::string system)
+{
+	systemsMap.at(system)->addEntity(EID);
+}
+
+int Level::getNextID()
+{
+	return idGenerator->nextID();
 }
