@@ -21,6 +21,8 @@ struct ParticleComponent : public Component
 	Component* clone(int newEID);
 	void read(rapidxml::xml_node<>* componentNode);
 
+	double timeSinceLastParticle;
+	
 	double minV, maxV;
 	double minAngle, maxAngle;
 	double minWidth, maxWidth;
@@ -29,7 +31,7 @@ struct ParticleComponent : public Component
 	double minGravity, maxGravity;
 	double minLifeTime, maxLifeTime;
 	int minParticlesPerSec, maxParticlesPerSec;
-	std::string particleImage;
+	std::string emitsArchetype;
 	
 	static const double defaultMinV, defaultMaxV;
 	static const double defaultMinAngle, defaultMaxAngle;

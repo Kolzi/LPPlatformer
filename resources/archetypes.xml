@@ -71,9 +71,42 @@
 <Archetype name="ParticleEmiter">
 	<Components>
 		<Position />
-		<Particle particleImage="particle.png"/>
+		<Particle emits="StarParticle2" minParticlesPerSec="10" maxParticlesPerSec="20" minLifeTime="0" maxLifeTime="1.2"/>
 	</Components>
 	<Systems>
+		<Particle />
+	</Systems>
+</Archetype>
+
+<Archetype name="StarParticle">
+	<Components>
+		<Position />
+		<Sprite file="particle.png"/>
+		<Gravity />
+		<Physics acceleration="0" maxSpeed="1000" stoppingSpeed="0"/>
+		<Score />
+	</Components>
+	<Systems>
+		<Movement/>
+		<Render/>
+		<Gravity/>
+		<Countdown/>
+	</Systems>
+</Archetype>
+<Archetype name="StarParticle2">
+	<Components>
+		<Position />
+		<Sprite file="particle.png"/>
+		<Gravity />
+		<Physics acceleration="0" maxSpeed="1000" stoppingSpeed="0"/>
+		<Score />
+		<Particle emits="StarParticle" minParticlesPerSec="10" maxParticlesPerSec="180" minLifeTime="0" maxLifeTime="1.2"/>
+	</Components>
+	<Systems>
+		<Movement/>
+		<Render/>
+		<Gravity/>
+		<Countdown/>
 		<Particle/>
 	</Systems>
 </Archetype>

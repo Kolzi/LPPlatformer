@@ -76,6 +76,7 @@
       <itemPath>resources/burningGround.png</itemPath>
       <itemPath>resources/ground.png</itemPath>
       <itemPath>resources/muzyka.ogg</itemPath>
+      <itemPath>resources/particle.png</itemPath>
       <itemPath>resources/player.png</itemPath>
       <itemPath>resources/testlevel.xml</itemPath>
     </logicalFolder>
@@ -84,6 +85,8 @@
       <itemPath>include/Systems/CameraSystem.hpp</itemPath>
       <itemPath>src/Systems/CollisionSystem.cpp</itemPath>
       <itemPath>include/Systems/CollisionSystem.hpp</itemPath>
+      <itemPath>src/Systems/CountdownSystem.cpp</itemPath>
+      <itemPath>include/Systems/CountdownSystem.hpp</itemPath>
       <itemPath>src/Systems/GravitySystem.cpp</itemPath>
       <itemPath>include/Systems/GravitySystem.hpp</itemPath>
       <itemPath>src/Systems/MovementSystem.cpp</itemPath>
@@ -273,6 +276,11 @@
             tool="3"
             flavor2="0">
       </item>
+      <item path="include/Systems/CountdownSystem.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="include/Systems/GravitySystem.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="include/Systems/MovementSystem.hpp" ex="false" tool="3" flavor2="0">
@@ -335,6 +343,8 @@
       <item path="resources/ground.png" ex="false" tool="3" flavor2="0">
       </item>
       <item path="resources/muzyka.ogg" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="resources/particle.png" ex="false" tool="3" flavor2="0">
       </item>
       <item path="resources/player.png" ex="false" tool="3" flavor2="0">
       </item>
@@ -426,6 +436,8 @@
       <item path="src/Systems/CameraSystem.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/Systems/CollisionSystem.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Systems/CountdownSystem.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/Systems/GravitySystem.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -597,6 +609,11 @@
             tool="3"
             flavor2="0">
       </item>
+      <item path="include/Systems/CountdownSystem.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="include/Systems/GravitySystem.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="include/Systems/MovementSystem.hpp" ex="false" tool="3" flavor2="0">
@@ -659,6 +676,8 @@
       <item path="resources/ground.png" ex="false" tool="3" flavor2="0">
       </item>
       <item path="resources/muzyka.ogg" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="resources/particle.png" ex="false" tool="3" flavor2="0">
       </item>
       <item path="resources/player.png" ex="false" tool="3" flavor2="0">
       </item>
@@ -750,6 +769,8 @@
       <item path="src/Systems/CameraSystem.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/Systems/CollisionSystem.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Systems/CountdownSystem.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/Systems/GravitySystem.cpp" ex="false" tool="1" flavor2="0">
       </item>

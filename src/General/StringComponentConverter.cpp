@@ -5,6 +5,8 @@
  * Created on 19 kwiecień 2013, 18:55
  */
 
+#include <vector>
+
 #include "Components/Component.hpp"
 #include "General/StringComponentConverter.h"
 #include "Components/BoundingBoxComponent.hpp"
@@ -24,6 +26,9 @@
 #include "Components/DamageComponent.hpp"
 #include "Components/ParticleComponent.hpp"
 
+std::vector<std::string> StringComponentConverter::componentNames={"BoundingBox", 
+	"CameraSource", "Gravity", "Physics", "Position", "Sprite", "Viewport", "StandsOn",
+	"Standable", "Music", "Score", "HasScore", "Text", "Damage","Particle"};
 
 Component* StringComponentConverter::stringToComponent(std::string componentName, 
                                                        rapidxml::xml_node<>* archetypeNode)

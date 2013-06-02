@@ -15,6 +15,7 @@ class StringComponentConverter
 {
 public:
     static Component* stringToComponent(std::string componentName, rapidxml::xml_node<>* archetypeNode);
+	static std::vector<std::string> componentNames;
 };
 
 #endif	/* STRINGCOMPONENTCONVERTER_H */

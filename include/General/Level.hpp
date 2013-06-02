@@ -36,6 +36,9 @@ public:
 	void addEntityToSystem(int EID, std::string system);
 	void read(std::istream& str);
 	void update(sf::Time deltaTime);
+	//returns new entity ID
+	int addArchetype(std::string archetype);
+	void removeEntity(int EID);
 private:
 	sf::RenderWindow& app;
 	ArchetypesManager& archetypesManager;

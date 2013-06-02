@@ -24,6 +24,8 @@
 #include "Systems/ScoreToTextSystem.hpp"
 #include "Systems/TextRenderSystem.hpp"
 #include "Systems/ParticleSystem.hpp"
+#include "Systems/CountdownSystem.hpp"
+#include "General/StringComponentConverter.h"
 
 Level::Level(sf::RenderWindow& app, ArchetypesManager& archetypesManager)
 :app(app), archetypesManager(archetypesManager), idGenerator(new SimpleIDGenerator())
@@ -48,6 +50,9 @@ Level::Level(sf::RenderWindow& app, ArchetypesManager& archetypesManager)
 	
 	systemsMap.insert(std::pair<std::string, System*>("ScoreToText", new ScoreToTextSystem(components)));
 	systems.push_back(systemsMap.at("ScoreToText"));
+	
+	systemsMap.insert(std::pair<std::string, System*>("Countdown", new CountdownSystem(components, *this)));
+	systems.push_back(systemsMap.at("Countdown"));
 	
 	systemsMap.insert(std::pair<std::string, System*>("Camera", new CameraSystem(app, components)));
 	systems.push_back(systemsMap.at("Camera"));
@@ -115,4 +120,26 @@ void Level::addEntityToSystem(int EID, std::string system)
 int Level::getNextID()
 {
 	return idGenerator->nextID();
+}
+
+int Level::addArchetype(std::string archetype)
+{
+	int id=idGenerator->nextID();
+	archetypesManager.addEntity(id, archetype, components, systemsMap);
+	return id;
+	
+}
+
+void Level::removeEntity(int EID)
+{
+	for(auto compName:StringComponentConverter::componentNames)
+	{
+		components.erase(CompKey(EID, compName));
+	}
+	std::cerr<<"Removed\n";
+	for(auto system:systems)
+	{
+		system->removeEntity(EID);
+	}
+	std::cerr<<"Removed from systems\n";
 }

@@ -1,5 +1,5 @@
 /* 
-// * File:   ScoreComponent.cpp
+ * File:   ScoreComponent.cpp
  * Author: kolzi
  * 
  * Created on 28 maj 2013, 03:39

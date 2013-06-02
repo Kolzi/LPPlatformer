@@ -11,6 +11,8 @@
 #include "Components/PhysicsComponent.hpp"
 #include "Components/SpriteComponent.hpp"
 #include "General/ImageManager.hpp"
+#include "Components/GravityComponent.hpp"
+#include "Components/ScoreComponent.hpp"
 
 #include <assert.h>
 #include <boost/cast.hpp>
@@ -37,30 +39,46 @@ void ParticleSystem::update(sf::Time deltaTime)
     {
         PositionComponent& posC=*boost::polymorphic_downcast<PositionComponent*>(components.at(Level::CompKey(*it, "Position")));
         ParticleComponent& parC=*boost::polymorphic_downcast<ParticleComponent*>(components.at(Level::CompKey(*it, "Particle")));
-        int particlesToEmit=deltaTime.asSeconds()*(parC.minParticlesPerSec + rand()%(parC.maxParticlesPerSec-parC.minParticlesPerSec));
-		particlesToEmit=1;
-		for(int i=0;i<particlesToEmit;i++)
+		double timePerParticle=1.0/double(parC.minParticlesPerSec + rand()%(parC.maxParticlesPerSec-parC.minParticlesPerSec));
+		
+		int particlesToEmit=0;
+		parC.timeSinceLastParticle+=deltaTime.asSeconds();
+		while(parC.timeSinceLastParticle>timePerParticle)
 		{
-			int newEID=level.getNextID();
-			level.addComponent(newEID, "Position", posC.clone(newEID));
-			
+			particlesToEmit++;
+			parC.timeSinceLastParticle-=timePerParticle;
+		}
+		
+		for(int i=0;i<particlesToEmit;i++)
+		{			
 			//FIXME: speed must be relative to particle emiter speed
+			int newID=level.addArchetype(parC.emitsArchetype);
 			
-			PhysicsComponent* partPhysComp=new PhysicsComponent(newEID, 0,parC.maxV,0);
 			double ratio = double(rand())/double(RAND_MAX);
 			double angle = parC.minAngle + ratio*(parC.maxAngle-parC.minAngle);
 			ratio = double(rand())/double(RAND_MAX);
 			double v = parC.minV+ratio*(parC.maxV-parC.minV);
-			partPhysComp->vx = cos(angle/180.0*M_PI)*v;
-			partPhysComp->vy = sin(angle/180.0*M_PI)*v;
-			level.addComponent(newEID, "Physics", partPhysComp);
+			PhysicsComponent& partPhysComp=*boost::polymorphic_downcast<PhysicsComponent*>(components.at(Level::CompKey(newID, "Physics")));
+			partPhysComp.vx = cos(angle/180.0*M_PI)*v;
+			partPhysComp.vy = sin(angle/180.0*M_PI)*v;
 			
-			SpriteComponent* sprComp = new SpriteComponent(ImageManager::getSprite(parC.particleImage), newEID);
-			level.addComponent(newEID, "Sprite", sprComp);
+			PositionComponent& partPosComp=*boost::polymorphic_downcast<PositionComponent*>(components.at(Level::CompKey(newID, "Position")));
+			partPosComp.x=posC.x;
+			partPosComp.y=posC.y;
 			
-			level.addEntityToSystem(newEID, "Movement");
-			level.addEntityToSystem(newEID, "Render");
-			std::cerr<<"Added particle\n";
+			if(components.find(Level::CompKey(newID, "Gravity"))!=components.end())
+			{
+				GravityComponent& partGravComp=*boost::polymorphic_downcast<GravityComponent*>(components.at(Level::CompKey(newID, "Gravity")));
+				ratio = double(rand())/double(RAND_MAX);
+				partGravComp.g=parC.minGravity + ratio*(parC.maxGravity-parC.minGravity);
+			}
+			
+			if(components.find(Level::CompKey(newID, "Score"))!=components.end())
+			{
+				ScoreComponent& partScoreComp=*boost::polymorphic_downcast<ScoreComponent*>(components.at(Level::CompKey(newID, "Score")));
+				ratio = double(rand())/double(RAND_MAX);
+				partScoreComp.score=parC.minLifeTime + ratio*(parC.maxLifeTime-parC.minLifeTime);
+			}			
 		}
 	}
 	std::cerr<<"Particle system end\n";

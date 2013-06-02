@@ -63,6 +63,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/General/StringComponentConverter.o \
 	${OBJECTDIR}/src/Systems/CameraSystem.o \
 	${OBJECTDIR}/src/Systems/CollisionSystem.o \
+	${OBJECTDIR}/src/Systems/CountdownSystem.o \
 	${OBJECTDIR}/src/Systems/GravitySystem.o \
 	${OBJECTDIR}/src/Systems/MovementSystem.o \
 	${OBJECTDIR}/src/Systems/MusicSystem.o \
@@ -237,6 +238,11 @@ ${OBJECTDIR}/src/Systems/CollisionSystem.o: src/Systems/CollisionSystem.cpp
 	${MKDIR} -p ${OBJECTDIR}/src/Systems
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/Systems/CollisionSystem.o src/Systems/CollisionSystem.cpp
+
+${OBJECTDIR}/src/Systems/CountdownSystem.o: src/Systems/CountdownSystem.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/Systems
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/Systems/CountdownSystem.o src/Systems/CountdownSystem.cpp
 
 ${OBJECTDIR}/src/Systems/GravitySystem.o: src/Systems/GravitySystem.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/Systems

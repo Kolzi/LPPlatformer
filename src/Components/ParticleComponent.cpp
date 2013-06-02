@@ -11,7 +11,7 @@
 
 
 const double ParticleComponent::defaultMinV=100;
-const double ParticleComponent::defaultMaxV=100;
+const double ParticleComponent::defaultMaxV=200;
 const double ParticleComponent::defaultMinAngularV=90;
 const double ParticleComponent::defaultMaxAngularV=360;
 const double ParticleComponent::defaultMinAngle=-15;
@@ -22,19 +22,20 @@ const double ParticleComponent::defaultMinWidth=0.5;
 const double ParticleComponent::defaultMaxWidth=1.5;
 const double ParticleComponent::defaultMinLifeTime=0.25;
 const double ParticleComponent::defaultMaxLifeTime=0.75;
-const double ParticleComponent::defaultMinGravity=50;
-const double ParticleComponent::defaultMaxGravity=100;
+const double ParticleComponent::defaultMinGravity=10;
+const double ParticleComponent::defaultMaxGravity=20;
 const int ParticleComponent::defaultMinParticlesPerSec=10;
 const int ParticleComponent::defaultMaxParticlesPerSec=30;
 
 ParticleComponent::ParticleComponent(int EID)
-:Component(EID), minV(defaultMinV), maxV(defaultMaxV), minAngle(defaultMinAngle),
-		maxAngle(defaultMaxAngle), minWidth(defaultMinWidth), maxWidth(defaultMaxWidth),
-		minHeight(defaultMinHeight), maxHeight(defaultMaxHeight), 
+:Component(EID), timeSinceLastParticle(0), minV(defaultMinV), maxV(defaultMaxV),
+		minAngle(defaultMinAngle), maxAngle(defaultMaxAngle), minWidth(defaultMinWidth), 
+		maxWidth(defaultMaxWidth), minHeight(defaultMinHeight), maxHeight(defaultMaxHeight), 
 		minAngularV(defaultMinAngularV), maxAngularV(defaultMaxAngularV),
 		minGravity(defaultMinGravity), maxGravity(defaultMaxGravity),
 		minLifeTime(defaultMinLifeTime), maxLifeTime(defaultMaxLifeTime),
 		minParticlesPerSec(defaultMinParticlesPerSec), maxParticlesPerSec(defaultMaxParticlesPerSec)
+		
 {
 	
 }
@@ -84,10 +85,10 @@ void ParticleComponent::read(rapidxml::xml_node<>* componentNode)
 	if(componentNode->first_attribute("maxParticlesPerSec")!=0)
 		maxParticlesPerSec=boost::lexical_cast<int>(componentNode->first_attribute("maxParticlesPerSec")->value());
 
-	if(componentNode->first_attribute("particleImage")!=0)
-		particleImage=componentNode->first_attribute("particleImage")->value();
+	if(componentNode->first_attribute("emits")!=0)
+		emitsArchetype=componentNode->first_attribute("emits")->value();
 	else
-		throw RequiredAttributeNotFound("particleImage", "ParticleComponent");
+		throw RequiredAttributeNotFound("emits", "ParticleComponent");
 }
 
 Component* ParticleComponent::clone(int newEID)
