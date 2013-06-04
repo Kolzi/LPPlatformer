@@ -21,6 +21,7 @@ struct ScoreComponent : public Component
 	
 	static const double defaultScore;
 	double score;
+	bool toText;
 };
 
 #endif	/* SCORECOMPONENT_HPP */

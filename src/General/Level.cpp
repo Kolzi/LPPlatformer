@@ -21,11 +21,12 @@
 #include "Systems/MovementSystem.hpp"
 #include "Systems/PlayerInputSystem.hpp"
 #include "Systems/MusicSystem.hpp"
-#include "Systems/ScoreToTextSystem.hpp"
+#include "Systems/DataToTextSystem.hpp"
 #include "Systems/TextRenderSystem.hpp"
 #include "Systems/ParticleSystem.hpp"
 #include "Systems/CountdownSystem.hpp"
 #include "General/StringComponentConverter.h"
+#include "Exceptions/NoSuchSystem.hpp"
 
 Level::Level(sf::RenderWindow& app, ArchetypesManager& archetypesManager)
 :app(app), archetypesManager(archetypesManager), idGenerator(new SimpleIDGenerator())
@@ -48,8 +49,8 @@ Level::Level(sf::RenderWindow& app, ArchetypesManager& archetypesManager)
 	systemsMap.insert(std::pair<std::string, System*>("Collision", new CollisionSystem(components)));
 	systems.push_back(systemsMap.at("Collision"));
 	
-	systemsMap.insert(std::pair<std::string, System*>("ScoreToText", new ScoreToTextSystem(components)));
-	systems.push_back(systemsMap.at("ScoreToText"));
+	systemsMap.insert(std::pair<std::string, System*>("DataToText", new DataToTextSystem(components)));
+	systems.push_back(systemsMap.at("DataToText"));
 	
 	systemsMap.insert(std::pair<std::string, System*>("Countdown", new CountdownSystem(components, *this)));
 	systems.push_back(systemsMap.at("Countdown"));
@@ -112,9 +113,23 @@ void Level::addComponent(int EID, std::string compName, Component* comp)
 	components.insert(std::pair<CompKey, Component*>(CompKey(EID, compName), comp));
 }
 
+void Level::removeComponent(int EID, std::string compName)
+{
+	//components.erase(CompKey(EID, compName));
+}
+
 void Level::addEntityToSystem(int EID, std::string system)
 {
+	if(!systemExists(system))
+		throw NoSuchSystem(system);
 	systemsMap.at(system)->addEntity(EID);
+}
+
+void Level::removeEntityFromSystem(int EID, std::string system)
+{
+	if(!systemExists(system))
+		throw NoSuchSystem(system);
+	systemsMap.at(system)->removeEntity(EID);
 }
 
 int Level::getNextID()
@@ -142,4 +157,9 @@ void Level::removeEntity(int EID)
 		system->removeEntity(EID);
 	}
 	std::cerr<<"Removed from systems\n";
+}
+
+bool Level::systemExists(std::string name)
+{
+	return (systemsMap.find(name) != systemsMap.end() );
 }

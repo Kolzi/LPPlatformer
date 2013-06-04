@@ -39,6 +39,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/Components/BoundingBoxComponent.o \
 	${OBJECTDIR}/src/Components/CameraSourceComponent.o \
 	${OBJECTDIR}/src/Components/Component.o \
+	${OBJECTDIR}/src/Components/CountdownComponent.o \
 	${OBJECTDIR}/src/Components/DamageComponent.o \
 	${OBJECTDIR}/src/Components/GravityComponent.o \
 	${OBJECTDIR}/src/Components/HasScoreComponent.o \
@@ -65,13 +66,13 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/Systems/CameraSystem.o \
 	${OBJECTDIR}/src/Systems/CollisionSystem.o \
 	${OBJECTDIR}/src/Systems/CountdownSystem.o \
+	${OBJECTDIR}/src/Systems/DataToTextSystem.o \
 	${OBJECTDIR}/src/Systems/GravitySystem.o \
 	${OBJECTDIR}/src/Systems/MovementSystem.o \
 	${OBJECTDIR}/src/Systems/MusicSystem.o \
 	${OBJECTDIR}/src/Systems/ParticleSystem.o \
 	${OBJECTDIR}/src/Systems/PlayerInputSystem.o \
 	${OBJECTDIR}/src/Systems/RenderSystem.o \
-	${OBJECTDIR}/src/Systems/ScoreToTextSystem.o \
 	${OBJECTDIR}/src/Systems/System.o \
 	${OBJECTDIR}/src/Systems/TextRenderSystem.o
 
@@ -119,6 +120,11 @@ ${OBJECTDIR}/src/Components/Component.o: src/Components/Component.cpp
 	${MKDIR} -p ${OBJECTDIR}/src/Components
 	${RM} $@.d
 	$(COMPILE.cc) -g -Wall -Iinclude -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/Components/Component.o src/Components/Component.cpp
+
+${OBJECTDIR}/src/Components/CountdownComponent.o: src/Components/CountdownComponent.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/Components
+	${RM} $@.d
+	$(COMPILE.cc) -g -Wall -Iinclude -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/Components/CountdownComponent.o src/Components/CountdownComponent.cpp
 
 ${OBJECTDIR}/src/Components/DamageComponent.o: src/Components/DamageComponent.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/Components
@@ -250,6 +256,11 @@ ${OBJECTDIR}/src/Systems/CountdownSystem.o: src/Systems/CountdownSystem.cpp
 	${RM} $@.d
 	$(COMPILE.cc) -g -Wall -Iinclude -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/Systems/CountdownSystem.o src/Systems/CountdownSystem.cpp
 
+${OBJECTDIR}/src/Systems/DataToTextSystem.o: src/Systems/DataToTextSystem.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/Systems
+	${RM} $@.d
+	$(COMPILE.cc) -g -Wall -Iinclude -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/Systems/DataToTextSystem.o src/Systems/DataToTextSystem.cpp
+
 ${OBJECTDIR}/src/Systems/GravitySystem.o: src/Systems/GravitySystem.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/Systems
 	${RM} $@.d
@@ -279,11 +290,6 @@ ${OBJECTDIR}/src/Systems/RenderSystem.o: src/Systems/RenderSystem.cpp
 	${MKDIR} -p ${OBJECTDIR}/src/Systems
 	${RM} $@.d
 	$(COMPILE.cc) -g -Wall -Iinclude -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/Systems/RenderSystem.o src/Systems/RenderSystem.cpp
-
-${OBJECTDIR}/src/Systems/ScoreToTextSystem.o: src/Systems/ScoreToTextSystem.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/Systems
-	${RM} $@.d
-	$(COMPILE.cc) -g -Wall -Iinclude -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/Systems/ScoreToTextSystem.o src/Systems/ScoreToTextSystem.cpp
 
 ${OBJECTDIR}/src/Systems/System.o: src/Systems/System.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/Systems

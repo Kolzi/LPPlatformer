@@ -26,11 +26,12 @@
 #include "Components/DamageComponent.hpp"
 #include "Components/ParticleComponent.hpp"
 #include "Components/PositionRelativeToComponent.hpp"
+#include "Components/CountdownComponent.hpp"
 
 std::vector<std::string> StringComponentConverter::componentNames={"BoundingBox", 
 	"CameraSource", "Gravity", "Physics", "Position", "Sprite", "Viewport", "StandsOn",
 	"Standable", "Music", "Score", "HasScore", "Text", "Damage","Particle",
-	"PositionRelativeTo"};
+	"PositionRelativeTo", "Countdown"};
 
 Component* StringComponentConverter::stringToComponent(std::string componentName, 
                                                        rapidxml::xml_node<>* archetypeNode)
@@ -67,6 +68,8 @@ Component* StringComponentConverter::stringToComponent(std::string componentName
 		return new ParticleComponent(archetypeNode);
 	if(componentName=="PositionRelativeTo")
 		return new PositionRelativeToComponent(archetypeNode);
+	if(componentName=="Countdown")
+		return new CountdownComponent(archetypeNode);
 	
 	
 	throw NoSuchComponentName(componentName);

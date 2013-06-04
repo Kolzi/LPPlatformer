@@ -4,19 +4,22 @@
 		<Sprite file="player2.png" frameWidth="38" loopTime="0.5"/>
 		<Viewport x="0" y="0" w="max" h="max" />
 		<CameraSource offsetX="100" offsetY="100" offsetZ="0" w="max" h="max" />
-		<Physics acceleration="400" stoppingSpeed="500" maxSpeed="1000"/>
+		<Physics acceleration="300" stoppingSpeed="500" maxSpeed="700"/>
 		<BoundingBox x="0" y="0" w="38" h="61" />
-		<Gravity g="200"/>
+		<Gravity g="100"/>
 		<StandsOn jumpingPower="300" jumpingTime="0.3"/>
 		<HasScore scoreEID="1" />
+		<Countdown time="3">
+			<AddToSystem target="PlayerInput" time="0"/>
+		</Countdown>
 	</Components>
 	<Systems>
 		<Render />
-		<PlayerInput />
 		<Collision />
 		<Movement />
 		<Gravity />
 		<Camera />
+		<Countdown />
 	</Systems>
 </Archetype>
 
@@ -85,6 +88,45 @@
 	</Systems>
 </Archetype>
 
+<Archetype name="Ground6">
+	<Components>
+		<Position />
+		<Sprite file="ground6.png" />
+		<BoundingBox x="0" y="0" w="38" h="79" />
+		<Standable accelerationMultiplier="2"/>
+	</Components>
+	<Systems>
+		<Render />
+		<Collision />
+	</Systems>
+</Archetype>
+
+<Archetype name="Ground7">
+	<Components>
+		<Position />
+		<Sprite file="ground7.png" />
+		<BoundingBox x="0" y="0" w="128" h="41" />
+		<Standable accelerationMultiplier="2"/>
+	</Components>
+	<Systems>
+		<Render />
+		<Collision />
+	</Systems>
+</Archetype>
+
+<Archetype name="Ground8">
+	<Components>
+		<Position />
+		<Sprite file="ground8.png" />
+		<BoundingBox x="0" y="0" w="222" h="34" />
+		<Standable accelerationMultiplier="2"/>
+	</Components>
+	<Systems>
+		<Render />
+		<Collision />
+	</Systems>
+</Archetype>
+
 <Archetype name="Geyser">
 	<Components>
 		<Position />
@@ -115,20 +157,32 @@
 <Archetype name="LevelMusic">
 	<Components>
 		<Music file="Nagi_lunch.ogg" />
+		<Countdown time="3" toText="1">
+			<AddToSystem target="Music" time="0"/>
+			<RemoveFromSystem target="Countdown" time="0" />
+			<RemoveFromSystem target="TextRender" time="0" />
+			<RemoveFromSystem target="DataToText" time="0" />
+			<RemoveComponent target="Text" time="0"/>
+			<RemoveComponent target="Position" time="0"/>
+		</Countdown>
+		<Position x="200" y="200"/>
+		<Text font="DejaVuSans.ttf" size="240"/>
 	</Components>
 	<Systems>
-		<Music />
+		<Countdown />
+		<TextRender />
+		<DataToText />
 	</Systems>
 </Archetype>
 
 <Archetype name="PlayerScore">
 	<Components>
 		<Position x="10" y="10"/>
-		<Score score="100000" />
+		<Score score="100000" toText="1"/>
 		<Text font="DejaVuSans.ttf"/>
 	</Components>
 	<Systems>
-		<ScoreToText />
+		<DataToText />
 		<TextRender />
 	</Systems>
 </Archetype>
@@ -136,7 +190,7 @@
 <Archetype name="ParticleEmiter">
 	<Components>
 		<Position />
-		<Particle emits="StarParticle2" minParticlesPerSec="10" maxParticlesPerSec="20" minLifeTime="0" maxLifeTime="1.2" />
+		<Particle emits="StarParticle" minParticlesPerSec="1" maxParticlesPerSec="3" minLifeTime="0" maxLifeTime="1.2" />
 	</Components>
 	<Systems>
 		<Particle />
@@ -149,7 +203,9 @@
 		<Sprite file="particle.png"/>
 		<Gravity />
 		<Physics acceleration="0" maxSpeed="1000" stoppingSpeed="0"/>
-		<Score />
+		<Countdown time="1">
+			<Remove time="0"/>
+		</Countdown>
 	</Components>
 	<Systems>
 		<Movement/>
@@ -164,7 +220,9 @@
 		<Sprite file="particle.png"/>
 		<Gravity />
 		<Physics acceleration="0" maxSpeed="1000" stoppingSpeed="0"/>
-		<Score />
+		<Countdown time="1">
+			<Remove time="0"/>
+		</Countdown>
 		<Particle emits="StarParticle" minParticlesPerSec="10" maxParticlesPerSec="180" minLifeTime="0" maxLifeTime="1.2"/>
 	</Components>
 	<Systems>
