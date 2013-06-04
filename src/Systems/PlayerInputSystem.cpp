@@ -48,17 +48,12 @@ void PlayerInputSystem::update(sf::Time deltaTime)
 		
 		if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
 		{
-			if(soC.standing)
-			{
 				pC.ax=-pC.acceleration*sC.accelerationMultiplier;
-			}
 		}
 		else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
 		{
-			if(soC.standing)
-			{
 				pC.ax=pC.acceleration*sC.accelerationMultiplier;
-			}
+
 		}
 		else
 		{
