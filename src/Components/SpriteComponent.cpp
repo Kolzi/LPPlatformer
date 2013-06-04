@@ -38,7 +38,7 @@ SpriteComponent::SpriteComponent(rapidxml::xml_node<>* componentNode)
 void SpriteComponent::read(rapidxml::xml_node<>* componentNode)
 {
 	if(componentNode->first_attribute("file")==0)
-		throw RequiredAttributeNotFound("file", "SpriteComponent");
+		throw RequiredAttributeNotFound("file", "Sprite");
 	sprite=ImageManager::getSprite(componentNode->first_attribute("file")->value());
 	if(componentNode->first_attribute("frameWidth")!=0)
 	{
