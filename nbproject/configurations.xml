@@ -22,6 +22,8 @@
       <itemPath>include/Components/PhysicsComponent.hpp</itemPath>
       <itemPath>src/Components/PositionComponent.cpp</itemPath>
       <itemPath>include/Components/PositionComponent.hpp</itemPath>
+      <itemPath>src/Components/PositionRelativeToComponent.cpp</itemPath>
+      <itemPath>include/Components/PositionRelativeToComponent.hpp</itemPath>
       <itemPath>src/Components/ScoreComponent.cpp</itemPath>
       <itemPath>include/Components/ScoreComponent.hpp</itemPath>
       <itemPath>src/Components/SpriteComponent.cpp</itemPath>
@@ -72,6 +74,7 @@
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
                    projectFiles="true">
+      <itemPath>resources/Nagi_lunch.mp3</itemPath>
       <itemPath>resources/archetypes.xml</itemPath>
       <itemPath>resources/burningGround.png</itemPath>
       <itemPath>resources/ground.png</itemPath>
@@ -191,6 +194,11 @@
             flavor2="0">
       </item>
       <item path="include/Components/PositionComponent.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="include/Components/PositionRelativeToComponent.hpp"
             ex="false"
             tool="3"
             flavor2="0">
@@ -336,6 +344,8 @@
       </item>
       <item path="rapidxml-1.13/rapidxml.hpp" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="resources/Nagi_lunch.mp3" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="resources/archetypes.xml" ex="false" tool="3" flavor2="0">
       </item>
       <item path="resources/burningGround.png" ex="false" tool="3" flavor2="0">
@@ -387,6 +397,11 @@
             flavor2="0">
       </item>
       <item path="src/Components/PositionComponent.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/Components/PositionRelativeToComponent.cpp"
             ex="false"
             tool="1"
             flavor2="0">
@@ -528,6 +543,11 @@
             tool="3"
             flavor2="0">
       </item>
+      <item path="include/Components/PositionRelativeToComponent.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="include/Components/ScoreComponent.hpp"
             ex="false"
             tool="3"
@@ -669,6 +689,8 @@
       </item>
       <item path="rapidxml-1.13/rapidxml.hpp" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="resources/Nagi_lunch.mp3" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="resources/archetypes.xml" ex="false" tool="3" flavor2="0">
       </item>
       <item path="resources/burningGround.png" ex="false" tool="3" flavor2="0">
@@ -720,6 +742,11 @@
             flavor2="0">
       </item>
       <item path="src/Components/PositionComponent.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/Components/PositionRelativeToComponent.cpp"
             ex="false"
             tool="1"
             flavor2="0">

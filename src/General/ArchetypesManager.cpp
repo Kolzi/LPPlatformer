@@ -41,15 +41,17 @@ void ArchetypesManager::read(std::istream& str)
 
 void ArchetypesManager::addEntity(int EID, std::string archName,Level::CompMap& components, Level::SysMap& systems)
 {
+	//std::cerr<<"Adding: "<<archName<<"\n";
 	Archetype* archetype=archetypes.at(archName);
 	for(auto comp:archetype->components)
 	{
-	//	std::cerr<<"ArchMan adding component: "<<EID<<" "<< comp.first<<"||\n";
+//		std::cerr<<"ArchMan adding component: "<<EID<<" "<< comp.first<<"||\n";
 		components[Level::CompKey(EID, comp.first)]=comp.second->clone(EID);
 	}
 	for(auto sys:archetype->systems)
 	{
-	//	std::cerr<<"ArchMan adding system: "<<sys<<"||\n";
+//		std::cerr<<"ArchMan adding system: "<<sys<<"||\n";
 		systems.at(sys)->addEntity(EID);
 	}
+//	std::cerr<<"ArchMan end\n";
 }

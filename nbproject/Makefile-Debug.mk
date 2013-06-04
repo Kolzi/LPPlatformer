@@ -46,6 +46,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/Components/ParticleComponent.o \
 	${OBJECTDIR}/src/Components/PhysicsComponent.o \
 	${OBJECTDIR}/src/Components/PositionComponent.o \
+	${OBJECTDIR}/src/Components/PositionRelativeToComponent.o \
 	${OBJECTDIR}/src/Components/ScoreComponent.o \
 	${OBJECTDIR}/src/Components/SpriteComponent.o \
 	${OBJECTDIR}/src/Components/StandableComponent.o \
@@ -153,6 +154,11 @@ ${OBJECTDIR}/src/Components/PositionComponent.o: src/Components/PositionComponen
 	${MKDIR} -p ${OBJECTDIR}/src/Components
 	${RM} $@.d
 	$(COMPILE.cc) -g -Wall -Iinclude -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/Components/PositionComponent.o src/Components/PositionComponent.cpp
+
+${OBJECTDIR}/src/Components/PositionRelativeToComponent.o: src/Components/PositionRelativeToComponent.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/Components
+	${RM} $@.d
+	$(COMPILE.cc) -g -Wall -Iinclude -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/Components/PositionRelativeToComponent.o src/Components/PositionRelativeToComponent.cpp
 
 ${OBJECTDIR}/src/Components/ScoreComponent.o: src/Components/ScoreComponent.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/Components

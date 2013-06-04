@@ -13,6 +13,7 @@
 #include "General/ImageManager.hpp"
 #include "Components/GravityComponent.hpp"
 #include "Components/ScoreComponent.hpp"
+#include "Components/PositionRelativeToComponent.hpp"
 
 #include <assert.h>
 #include <boost/cast.hpp>
@@ -65,6 +66,14 @@ void ParticleSystem::update(sf::Time deltaTime)
 			PositionComponent& partPosComp=*boost::polymorphic_downcast<PositionComponent*>(components.at(Level::CompKey(newID, "Position")));
 			partPosComp.x=posC.x;
 			partPosComp.y=posC.y;
+			if(components.find(Level::CompKey(*it, "PositionRelativeTo"))!=components.end())
+			{
+				PositionRelativeToComponent& prtC=*boost::polymorphic_downcast<PositionRelativeToComponent*>(components.at(Level::CompKey(*it, "PositionRelativeTo")));
+				PositionComponent& ppC =*boost::polymorphic_downcast<PositionComponent*>(components.at(Level::CompKey(prtC.relativeTo, "Position")));
+				partPosComp.x+=ppC.x;
+				partPosComp.y+=ppC.y;
+			}
+			
 			
 			if(components.find(Level::CompKey(newID, "Gravity"))!=components.end())
 			{

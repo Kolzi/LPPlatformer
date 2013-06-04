@@ -6,6 +6,7 @@
  */
 
 #include "Systems/RenderSystem.hpp"
+#include "Components/PositionRelativeToComponent.hpp"
 #include <assert.h>
 #include <boost/cast.hpp>
 
@@ -32,7 +33,16 @@ void RenderSystem::update(sf::Time deltaTime)
     {
         PositionComponent* pC=boost::polymorphic_downcast<PositionComponent*>(components.at(Level::CompKey(*it, "Position")));
         SpriteComponent* sC=boost::polymorphic_downcast<SpriteComponent*>(components.at(Level::CompKey(*it, "Sprite")));
-        sC->sprite.setPosition(pC->x,pC->y);
+        int x=pC->x;
+		int y=pC->y;
+		if(components.find(Level::CompKey(*it, "PositionRelativeTo"))!=components.end())
+		{
+			PositionRelativeToComponent& prtC=*boost::polymorphic_downcast<PositionRelativeToComponent*>(components.at(Level::CompKey(*it, "PositionRelativeTo")));
+			PositionComponent& ppC =*boost::polymorphic_downcast<PositionComponent*>(components.at(Level::CompKey(prtC.relativeTo, "Position")));
+			x+=ppC.x;
+			y+=ppC.y;
+		}
+		sC->sprite.setPosition(x, y);
 		sC->currentFrameTime+=deltaTime.asSeconds();
 		int i=0;
 		while(sC->currentFrameTime>sC->loopTime/double(sC->numberOfFrames))

@@ -49,10 +49,10 @@
 
 <Archetype name="LevelMusic">
 	<Components>
-		<!--<Music file="muzyka.ogg" />-->
+		<Music file="Nagi_lunch.ogg" />
 	</Components>
 	<Systems>
-		<!--<Music />-->
+		<Music />
 	</Systems>
 </Archetype>
 
@@ -71,7 +71,8 @@
 <Archetype name="ParticleEmiter">
 	<Components>
 		<Position />
-		<Particle emits="StarParticle2" minParticlesPerSec="10" maxParticlesPerSec="20" minLifeTime="0" maxLifeTime="1.2"/>
+		<Particle emits="StarParticle2" minParticlesPerSec="10" maxParticlesPerSec="20" minLifeTime="0" maxLifeTime="1.2" />
+		<PositionRelativeTo />
 	</Components>
 	<Systems>
 		<Particle />

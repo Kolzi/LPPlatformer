@@ -1,11 +1,12 @@
 <Object name="PlayerScore">
 </Object>
+
 <Object name="Player">
 	<Position x="-180" y="125" z="0" />
 </Object>
 
 <Object name="ParticleEmiter">
-	<Position x="-250" y="125" />
+	<PositionRelativeTo relativeTo="2" />
 </Object>
 
 <Object name="Ground">

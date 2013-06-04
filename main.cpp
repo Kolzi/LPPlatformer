@@ -30,11 +30,14 @@ try
 	ArchetypesManager archMan;
 	std::ifstream file("resources/archetypes.xml");
 	archMan.read(file);
+	std::cerr<<"Archetypes read!\n";
     sf::RenderWindow app(sf::VideoMode(800, 600, 32), "SFML Graphics");
 
 	std::ifstream levelFile("resources/testlevel.xml");
 	Level level(app, archMan);
+	std::cerr<<"Level created\n";
 	level.read(levelFile);
+	std::cerr<<"Level read\n";
   /*  sf::Texture texture1, texture2;
     texture1.loadFromFile("resources/player.png");
     texture2.loadFromFile("resources/ground.png");
