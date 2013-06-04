@@ -14,6 +14,7 @@
 #include "Components/GravityComponent.hpp"
 #include "Components/ScoreComponent.hpp"
 #include "Components/PositionRelativeToComponent.hpp"
+#include "Components/CountdownComponent.hpp"
 
 #include <assert.h>
 #include <boost/cast.hpp>
@@ -82,11 +83,11 @@ void ParticleSystem::update(sf::Time deltaTime)
 				partGravComp.g=parC.minGravity + ratio*(parC.maxGravity-parC.minGravity);
 			}
 			
-			if(components.find(Level::CompKey(newID, "Score"))!=components.end())
+			if(components.find(Level::CompKey(newID, "Countdown"))!=components.end())
 			{
-				ScoreComponent& partScoreComp=*boost::polymorphic_downcast<ScoreComponent*>(components.at(Level::CompKey(newID, "Score")));
+				CountdownComponent& partCountComp=*boost::polymorphic_downcast<CountdownComponent*>(components.at(Level::CompKey(newID, "Countdown")));
 				ratio = double(rand())/double(RAND_MAX);
-				partScoreComp.score=parC.minLifeTime + ratio*(parC.maxLifeTime-parC.minLifeTime);
+				partCountComp.startTime=partCountComp.timeLeft=parC.minLifeTime + ratio*(parC.maxLifeTime-parC.minLifeTime);
 			}			
 		}
 	}

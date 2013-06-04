@@ -1,22 +1,25 @@
 <Archetype name="Player">
 	<Components>
 		<Position x="0" y="0" z="0" />
-		<Sprite file="animatedplayer.png" frameWidth="50" loopTime="0.5"/>
+		<Sprite file="animatedplayer.png" frameWidth="38" loopTime="0.5"/>
 		<Viewport x="0" y="0" w="max" h="max" />
 		<CameraSource offsetX="100" offsetY="100" offsetZ="0" w="max" h="max" />
 		<Physics acceleration="400" stoppingSpeed="500" maxSpeed="1000"/>
-		<BoundingBox x="0" y="0" w="50" h="50" />
+		<BoundingBox x="0" y="0" w="38" h="61" />
 		<Gravity g="200"/>
 		<StandsOn jumpingPower="300" jumpingTime="0.3"/>
 		<HasScore scoreEID="1" />
+		<Countdown time="3">
+			<AddToSystem target="PlayerInput" time="0"/>
+		</Countdown>
 	</Components>
 	<Systems>
 		<Render />
-		<PlayerInput />
 		<Collision />
 		<Movement />
 		<Gravity />
 		<Camera />
+		<Countdown />
 	</Systems>
 </Archetype>
 
@@ -50,20 +53,32 @@
 <Archetype name="LevelMusic">
 	<Components>
 		<Music file="Nagi_lunch.ogg" />
+		<Countdown time="3" toText="1">
+			<AddToSystem target="Music" time="0"/>
+			<RemoveFromSystem target="Countdown" time="0" />
+			<RemoveFromSystem target="TextRender" time="0" />
+			<RemoveFromSystem target="DataToText" time="0" />
+			<RemoveComponent target="Text" time="0"/>
+			<RemoveComponent target="Position" time="0"/>
+		</Countdown>
+		<Position x="200" y="200"/>
+		<Text font="DejaVuSans.ttf" size="240"/>
 	</Components>
 	<Systems>
-		<Music />
+		<Countdown />
+		<TextRender />
+		<DataToText />
 	</Systems>
 </Archetype>
 
 <Archetype name="PlayerScore">
 	<Components>
 		<Position x="10" y="10"/>
-		<Score score="100000" />
+		<Score score="100000" toText="1"/>
 		<Text font="DejaVuSans.ttf"/>
 	</Components>
 	<Systems>
-		<ScoreToText />
+		<DataToText />
 		<TextRender />
 	</Systems>
 </Archetype>
@@ -85,7 +100,9 @@
 		<Sprite file="particle.png"/>
 		<Gravity />
 		<Physics acceleration="0" maxSpeed="1000" stoppingSpeed="0"/>
-		<Score />
+		<Countdown time="1">
+			<Remove time="0"/>
+		</Countdown>
 	</Components>
 	<Systems>
 		<Movement/>
@@ -100,7 +117,9 @@
 		<Sprite file="particle.png"/>
 		<Gravity />
 		<Physics acceleration="0" maxSpeed="1000" stoppingSpeed="0"/>
-		<Score />
+		<Countdown time="1">
+			<Remove time="0"/>
+		</Countdown>
 		<Particle emits="StarParticle" minParticlesPerSec="10" maxParticlesPerSec="180" minLifeTime="0" maxLifeTime="1.2"/>
 	</Components>
 	<Systems>

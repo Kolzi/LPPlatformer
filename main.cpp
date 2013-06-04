@@ -58,7 +58,7 @@ try
             if (event.type == sf::Event::Closed)
                 app.close();
         }
-		app.clear();
+		app.clear(sf::Color(128,128,255));
 		level.update(clock.restart());
 		app.display();
     }

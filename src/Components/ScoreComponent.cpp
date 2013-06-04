@@ -13,12 +13,12 @@
 const double ScoreComponent::defaultScore=100000;
 
 ScoreComponent::ScoreComponent(int EID)
-:Component(EID), score(defaultScore)
+:Component(EID), score(defaultScore), toText(false)
 {
 }
 
 ScoreComponent::ScoreComponent(int EID, double score)
-:Component(EID), score(score)
+:Component(EID), score(score), toText(false)
 {
 }
 
@@ -32,6 +32,8 @@ void ScoreComponent::read(rapidxml::xml_node<>* componentNode)
 {
 	if(componentNode->first_attribute("score")!=0)
 		score=boost::lexical_cast<double>(componentNode->first_attribute("score")->value());
+	if (componentNode->first_attribute("toText") != 0)
+		toText = boost::lexical_cast<bool>(componentNode->first_attribute("toText")->value());
 }
 
 Component* ScoreComponent::clone(int newEID)

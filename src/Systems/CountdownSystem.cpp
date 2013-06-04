@@ -10,6 +10,8 @@
 
 #include "Systems/CountdownSystem.hpp"
 #include "Components/ScoreComponent.hpp"
+#include "Components/CountdownComponent.hpp"
+#include "Exceptions/NoSuchSystem.hpp"
 
 
 CountdownSystem::CountdownSystem(Level::CompMap& components, Level& level)
@@ -30,25 +32,57 @@ CountdownSystem::~CountdownSystem()
 
 void CountdownSystem::update(sf::Time deltaTime)
 {
+	std::cerr<<"Countdown system\n";
 	std::list<int> toRemove;
+	std::list<std::pair<int, std::string> > toRemoveFromSystems;
+	std::list<std::pair<int, std::string> > componentsToRemove;
+	
     for(auto it=entities.begin();it!=entities.end();it++)
     {
-        ScoreComponent& scoreC=*boost::polymorphic_downcast<ScoreComponent*>(components.at(Level::CompKey(*it, "Score")));
-		scoreC.score-=deltaTime.asSeconds();
-		if(scoreC.score<=0)
+        CountdownComponent& countC=*boost::polymorphic_downcast<CountdownComponent*>(components.at(Level::CompKey(*it, "Countdown")));
+		countC.timeLeft-=deltaTime.asSeconds();
+		while(!countC.actions.empty() && countC.timeLeft<=countC.actions.top().time)
 		{
-			toRemove.push_back(*it);
+			if(countC.actions.top().name=="Remove")
+			{
+				countC.actions.pop();
+				toRemove.push_back(*it);
+			}
+			else if(countC.actions.top().name=="AddToSystem")
+			{
+				level.addEntityToSystem(*it, countC.actions.top().target);
+				countC.actions.pop();
+			}
+			else if(countC.actions.top().name=="RemoveFromSystem")
+			{
+				toRemoveFromSystems.push_back(std::make_pair(*it, countC.actions.top().target));				
+				countC.actions.pop();
+			}
+			else if(countC.actions.top().name=="RemoveComponent")
+			{
+				componentsToRemove.push_back(std::make_pair(*it, countC.actions.top().target));
+				countC.actions.pop();
+			}
 		}
+	}
+	for(auto p:toRemoveFromSystems)
+	{
+		level.removeEntityFromSystem(p.first, p.second);
+	}
+	for(auto p:componentsToRemove)
+	{
+		level.removeComponent(p.first, p.second);
 	}
 	for(int id:toRemove)
 	{
 		level.removeEntity(id);
 	}
+	std::cerr<<"End countdown system\n";
 }
 
 void CountdownSystem::addEntity(int EID)
 {
-	assert( components.find(Level::CompKey(EID, "Score")) != components.end() );
+	assert( components.find(Level::CompKey(EID, "Countdown")) != components.end() );
     entities.push_back(EID);
 }
 

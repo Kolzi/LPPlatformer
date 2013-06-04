@@ -8,6 +8,8 @@
       <itemPath>include/Components/CameraSourceComponent.hpp</itemPath>
       <itemPath>src/Components/Component.cpp</itemPath>
       <itemPath>include/Components/Component.hpp</itemPath>
+      <itemPath>src/Components/CountdownComponent.cpp</itemPath>
+      <itemPath>include/Components/CountdownComponent.hpp</itemPath>
       <itemPath>src/Components/DamageComponent.cpp</itemPath>
       <itemPath>include/Components/DamageComponent.hpp</itemPath>
       <itemPath>src/Components/GravityComponent.cpp</itemPath>
@@ -40,6 +42,7 @@
     <logicalFolder name="f5" displayName="Exceptions" projectFiles="true">
       <itemPath>include/Exceptions/IncorrentFrameWidth.hpp</itemPath>
       <itemPath>include/Exceptions/NoSuchComponentName.hpp</itemPath>
+      <itemPath>include/Exceptions/NoSuchSystem.hpp</itemPath>
       <itemPath>include/Exceptions/RequiredAttributeNotFound.hpp</itemPath>
     </logicalFolder>
     <logicalFolder name="f3" displayName="General" projectFiles="true">
@@ -90,6 +93,8 @@
       <itemPath>include/Systems/CollisionSystem.hpp</itemPath>
       <itemPath>src/Systems/CountdownSystem.cpp</itemPath>
       <itemPath>include/Systems/CountdownSystem.hpp</itemPath>
+      <itemPath>src/Systems/DataToTextSystem.cpp</itemPath>
+      <itemPath>include/Systems/DataToTextSystem.hpp</itemPath>
       <itemPath>src/Systems/GravitySystem.cpp</itemPath>
       <itemPath>include/Systems/GravitySystem.hpp</itemPath>
       <itemPath>src/Systems/MovementSystem.cpp</itemPath>
@@ -102,8 +107,6 @@
       <itemPath>include/Systems/PlayerInputSystem.hpp</itemPath>
       <itemPath>src/Systems/RenderSystem.cpp</itemPath>
       <itemPath>include/Systems/RenderSystem.hpp</itemPath>
-      <itemPath>src/Systems/ScoreToTextSystem.cpp</itemPath>
-      <itemPath>include/Systems/ScoreToTextSystem.hpp</itemPath>
       <itemPath>src/Systems/System.cpp</itemPath>
       <itemPath>include/Systems/System.hpp</itemPath>
       <itemPath>src/Systems/TextRenderSystem.cpp</itemPath>
@@ -163,6 +166,11 @@
       </item>
       <item path="include/Components/Component.hpp" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="include/Components/CountdownComponent.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="include/Components/DamageComponent.hpp"
             ex="false"
             tool="3"
@@ -243,6 +251,11 @@
             tool="3"
             flavor2="0">
       </item>
+      <item path="include/Exceptions/NoSuchSystem.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="include/Exceptions/RequiredAttributeNotFound.hpp"
             ex="false"
             tool="3"
@@ -289,6 +302,11 @@
             tool="3"
             flavor2="0">
       </item>
+      <item path="include/Systems/DataToTextSystem.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="include/Systems/GravitySystem.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="include/Systems/MovementSystem.hpp" ex="false" tool="3" flavor2="0">
@@ -303,11 +321,6 @@
             flavor2="0">
       </item>
       <item path="include/Systems/RenderSystem.hpp" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="include/Systems/ScoreToTextSystem.hpp"
-            ex="false"
-            tool="3"
-            flavor2="0">
       </item>
       <item path="include/Systems/System.hpp" ex="false" tool="3" flavor2="0">
       </item>
@@ -371,6 +384,11 @@
             flavor2="0">
       </item>
       <item path="src/Components/Component.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Components/CountdownComponent.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
       </item>
       <item path="src/Components/DamageComponent.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -454,6 +472,8 @@
       </item>
       <item path="src/Systems/CountdownSystem.cpp" ex="false" tool="1" flavor2="0">
       </item>
+      <item path="src/Systems/DataToTextSystem.cpp" ex="false" tool="1" flavor2="0">
+      </item>
       <item path="src/Systems/GravitySystem.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/Systems/MovementSystem.cpp" ex="false" tool="1" flavor2="0">
@@ -465,8 +485,6 @@
       <item path="src/Systems/PlayerInputSystem.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/Systems/RenderSystem.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/Systems/ScoreToTextSystem.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/Systems/System.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -508,6 +526,11 @@
       </item>
       <item path="include/Components/Component.hpp" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="include/Components/CountdownComponent.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="include/Components/DamageComponent.hpp"
             ex="false"
             tool="3"
@@ -588,6 +611,11 @@
             tool="3"
             flavor2="0">
       </item>
+      <item path="include/Exceptions/NoSuchSystem.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="include/Exceptions/RequiredAttributeNotFound.hpp"
             ex="false"
             tool="3"
@@ -634,6 +662,11 @@
             tool="3"
             flavor2="0">
       </item>
+      <item path="include/Systems/DataToTextSystem.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="include/Systems/GravitySystem.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="include/Systems/MovementSystem.hpp" ex="false" tool="3" flavor2="0">
@@ -648,11 +681,6 @@
             flavor2="0">
       </item>
       <item path="include/Systems/RenderSystem.hpp" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="include/Systems/ScoreToTextSystem.hpp"
-            ex="false"
-            tool="3"
-            flavor2="0">
       </item>
       <item path="include/Systems/System.hpp" ex="false" tool="3" flavor2="0">
       </item>
@@ -716,6 +744,11 @@
             flavor2="0">
       </item>
       <item path="src/Components/Component.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Components/CountdownComponent.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
       </item>
       <item path="src/Components/DamageComponent.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -799,6 +832,8 @@
       </item>
       <item path="src/Systems/CountdownSystem.cpp" ex="false" tool="1" flavor2="0">
       </item>
+      <item path="src/Systems/DataToTextSystem.cpp" ex="false" tool="1" flavor2="0">
+      </item>
       <item path="src/Systems/GravitySystem.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/Systems/MovementSystem.cpp" ex="false" tool="1" flavor2="0">
@@ -810,8 +845,6 @@
       <item path="src/Systems/PlayerInputSystem.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/Systems/RenderSystem.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/Systems/ScoreToTextSystem.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/Systems/System.cpp" ex="false" tool="1" flavor2="0">
       </item>

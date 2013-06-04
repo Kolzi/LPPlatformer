@@ -33,7 +33,10 @@ public:
 	
 	int getNextID();
 	void addComponent(int EID, std::string compName, Component* comp);
+	void removeComponent(int EID, std::string compName);
 	void addEntityToSystem(int EID, std::string system);
+	void removeEntityFromSystem(int EID, std::string system);
+	bool systemExists(std::string name);
 	void read(std::istream& str);
 	void update(sf::Time deltaTime);
 	//returns new entity ID
