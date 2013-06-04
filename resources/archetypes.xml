@@ -86,11 +86,13 @@
 <Archetype name="ParticleEmiter">
 	<Components>
 		<Position />
-		<Particle emits="StarParticle2" minParticlesPerSec="10" maxParticlesPerSec="20" minLifeTime="0" maxLifeTime="1.2" />
+		<Particle emits="StarParticle" minParticlesPerSec="10" maxParticlesPerSec="20" minLifeTime="0" maxLifeTime="1.2" />
 		<PositionRelativeTo />
+		<Physics acceleration="400" stoppingSpeed="500" maxSpeed="1000" angularV="180" />
 	</Components>
 	<Systems>
 		<Particle />
+		<Movement />
 	</Systems>
 </Archetype>
 

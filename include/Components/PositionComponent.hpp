@@ -14,7 +14,8 @@
 class PositionComponent : public Component
 {
 public:
-    PositionComponent(double x, double y, double z, int EID);
+	PositionComponent(int EID);
+    PositionComponent(double x, double y, double z, double angle, int EID);
     PositionComponent(const PositionComponent& orig);
     PositionComponent(rapidxml::xml_node<>* componentNode);
     virtual ~PositionComponent();
@@ -23,6 +24,7 @@ public:
 	void read(rapidxml::xml_node<>* componentNode);
 	
     double x, y, z;
+	double angle; //orientation
     int EID;
 };
 

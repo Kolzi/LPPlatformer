@@ -21,6 +21,7 @@ struct PhysicsComponent : public Component
 	
 	double vx, vy, vz;
 	double ax, ay, az;
+	double angularV;
 	
 	double acceleration;
 	double maxSpeed;
