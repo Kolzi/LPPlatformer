@@ -4,7 +4,7 @@
 		<Sprite file="player2.png" frameWidth="38" loopTime="0.5"/>
 		<Viewport x="0" y="0" w="max" h="max" />
 		<CameraSource offsetX="100" offsetY="100" offsetZ="0" w="max" h="max" />
-		<Physics acceleration="300" stoppingSpeed="500" maxSpeed="700"/>
+		<Physics acceleration="600" stoppingSpeed="1000" maxSpeed="200"/>
 		<BoundingBox x="0" y="0" w="38" h="61" />
 		<Gravity g="100"/>
 		<StandsOn jumpingPower="300" jumpingTime="0.3"/>
@@ -133,10 +133,15 @@
 		<Sprite file="geyser.png" />
 		<BoundingBox x="0" y="0" w="10" h="16" />
 		<Standable accelerationMultiplier="2"/>
+		<Countdown time="1" restart="1">
+			<AddToSystem target="Render" time="0.9" />
+			<AddToSystem target="Collision" time="0.9" />
+			<RemoveFromSystem target="Render" time="0" />
+			<RemoveFromSystem target="Collision" time="0" />
+		</Countdown>
 	</Components>
 	<Systems>
-		<Render />
-		<Collision />
+		<Countdown />
 	</Systems>
 </Archetype>
 
@@ -231,5 +236,20 @@
 		<Gravity/>
 		<Countdown/>
 		<Particle/>
+	</Systems>
+</Archetype>
+
+<Archetype name="Coin">
+	<Components>
+		<Position />
+		<Sprite file="particle.png"/>
+		<Physics acceleration="0" maxSpeed="1000" stoppingSpeed="0" angularV="60"/>
+		<Damage damagePerSecond="-10000" once="1"/>
+		<BoundingBox x="0" y="0" w="8" h="8" />
+	</Components>
+	<Systems>
+		<Movement/>
+		<Render/>
+		<Collision />
 	</Systems>
 </Archetype>

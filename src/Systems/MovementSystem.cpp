@@ -73,6 +73,12 @@ void MovementSystem::update(sf::Time time)
 		{
 			physC.vx=physC.maxSpeed*groundC.maxSpeedMultiplier;
 		}
+		if(physC.vx < -physC.maxSpeed*groundC.maxSpeedMultiplier)
+		{
+			physC.vx=-physC.maxSpeed*groundC.maxSpeedMultiplier;
+		}
+		
+		
 		
 		posC.x+=deltaT*physC.vx;
 		posC.y+=deltaT*physC.vy;

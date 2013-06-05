@@ -64,6 +64,12 @@ void CountdownSystem::update(sf::Time deltaTime)
 				countC.actions.pop();
 			}
 		}
+		
+		if(countC.timeLeft<=0 && countC.restart)
+		{
+			countC.timeLeft=countC.startTime;
+			countC.actions=countC.startActions;
+		}			
 	}
 	for(auto p:toRemoveFromSystems)
 	{

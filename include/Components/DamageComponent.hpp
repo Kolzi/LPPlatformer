@@ -20,7 +20,10 @@ struct DamageComponent : public Component
 	Component* clone(int newEID);
 	void read(rapidxml::xml_node<>* componentNode);
 	
+	
 	double damagePerSecond;
+	bool once;
+	bool taken;
 	static const double defaultDamage;
 };
 

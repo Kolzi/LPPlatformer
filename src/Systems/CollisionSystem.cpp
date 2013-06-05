@@ -154,7 +154,13 @@ void CollisionSystem::update(sf::Time deltaTime)
 					DamageComponent& damage=*boost::polymorphic_downcast<DamageComponent*>(components.at(Level::CompKey(*jt, "Damage")));
 					ScoreComponent& score=*boost::polymorphic_downcast<ScoreComponent*>(components.at(Level::CompKey(hasScore.scoreEID, "Score")));
 					
-					score.score-=damage.damagePerSecond* currT;
+					if(damage.once && !damage.taken)
+					{
+						score.score-=damage.damagePerSecond;
+						damage.taken=true;
+					}
+					else if(!damage.once)
+						score.score-=damage.damagePerSecond* currT;
 				}
 				if(jHasScore && iDamage)
 				{

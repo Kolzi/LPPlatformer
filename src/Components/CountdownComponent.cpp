@@ -10,12 +10,12 @@
 #include <boost/lexical_cast.hpp>
 
 CountdownComponent::CountdownComponent(int EID)
-: Component(EID), startTime(-1), timeLeft(-1), toText(false), actions()
+: Component(EID), startTime(-1), timeLeft(-1), toText(false), restart(false), actions()
 {
 }
 
 CountdownComponent::CountdownComponent(int EID, double startTime)
-: Component(EID), startTime(startTime), timeLeft(startTime), toText(false), actions()
+: Component(EID), startTime(startTime), timeLeft(startTime), toText(false), restart(false), actions()
 {
 }
 
@@ -31,6 +31,8 @@ void CountdownComponent::read(rapidxml::xml_node<>* componentNode)
 		startTime = timeLeft = boost::lexical_cast<double>(componentNode->first_attribute("time")->value());
 	if (componentNode->first_attribute("toText") != 0)
 		toText = boost::lexical_cast<bool>(componentNode->first_attribute("toText")->value());
+	if (componentNode->first_attribute("restart") != 0)
+		restart = boost::lexical_cast<bool>(componentNode->first_attribute("restart")->value());
 	for (rapidxml::xml_node<> * actionNode = componentNode->first_node();
 			actionNode; actionNode = actionNode->next_sibling())
 	{
@@ -44,6 +46,7 @@ void CountdownComponent::read(rapidxml::xml_node<>* componentNode)
 		if (actionNode->first_attribute("target") != 0)
 			a.target = actionNode->first_attribute("target")->value();
 		actions.push(a);
+		startActions.push(a);
 	}
 }
 

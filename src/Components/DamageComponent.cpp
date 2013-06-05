@@ -13,12 +13,12 @@
 const double DamageComponent::defaultDamage = 100000;
 
 DamageComponent::DamageComponent(int EID)
-:Component(EID), damagePerSecond(defaultDamage)
+:Component(EID), damagePerSecond(defaultDamage), once(false), taken(false)
 {
 }
 
 DamageComponent::DamageComponent(int EID, double damagePerSecond)
-:Component(EID), damagePerSecond(defaultDamage)
+:Component(EID), damagePerSecond(defaultDamage), once(false), taken(false)
 {
 }
 
@@ -32,6 +32,8 @@ void DamageComponent::read(rapidxml::xml_node<>* componentNode)
 {
 	if(componentNode->first_attribute("damagePerSecond")!=0)
 		damagePerSecond=boost::lexical_cast<double>(componentNode->first_attribute("damagePerSecond")->value());
+	if(componentNode->first_attribute("once")!=0)
+		once=boost::lexical_cast<bool>(componentNode->first_attribute("once")->value());
 }
 
 Component* DamageComponent::clone(int newEID)
