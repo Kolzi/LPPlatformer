@@ -190,11 +190,10 @@
 <Archetype name="ParticleEmiter">
 	<Components>
 		<Position />
-		<Particle emits="StarParticle" minParticlesPerSec="1" maxParticlesPerSec="3" minLifeTime="0" maxLifeTime="1.2" />
+		<Particle emits="StarParticle" minParticlesPerSec="1" maxParticlesPerSec="1" minLifeTime="0" maxLifeTime="1.2" salvo="1"/>
 	</Components>
 	<Systems>
 		<Particle />
-		<Movement />
 	</Systems>
 </Archetype>
 

@@ -24,8 +24,9 @@ const double ParticleComponent::defaultMinLifeTime=0.25;
 const double ParticleComponent::defaultMaxLifeTime=0.75;
 const double ParticleComponent::defaultMinGravity=10;
 const double ParticleComponent::defaultMaxGravity=20;
-const int ParticleComponent::defaultMinParticlesPerSec=10;
-const int ParticleComponent::defaultMaxParticlesPerSec=30;
+const double ParticleComponent::defaultMinParticlesPerSec=10;
+const double ParticleComponent::defaultMaxParticlesPerSec=30;
+const int ParticleComponent::defaultParticlesInSalvo=30;
 
 ParticleComponent::ParticleComponent(int EID)
 :Component(EID), timeSinceLastParticle(0), minV(defaultMinV), maxV(defaultMaxV),
@@ -34,7 +35,8 @@ ParticleComponent::ParticleComponent(int EID)
 		minAngularV(defaultMinAngularV), maxAngularV(defaultMaxAngularV),
 		minGravity(defaultMinGravity), maxGravity(defaultMaxGravity),
 		minLifeTime(defaultMinLifeTime), maxLifeTime(defaultMaxLifeTime),
-		minParticlesPerSec(defaultMinParticlesPerSec), maxParticlesPerSec(defaultMaxParticlesPerSec)
+		minParticlesPerSec(defaultMinParticlesPerSec), maxParticlesPerSec(defaultMaxParticlesPerSec),
+		salvo(false), particlesInSalvo(defaultParticlesInSalvo)
 		
 {
 	
@@ -81,10 +83,19 @@ void ParticleComponent::read(rapidxml::xml_node<>* componentNode)
 	if(componentNode->first_attribute("maxLifeTime")!=0)
 		maxLifeTime=boost::lexical_cast<double>(componentNode->first_attribute("maxLifeTime")->value());
 	if(componentNode->first_attribute("minParticlesPerSec")!=0)
-		minParticlesPerSec=boost::lexical_cast<int>(componentNode->first_attribute("minParticlesPerSec")->value());
+		minParticlesPerSec=boost::lexical_cast<double>(componentNode->first_attribute("minParticlesPerSec")->value());
 	if(componentNode->first_attribute("maxParticlesPerSec")!=0)
-		maxParticlesPerSec=boost::lexical_cast<int>(componentNode->first_attribute("maxParticlesPerSec")->value());
-
+		maxParticlesPerSec=boost::lexical_cast<double>(componentNode->first_attribute("maxParticlesPerSec")->value());
+	if(componentNode->first_attribute("minInterval")!=0)
+		maxParticlesPerSec=1.0/boost::lexical_cast<double>(componentNode->first_attribute("minInterval")->value());
+	if(componentNode->first_attribute("maxInterval")!=0)
+		minParticlesPerSec=1.0/boost::lexical_cast<double>(componentNode->first_attribute("maxInterval")->value());
+	
+	if(componentNode->first_attribute("salvo")!=0)
+		salvo=boost::lexical_cast<bool>(componentNode->first_attribute("salvo")->value());
+	if(componentNode->first_attribute("particlesInSalvo")!=0)
+		particlesInSalvo=boost::lexical_cast<int>(componentNode->first_attribute("particlesInSalvo")->value());
+	
 	if(componentNode->first_attribute("emits")!=0)
 		emitsArchetype=componentNode->first_attribute("emits")->value();
 	else

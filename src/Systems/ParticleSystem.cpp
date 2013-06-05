@@ -41,13 +41,18 @@ void ParticleSystem::update(sf::Time deltaTime)
     {
         PositionComponent& posC=*boost::polymorphic_downcast<PositionComponent*>(components.at(Level::CompKey(*it, "Position")));
         ParticleComponent& parC=*boost::polymorphic_downcast<ParticleComponent*>(components.at(Level::CompKey(*it, "Particle")));
-		double timePerParticle=1.0/double(parC.minParticlesPerSec + rand()%(parC.maxParticlesPerSec-parC.minParticlesPerSec));
+		double timePerParticle=1.0/parC.minParticlesPerSec;
+		if(parC.minParticlesPerSec != parC.maxParticlesPerSec)
+			timePerParticle=1.0/double(parC.minParticlesPerSec + rand()%int(parC.maxParticlesPerSec-parC.minParticlesPerSec));
 		
 		int particlesToEmit=0;
 		parC.timeSinceLastParticle+=deltaTime.asSeconds();
 		while(parC.timeSinceLastParticle>timePerParticle)
 		{
-			particlesToEmit++;
+			if(parC.salvo)
+				particlesToEmit+=parC.particlesInSalvo;
+			else
+				particlesToEmit++;
 			parC.timeSinceLastParticle-=timePerParticle;
 		}
 		
