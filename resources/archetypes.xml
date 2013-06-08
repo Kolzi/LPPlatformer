@@ -175,7 +175,7 @@
 		<Position x="0" y="0" z="0" />
 		<Sprite file="lava.png" />
 		<BoundingBox x="0" y="0" w="1000" h="100" topSolid="1" rightSolid="1" bottomSolid="1" leftSolid="1"/>
-		<Damage damagePerSecond="10000"/>
+		<Damage damagePerSecond="50000"/>
 	</Components>
 	<Systems>
 		<Render />
@@ -219,7 +219,7 @@
 <Archetype name="ParticleEmiter">
 	<Components>
 		<Position angle="270" />
-		<Particle emits="StarParticle" minV="220"  maxV="260" minParticlesPerSec="1" maxParticlesPerSec="1" minLifeTime="0" maxLifeTime="1.2" salvo="1"/>
+		<Particle emits="StarParticle" minAngle="-7.5" maxAngle="7.5"  minV="240"  maxV="250" minParticlesPerSec="1" maxParticlesPerSec="1" minLifeTime="0" maxLifeTime="1.2" salvo="1"/>
 	</Components>
 	<Systems>
 		<Particle />
@@ -228,8 +228,10 @@
 
 <Archetype name="StarParticle">
 	<Components>
+		<Damage damagePerSecond="10000"/>
 		<Position />
 		<Sprite file="particle.png"/>
+		<BoundingBox x="0" y="0" w="8" h="8" />
 		<Gravity />
 		<Physics acceleration="0" maxSpeed="1000" stoppingSpeed="0"/>
 		<Countdown time="1">
@@ -241,25 +243,7 @@
 		<Render/>
 		<Gravity/>
 		<Countdown/>
-	</Systems>
-</Archetype>
-<Archetype name="StarParticle2">
-	<Components>
-		<Position />
-		<Sprite file="particle.png"/>
-		<Gravity />
-		<Physics acceleration="0" maxSpeed="1000" stoppingSpeed="0"/>
-		<Countdown time="1">
-			<Remove time="0"/>
-		</Countdown>
-		<Particle emits="StarParticle" minParticlesPerSec="10" maxParticlesPerSec="180" minLifeTime="0" maxLifeTime="1.2"/>
-	</Components>
-	<Systems>
-		<Movement/>
-		<Render/>
-		<Gravity/>
-		<Countdown/>
-		<Particle/>
+		<Collision />
 	</Systems>
 </Archetype>
 

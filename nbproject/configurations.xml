@@ -26,6 +26,8 @@
       <itemPath>include/Components/PositionComponent.hpp</itemPath>
       <itemPath>src/Components/PositionRelativeToComponent.cpp</itemPath>
       <itemPath>include/Components/PositionRelativeToComponent.hpp</itemPath>
+      <itemPath>src/Components/RemoveComponent.cpp</itemPath>
+      <itemPath>include/Components/RemoveComponent.hpp</itemPath>
       <itemPath>src/Components/ScoreComponent.cpp</itemPath>
       <itemPath>include/Components/ScoreComponent.hpp</itemPath>
       <itemPath>src/Components/SpriteComponent.cpp</itemPath>
@@ -114,6 +116,8 @@
       <itemPath>include/Systems/PlayerInputSystem.hpp</itemPath>
       <itemPath>src/Systems/RenderSystem.cpp</itemPath>
       <itemPath>include/Systems/RenderSystem.hpp</itemPath>
+	  <itemPath>src/Systems/RemoveOnContactSystem.cpp</itemPath>
+      <itemPath>include/Systems/RemoveOnContactSystem.hpp</itemPath>
       <itemPath>src/Systems/ScoreSystem.cpp</itemPath>
       <itemPath>include/Systems/ScoreSystem.hpp</itemPath>
       <itemPath>src/Systems/StandsOnSystem.cpp</itemPath>
