@@ -40,7 +40,10 @@ struct CountdownComponent : public Component
 	double startTime;
 	double timeLeft;
 	bool toText;
+	bool restart;
+	
 	std::priority_queue<Action, std::vector<Action>, CompareByTime> actions;
+	std::priority_queue<Action, std::vector<Action>, CompareByTime> startActions;
 };
 
 #endif	/* COUNTDOWNCOMPONENT_HPP */

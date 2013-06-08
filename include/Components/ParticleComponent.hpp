@@ -30,8 +30,11 @@ struct ParticleComponent : public Component
 	double minAngularV, maxAngularV;
 	double minGravity, maxGravity;
 	double minLifeTime, maxLifeTime;
-	int minParticlesPerSec, maxParticlesPerSec;
+	double minParticlesPerSec, maxParticlesPerSec;
 	std::string emitsArchetype;
+	
+	bool salvo;
+	int particlesInSalvo;
 	
 	static const double defaultMinV, defaultMaxV;
 	static const double defaultMinAngle, defaultMaxAngle;
@@ -40,7 +43,8 @@ struct ParticleComponent : public Component
 	static const double defaultMinAngularV, defaultMaxAngularV;
 	static const double defaultMinLifeTime, defaultMaxLifeTime;
 	static const double defaultMinGravity, defaultMaxGravity;
-	static const int defaultMinParticlesPerSec, defaultMaxParticlesPerSec;
+	static const double defaultMinParticlesPerSec, defaultMaxParticlesPerSec;
+	static const int defaultParticlesInSalvo;
 };
 
 #endif	/* PARTICLECOMPONENT_HPP */

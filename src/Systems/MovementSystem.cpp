@@ -73,10 +73,20 @@ void MovementSystem::update(sf::Time time)
 		{
 			physC.vx=physC.maxSpeed*groundC.maxSpeedMultiplier;
 		}
+		if(physC.vx < -physC.maxSpeed*groundC.maxSpeedMultiplier)
+		{
+			physC.vx=-physC.maxSpeed*groundC.maxSpeedMultiplier;
+		}
+		
+		
 		
 		posC.x+=deltaT*physC.vx;
 		posC.y+=deltaT*physC.vy;
 		posC.z+=deltaT*physC.vz;
+		
+		posC.angle+=deltaT*physC.angularV;
+		std::cerr<<360.0*int(posC.angle/360.0)<<"\n";
+		posC.angle-=(360.0*int(posC.angle/360.0));
 	}
 	std::cerr<<"Movement end\n";
 }

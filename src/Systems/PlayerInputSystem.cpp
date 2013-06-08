@@ -53,7 +53,6 @@ void PlayerInputSystem::update(sf::Time deltaTime)
 		else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
 		{
 				pC.ax=pC.acceleration*sC.accelerationMultiplier;
-
 		}
 		else
 		{
@@ -63,7 +62,7 @@ void PlayerInputSystem::update(sf::Time deltaTime)
 				if(pC.vx>0)
 					sign=-1;
 				else if(pC.vx<0)
-					sign=11;
+					sign=1;
 				else
 					sign=0; //direction of decceleration
 				pC.ax=sign*pC.stoppingSpeed*sC.stoppingMultiplier;

@@ -75,6 +75,8 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/Systems/ParticleSystem.o \
 	${OBJECTDIR}/src/Systems/PlayerInputSystem.o \
 	${OBJECTDIR}/src/Systems/RenderSystem.o \
+	${OBJECTDIR}/src/Systems/ScoreSystem.o \
+	${OBJECTDIR}/src/Systems/StandsOnSystem.o \
 	${OBJECTDIR}/src/Systems/System.o \
 	${OBJECTDIR}/src/Systems/TextRenderSystem.o
 
@@ -302,6 +304,16 @@ ${OBJECTDIR}/src/Systems/RenderSystem.o: src/Systems/RenderSystem.cpp
 	${MKDIR} -p ${OBJECTDIR}/src/Systems
 	${RM} $@.d
 	$(COMPILE.cc) -g -Wall -Iinclude -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/Systems/RenderSystem.o src/Systems/RenderSystem.cpp
+
+${OBJECTDIR}/src/Systems/ScoreSystem.o: src/Systems/ScoreSystem.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/Systems
+	${RM} $@.d
+	$(COMPILE.cc) -g -Wall -Iinclude -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/Systems/ScoreSystem.o src/Systems/ScoreSystem.cpp
+
+${OBJECTDIR}/src/Systems/StandsOnSystem.o: src/Systems/StandsOnSystem.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/Systems
+	${RM} $@.d
+	$(COMPILE.cc) -g -Wall -Iinclude -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/Systems/StandsOnSystem.o src/Systems/StandsOnSystem.cpp
 
 ${OBJECTDIR}/src/Systems/System.o: src/Systems/System.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/Systems

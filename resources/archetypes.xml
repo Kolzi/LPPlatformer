@@ -4,8 +4,8 @@
 		<Sprite file="player2.png" frameWidth="38" loopTime="0.5"/>
 		<Viewport x="0" y="0" w="max" h="max" />
 		<CameraSource offsetX="100" offsetY="100" offsetZ="0" w="max" h="max" />
-		<Physics acceleration="300" stoppingSpeed="500" maxSpeed="700"/>
-		<BoundingBox x="0" y="0" w="38" h="61" />
+		<Physics acceleration="600" stoppingSpeed="1000" maxSpeed="200"/>
+		<BoundingBox x="0" y="0" w="38" h="61" topSolid="1" rightSolid="1" bottomSolid="1" leftSolid="1"/>
 		<Gravity g="100"/>
 		<StandsOn jumpingPower="300" jumpingTime="0.3"/>
 		<HasScore scoreEID="1" />
@@ -20,6 +20,7 @@
 		<Gravity />
 		<Camera />
 		<Countdown />
+		<StandsOn />
 	</Systems>
 </Archetype>
 
@@ -27,7 +28,7 @@
 	<Components>
 		<Position x="0" y="0" z="0" />
 		<Sprite file="ground.png" />
-		<BoundingBox x="0" y="0" w="176" h="31" />
+		<BoundingBox x="0" y="0" w="176" h="31" topSolid="1" rightSolid="1" bottomSolid="1" leftSolid="1"/>
 		<Standable accelerationMultiplier="2"/>
 	</Components>
 	<Systems>
@@ -40,7 +41,7 @@
 	<Components>
 		<Position />
 		<Sprite file="ground2.png" />
-		<BoundingBox x="0" y="0" w="239" h="34" />
+		<BoundingBox x="0" y="0" w="239" h="34" topSolid="1" rightSolid="1" bottomSolid="1" leftSolid="1"/>
 		<Standable accelerationMultiplier="2"/>
 	</Components>
 	<Systems>
@@ -53,7 +54,7 @@
 	<Components>
 		<Position />
 		<Sprite file="ground3.png" />
-		<BoundingBox x="0" y="0" w="132" h="34" />
+		<BoundingBox x="0" y="0" w="132" h="34" topSolid="1" rightSolid="1" bottomSolid="1" leftSolid="1"/>
 		<Standable accelerationMultiplier="2"/>
 	</Components>
 	<Systems>
@@ -66,7 +67,7 @@
 	<Components>
 		<Position />
 		<Sprite file="ground4.png" />
-		<BoundingBox x="0" y="0" w="36" h="31" />
+		<BoundingBox x="0" y="0" w="36" h="31" topSolid="1" rightSolid="1" bottomSolid="1" leftSolid="1"/>
 		<Standable accelerationMultiplier="2"/>
 	</Components>
 	<Systems>
@@ -79,7 +80,7 @@
 	<Components>
 		<Position />
 		<Sprite file="ground5.png" />
-		<BoundingBox x="0" y="0" w="36" h="35" />
+		<BoundingBox x="0" y="0" w="36" h="35" topSolid="1" rightSolid="1" bottomSolid="1" leftSolid="1"/>
 		<Standable accelerationMultiplier="2"/>
 	</Components>
 	<Systems>
@@ -92,7 +93,7 @@
 	<Components>
 		<Position />
 		<Sprite file="ground7.png" />
-		<BoundingBox x="0" y="0" w="128" h="41" />
+		<BoundingBox x="0" y="0" w="128" h="41" topSolid="1" rightSolid="1" bottomSolid="1" leftSolid="1"/>
 		<Standable accelerationMultiplier="2"/>
 	</Components>
 	<Systems>
@@ -105,7 +106,7 @@
 	<Components>
 		<Position />
 		<Sprite file="ground8.png" />
-		<BoundingBox x="0" y="0" w="222" h="34" />
+		<BoundingBox x="0" y="0" w="222" h="34" topSolid="1" rightSolid="1" bottomSolid="1" leftSolid="1"/>
 		<Standable accelerationMultiplier="2"/>
 	</Components>
 	<Systems>
@@ -146,10 +147,15 @@
 		<Sprite file="geyser.png" />
 		<BoundingBox x="0" y="0" w="10" h="16" />
 		<Standable accelerationMultiplier="2"/>
+		<Countdown time="1" restart="1">
+			<AddToSystem target="Render" time="0.9" />
+			<AddToSystem target="Collision" time="0.9" />
+			<RemoveFromSystem target="Render" time="0" />
+			<RemoveFromSystem target="Collision" time="0" />
+		</Countdown>
 	</Components>
 	<Systems>
-		<Render />
-		<Collision />
+		<Countdown />
 	</Systems>
 </Archetype>
 
@@ -203,7 +209,7 @@
 <Archetype name="ParticleEmiter">
 	<Components>
 		<Position />
-		<Particle emits="StarParticle" minParticlesPerSec="1" maxParticlesPerSec="3" minLifeTime="0" maxLifeTime="1.2" />
+		<Particle emits="StarParticle" minParticlesPerSec="1" maxParticlesPerSec="1" minLifeTime="0" maxLifeTime="1.2" salvo="1"/>
 	</Components>
 	<Systems>
 		<Particle />
@@ -244,5 +250,20 @@
 		<Gravity/>
 		<Countdown/>
 		<Particle/>
+	</Systems>
+</Archetype>
+
+<Archetype name="Coin">
+	<Components>
+		<Position />
+		<Sprite file="particle.png"/>
+		<Physics acceleration="0" maxSpeed="1000" stoppingSpeed="0" angularV="60"/>
+		<Damage damagePerSecond="-10000" once="1"/>
+		<BoundingBox x="0" y="0" w="8" h="8" />
+	</Components>
+	<Systems>
+		<Movement/>
+		<Render/>
+		<Collision />
 	</Systems>
 </Archetype>

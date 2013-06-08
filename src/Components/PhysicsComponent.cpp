@@ -11,13 +11,13 @@
 #include <boost/lexical_cast.hpp>
 
 PhysicsComponent::PhysicsComponent(int EID, double acceleration, double maxSpeed, double stoppingSpeed)
-:Component(EID),vx(0), vy(0), vz(0), ax(0), ay(0), az(0), acceleration(acceleration),
+:Component(EID),vx(0), vy(0), vz(0), ax(0), ay(0), az(0), angularV(0), acceleration(acceleration),
 		maxSpeed(maxSpeed), stoppingSpeed(stoppingSpeed)
 {
 }
 
 PhysicsComponent::PhysicsComponent(rapidxml::xml_node<>* componentNode)
-:Component(-1), vx(0), vy(0), vz(0), ax(0), ay(0), az(0)
+:Component(-1), vx(0), vy(0), vz(0), ax(0), ay(0), az(0), angularV(0)
 {
 	read(componentNode);
 }
@@ -36,6 +36,9 @@ void PhysicsComponent::read(rapidxml::xml_node<>* componentNode)
 		ay=boost::lexical_cast<double>(componentNode->first_attribute("ay")->value());
 	if(componentNode->first_attribute("az")!=0)
 		az=boost::lexical_cast<double>(componentNode->first_attribute("az")->value());
+	
+	if(componentNode->first_attribute("angularV")!=0)
+		angularV=boost::lexical_cast<double>(componentNode->first_attribute("angularV")->value());
 	
 	if(componentNode->first_attribute("acceleration")!=0)
 		acceleration=boost::lexical_cast<double>(componentNode->first_attribute("acceleration")->value());

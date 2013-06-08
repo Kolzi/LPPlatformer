@@ -43,8 +43,8 @@ void CollisionSystem::update(sf::Time deltaTime)
 {
 	for(auto it=entities.begin();it!=entities.end();it++)
 	{
-		if(components.find(Level::CompKey(*it, "StandsOn")) != components.end())
-			boost::polymorphic_downcast<StandsOnComponent*>(components.at(Level::CompKey(*it, "StandsOn")))->standing=false;
+		BoundingBoxComponent& bbCi=*boost::polymorphic_downcast<BoundingBoxComponent*>(components.at(Level::CompKey(*it, "BoundingBox")));
+		bbCi.collidedWith.clear();
 	}
 	for(auto it=entities.begin();it!=entities.end();it++)
 	{
@@ -56,11 +56,11 @@ void CollisionSystem::update(sf::Time deltaTime)
 
 		BoundingBoxComponent& bbCi=*boost::polymorphic_downcast<BoundingBoxComponent*>(components.at(Level::CompKey(*it, "BoundingBox")));
 		
-		bool iCanStand = components.find(Level::CompKey(*it, "StandsOn")) != components.end();
-		bool iStandable = components.find(Level::CompKey(*it, "Standable")) != components.end();
+	//	bool iCanStand = components.find(Level::CompKey(*it, "StandsOn")) != components.end();
+	//	bool iStandable = components.find(Level::CompKey(*it, "Standable")) != components.end();
 		
-		bool iHasScore = components.find(Level::CompKey(*it, "HasScore")) != components.end();
-		bool iDamage = components.find(Level::CompKey(*it, "Damage")) != components.end();
+	//	bool iHasScore = components.find(Level::CompKey(*it, "HasScore")) != components.end();
+	//	bool iDamage = components.find(Level::CompKey(*it, "Damage")) != components.end();
 		
 		
 		auto jt=it;
@@ -74,11 +74,11 @@ void CollisionSystem::update(sf::Time deltaTime)
 			
 			BoundingBoxComponent& bbCj=*boost::polymorphic_downcast<BoundingBoxComponent*>(components.at(Level::CompKey(*jt, "BoundingBox")));
 			
-			bool jCanStand = components.find(Level::CompKey(*jt, "StandsOn")) != components.end();
-			bool jStandable = components.find(Level::CompKey(*jt, "Standable")) != components.end();
+		//	bool jCanStand = components.find(Level::CompKey(*jt, "StandsOn")) != components.end();
+		//	bool jStandable = components.find(Level::CompKey(*jt, "Standable")) != components.end();
 			
-			bool jHasScore = components.find(Level::CompKey(*jt, "HasScore")) != components.end();
-			bool jDamage = components.find(Level::CompKey(*jt, "Damage")) != components.end();
+		//	bool jHasScore = components.find(Level::CompKey(*jt, "HasScore")) != components.end();
+		//	bool jDamage = components.find(Level::CompKey(*jt, "Damage")) != components.end();
 			
 			sf::Rect<double> bbi=bbCi.boundingBox;
 			sf::Rect<double> bbj=bbCj.boundingBox;
@@ -105,48 +105,89 @@ void CollisionSystem::update(sf::Time deltaTime)
 				double t=std::min(tx,ty);
 				
 				const double eps=0.00001;
+				BoundingBoxComponent::CollisionData colDatai, colDataj;
+				colDatai.EID=*jt;
+				colDataj.EID=*it;
+				
+				if(tx<=deltaTime.asSeconds()+eps)
+				{
+					colDataj.tx=colDatai.tx=tx;
+					if(posCi.x-(tx*physCi.vx)<=posCj.x-(t*physCj.vx))
+					{
+						colDatai.right=true;
+						colDataj.left=true;
+					}
+					else
+					{
+						colDatai.left=true;
+						colDataj.right=true;
+					}
+				}
+				if(ty<=deltaTime.asSeconds()+eps)
+				{
+					colDataj.ty=colDatai.ty=ty;
+					if(posCi.y-(ty*physCi.vy)<=posCj.y-(t*physCj.vy))
+					{
+						colDatai.bottom=true;
+						colDataj.top=true;
+					}
+					else
+					{
+						colDatai.top=true;
+						colDataj.bottom=true;
+					}
+				}
+				bbCi.collidedWith.push_back(colDatai);
+				bbCj.collidedWith.push_back(colDataj);
+				
 				
 				if(t==tx && t<=deltaTime.asSeconds()+eps)
 				{
-					posCi.x-=(t*physCi.vx);
-					posCj.x-=(t*physCj.vx);
-					physCi.vx=0;
-					physCi.ax=0;
-					physCj.ax=0;
-					physCj.vx=0;
-				}
-				else if(t==ty && t<=deltaTime.asSeconds()+eps)
-				{
-					bool iOnj=posCi.y-t*physCi.vy < posCj.y-t*physCj.vy && iCanStand && jStandable;
-					bool jOni=posCi.y-t*physCi.vy > posCj.y-t*physCj.vy && jCanStand && iStandable;
-					//i stands on j or j stands on i
-					if( iOnj || jOni )
+					if((bbCi.leftSolid && bbCj.rightSolid && colDatai.left && colDataj.right)
+					 || (bbCj.leftSolid && bbCi.rightSolid && colDataj.left && colDatai.right))
 					{
-						posCi.y-=(t*physCi.vy);
-						posCj.y-=(t*physCj.vy);
+						posCi.x-=(t*physCi.vx);
+						posCj.x-=(t*physCj.vx);
+						physCi.vx=0;
+						physCi.ax=0;
+						physCj.ax=0;
+						physCj.vx=0;
+					}
+					else if((bbCi.topSolid && bbCj.bottomSolid && colDatai.top && colDataj.bottom)
+					 || (bbCj.topSolid && bbCi.bottomSolid && colDataj.top && colDatai.bottom))
+					{
+						posCi.y-=(ty*physCi.vy);
+						posCj.y-=(ty*physCj.vy);
 						physCi.ay=0;
 						physCi.vy=0;
 						physCj.vy=0;
 						physCj.ay=0;
-						if(iOnj)
-						{
-							StandsOnComponent& standsOn=*boost::polymorphic_downcast<StandsOnComponent*>(components.at(Level::CompKey(*it, "StandsOn")));
-							StandableComponent& standable=*boost::polymorphic_downcast<StandableComponent*>(components.at(Level::CompKey(*jt, "Standable")));
-							standsOn.jumpingTimeLeft=standsOn.baseJumpingTime*standable.jumpingTimeMultiplier;
-							standsOn.standing=true;
-							standsOn.standsOn=*jt;
-						}
-						else
-						{
-							StandsOnComponent& standsOn=*boost::polymorphic_downcast<StandsOnComponent*>(components.at(Level::CompKey(*jt, "StandsOn")));
-							StandableComponent& standable=*boost::polymorphic_downcast<StandableComponent*>(components.at(Level::CompKey(*it, "Standable")));
-							standsOn.jumpingTimeLeft=standsOn.baseJumpingTime*standable.jumpingTimeMultiplier;
-							standsOn.standing=true;
-							standsOn.standsOn=*it;
-						}
 					}
 				}
-				
+				else if(t==ty && t<=deltaTime.asSeconds()+eps)
+				{
+					if((bbCi.topSolid && bbCj.bottomSolid && colDatai.top && colDataj.bottom)
+					 || (bbCj.topSolid && bbCi.bottomSolid && colDataj.top && colDatai.bottom))
+					{
+						posCi.y-=(ty*physCi.vy);
+						posCj.y-=(ty*physCj.vy);
+						physCi.ay=0;
+						physCi.vy=0;
+						physCj.vy=0;
+						physCj.ay=0;
+					}
+					else if((bbCi.leftSolid && bbCj.rightSolid && colDatai.left && colDataj.right)
+					 || (bbCj.leftSolid && bbCi.rightSolid && colDataj.left && colDatai.right))
+					{
+						posCi.x-=(tx*physCi.vx);
+						posCj.x-=(tx*physCj.vx);
+						physCi.vx=0;
+						physCi.ax=0;
+						physCj.ax=0;
+						physCj.vx=0;
+					}
+				}
+				/*
 				double currT=std::min(t,(double)deltaTime.asSeconds());
 				if(iHasScore && jDamage)
 				{
@@ -154,7 +195,13 @@ void CollisionSystem::update(sf::Time deltaTime)
 					DamageComponent& damage=*boost::polymorphic_downcast<DamageComponent*>(components.at(Level::CompKey(*jt, "Damage")));
 					ScoreComponent& score=*boost::polymorphic_downcast<ScoreComponent*>(components.at(Level::CompKey(hasScore.scoreEID, "Score")));
 					
-					score.score-=damage.damagePerSecond* currT;
+					if(damage.once && !damage.taken)
+					{
+						score.score-=damage.damagePerSecond;
+						damage.taken=true;
+					}
+					else if(!damage.once)
+						score.score-=damage.damagePerSecond* currT;
 				}
 				if(jHasScore && iDamage)
 				{
@@ -164,7 +211,7 @@ void CollisionSystem::update(sf::Time deltaTime)
 					
 					score.score-=damage.damagePerSecond* currT;
 				}
-				
+			*/
 			}
 		}
 	}

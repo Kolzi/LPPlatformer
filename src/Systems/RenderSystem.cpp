@@ -42,7 +42,12 @@ void RenderSystem::update(sf::Time deltaTime)
 			x+=ppC.x;
 			y+=ppC.y;
 		}
-		sC->sprite.setPosition(x, y);
+		int orX=sC->sprite.getLocalBounds().width/2.0;
+		int orY=sC->sprite.getLocalBounds().height/2.0;
+		sC->sprite.setOrigin(orX, orY);
+		sC->sprite.setPosition(x+orX, y+orY);
+		sC->sprite.setRotation(pC->angle);
+		
 		sC->currentFrameTime+=deltaTime.asSeconds();
 		int i=0;
 		while(sC->currentFrameTime>sC->loopTime/double(sC->numberOfFrames))

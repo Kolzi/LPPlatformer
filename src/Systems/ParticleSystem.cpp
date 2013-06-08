@@ -41,13 +41,18 @@ void ParticleSystem::update(sf::Time deltaTime)
     {
         PositionComponent& posC=*boost::polymorphic_downcast<PositionComponent*>(components.at(Level::CompKey(*it, "Position")));
         ParticleComponent& parC=*boost::polymorphic_downcast<ParticleComponent*>(components.at(Level::CompKey(*it, "Particle")));
-		double timePerParticle=1.0/double(parC.minParticlesPerSec + rand()%(parC.maxParticlesPerSec-parC.minParticlesPerSec));
+		double timePerParticle=1.0/parC.minParticlesPerSec;
+		if(parC.minParticlesPerSec != parC.maxParticlesPerSec)
+			timePerParticle=1.0/double(parC.minParticlesPerSec + rand()%int(parC.maxParticlesPerSec-parC.minParticlesPerSec));
 		
 		int particlesToEmit=0;
 		parC.timeSinceLastParticle+=deltaTime.asSeconds();
 		while(parC.timeSinceLastParticle>timePerParticle)
 		{
-			particlesToEmit++;
+			if(parC.salvo)
+				particlesToEmit+=parC.particlesInSalvo;
+			else
+				particlesToEmit++;
 			parC.timeSinceLastParticle-=timePerParticle;
 		}
 		
@@ -58,11 +63,16 @@ void ParticleSystem::update(sf::Time deltaTime)
 			
 			double ratio = double(rand())/double(RAND_MAX);
 			double angle = parC.minAngle + ratio*(parC.maxAngle-parC.minAngle);
+			angle+=posC.angle;
 			ratio = double(rand())/double(RAND_MAX);
 			double v = parC.minV+ratio*(parC.maxV-parC.minV);
 			PhysicsComponent& partPhysComp=*boost::polymorphic_downcast<PhysicsComponent*>(components.at(Level::CompKey(newID, "Physics")));
 			partPhysComp.vx = cos(angle/180.0*M_PI)*v;
 			partPhysComp.vy = sin(angle/180.0*M_PI)*v;
+			
+			ratio = double(rand())/double(RAND_MAX);
+			double aV = parC.minAngularV+ratio*(parC.maxAngularV-parC.minAngularV);
+			partPhysComp.angularV=aV;
 			
 			PositionComponent& partPosComp=*boost::polymorphic_downcast<PositionComponent*>(components.at(Level::CompKey(newID, "Position")));
 			partPosComp.x=posC.x;
