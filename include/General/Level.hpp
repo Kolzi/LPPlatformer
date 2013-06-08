@@ -32,16 +32,21 @@ public:
 	virtual ~Level();
 	
 	int getNextID();
+	
 	void addComponent(int EID, std::string compName, Component* comp);
 	void removeComponent(int EID, std::string compName);
 	void addEntityToSystem(int EID, std::string system);
 	void removeEntityFromSystem(int EID, std::string system);
+	void removeEntity(int EID);
+	
 	bool systemExists(std::string name);
+	
 	void read(std::istream& str);
 	void update(sf::Time deltaTime);
+	
 	//returns new entity ID
 	int addArchetype(std::string archetype);
-	void removeEntity(int EID);
+	
 private:
 	sf::RenderWindow& app;
 	ArchetypesManager& archetypesManager;
@@ -49,6 +54,11 @@ private:
 	std::list <System*> systems;
 	std::unordered_map <std::string, System*> systemsMap;
 	CompMap components;
+	
+	std::list <CompKey> componentToRemove;
+	std::list <std::pair<int, std::string>> entitiesToRemoveFromSystems;
+	std::list <int> entitiesToRemove;
+	
 };
 
 #endif	/* LEVEL_HPP */

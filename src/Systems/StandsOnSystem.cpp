@@ -60,21 +60,10 @@ void StandsOnSystem::update(sf::Time deltaTime)
 		PositionComponent& posCi = *boost::polymorphic_downcast<PositionComponent*>(components.at(Level::CompKey(*it, "Position")));
 		BoundingBoxComponent& bbCi = *boost::polymorphic_downcast<BoundingBoxComponent*>(components.at(Level::CompKey(*it, "BoundingBox")));
 
-		//	bool iCanStand = components.find(Level::CompKey(*it, "StandsOn")) != components.end();
-		//	bool iStandable = components.find(Level::CompKey(*it, "Standable")) != components.end();
-
-		//	bool iHasScore = components.find(Level::CompKey(*it, "HasScore")) != components.end();
-		//	bool iDamage = components.find(Level::CompKey(*it, "Damage")) != components.end();
 		for (BoundingBoxComponent::CollisionData collWith : bbCi.collidedWith)
 		{
 			PositionComponent& posCj = *boost::polymorphic_downcast<PositionComponent*>(components.at(Level::CompKey(collWith.EID, "Position")));
 			BoundingBoxComponent& bbCj = *boost::polymorphic_downcast<BoundingBoxComponent*>(components.at(Level::CompKey(collWith.EID, "BoundingBox")));
-
-			//	bool jCanStand = components.find(Level::CompKey(*jt, "StandsOn")) != components.end();
-			//	bool jStandable = components.find(Level::CompKey(*jt, "Standable")) != components.end();
-
-			//	bool jHasScore = components.find(Level::CompKey(*jt, "HasScore")) != components.end();
-			//	bool jDamage = components.find(Level::CompKey(*jt, "Damage")) != components.end();
 
 			sf::Rect<double> bbi = bbCi.boundingBox;
 			sf::Rect<double> bbj = bbCj.boundingBox;

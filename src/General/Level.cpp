@@ -26,6 +26,8 @@
 #include "Systems/ParticleSystem.hpp"
 #include "Systems/CountdownSystem.hpp"
 #include "Systems/StandsOnSystem.hpp"
+#include "Systems/ScoreSystem.hpp"
+#include "Systems/RemoveOnContactSystem.hpp"
 #include "General/StringComponentConverter.h"
 #include "Exceptions/NoSuchSystem.hpp"
 
@@ -50,8 +52,14 @@ Level::Level(sf::RenderWindow& app, ArchetypesManager& archetypesManager)
 	systemsMap.insert(std::pair<std::string, System*>("Collision", new CollisionSystem(components)));
 	systems.push_back(systemsMap.at("Collision"));
 	
+	systemsMap.insert(std::pair<std::string, System*>("Score", new ScoreSystem(components)));
+	systems.push_back(systemsMap.at("Score"));
+	
 	systemsMap.insert(std::pair<std::string, System*>("StandsOn", new StandsOnSystem(components)));
 	systems.push_back(systemsMap.at("StandsOn"));
+	
+	systemsMap.insert(std::pair<std::string, System*>("RemoveOnContact", new RemoveOnContactSystem(components, *this)));
+	systems.push_back(systemsMap.at("RemoveOnContact"));
 	
 	systemsMap.insert(std::pair<std::string, System*>("DataToText", new DataToTextSystem(components)));
 	systems.push_back(systemsMap.at("DataToText"));
@@ -106,9 +114,29 @@ void Level::read(std::istream& str)
 void Level::update(sf::Time deltaTime)
 {
 	std::cerr<<"Update\n";
+	std::cerr<<"Components left: "<<components.size()<<"\n";
 	for(auto system:systems)
 	{
 		system->update(deltaTime);
+	}
+	for(auto comp:componentToRemove)
+		components.erase(comp);
+	componentToRemove.clear();
+	
+	for(auto enP : entitiesToRemoveFromSystems )
+		systemsMap.at(enP.second)->removeEntity(enP.first);
+	entitiesToRemoveFromSystems.clear();
+	
+	for(int EID : entitiesToRemove)
+	{
+		for(auto compName:StringComponentConverter::componentNames)
+		{
+			components.erase(CompKey(EID, compName));
+		}
+		for(auto system:systems)
+		{
+			system->removeEntity(EID);
+		}
 	}
 }
 
@@ -119,7 +147,7 @@ void Level::addComponent(int EID, std::string compName, Component* comp)
 
 void Level::removeComponent(int EID, std::string compName)
 {
-	//components.erase(CompKey(EID, compName));
+	componentToRemove.push_back(CompKey(EID, compName));
 }
 
 void Level::addEntityToSystem(int EID, std::string system)
@@ -133,7 +161,7 @@ void Level::removeEntityFromSystem(int EID, std::string system)
 {
 	if(!systemExists(system))
 		throw NoSuchSystem(system);
-	systemsMap.at(system)->removeEntity(EID);
+	entitiesToRemoveFromSystems.push_back(std::make_pair(EID, system));
 }
 
 int Level::getNextID()
@@ -151,16 +179,7 @@ int Level::addArchetype(std::string archetype)
 
 void Level::removeEntity(int EID)
 {
-	for(auto compName:StringComponentConverter::componentNames)
-	{
-		components.erase(CompKey(EID, compName));
-	}
-	std::cerr<<"Removed\n";
-	for(auto system:systems)
-	{
-		system->removeEntity(EID);
-	}
-	std::cerr<<"Removed from systems\n";
+	entitiesToRemove.push_back(EID);
 }
 
 bool Level::systemExists(std::string name)

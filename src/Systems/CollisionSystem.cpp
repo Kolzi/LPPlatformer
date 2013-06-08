@@ -75,12 +75,6 @@ void CollisionSystem::update(sf::Time deltaTime)
 			
 			BoundingBoxComponent& bbCj=*boost::polymorphic_downcast<BoundingBoxComponent*>(components.at(Level::CompKey(*jt, "BoundingBox")));
 			
-		//	bool jCanStand = components.find(Level::CompKey(*jt, "StandsOn")) != components.end();
-		//	bool jStandable = components.find(Level::CompKey(*jt, "Standable")) != components.end();
-			
-		//	bool jHasScore = components.find(Level::CompKey(*jt, "HasScore")) != components.end();
-		//	bool jDamage = components.find(Level::CompKey(*jt, "Damage")) != components.end();
-			
 			sf::Rect<double> bbi=bbCi.boundingBox;
 			sf::Rect<double> bbj=bbCj.boundingBox;
 			
@@ -188,31 +182,6 @@ void CollisionSystem::update(sf::Time deltaTime)
 						physCj.vx=0;
 					}
 				}
-				/*
-				double currT=std::min(t,(double)deltaTime.asSeconds());
-				if(iHasScore && jDamage)
-				{
-					HasScoreComponent& hasScore=*boost::polymorphic_downcast<HasScoreComponent*>(components.at(Level::CompKey(*it, "HasScore")));
-					DamageComponent& damage=*boost::polymorphic_downcast<DamageComponent*>(components.at(Level::CompKey(*jt, "Damage")));
-					ScoreComponent& score=*boost::polymorphic_downcast<ScoreComponent*>(components.at(Level::CompKey(hasScore.scoreEID, "Score")));
-					
-					if(damage.once && !damage.taken)
-					{
-						score.score-=damage.damagePerSecond;
-						damage.taken=true;
-					}
-					else if(!damage.once)
-						score.score-=damage.damagePerSecond* currT;
-				}
-				if(jHasScore && iDamage)
-				{
-					HasScoreComponent& hasScore=*boost::polymorphic_downcast<HasScoreComponent*>(components.at(Level::CompKey(*jt, "HasScore")));
-					DamageComponent& damage=*boost::polymorphic_downcast<DamageComponent*>(components.at(Level::CompKey(*it, "Damage")));
-					ScoreComponent& score=*boost::polymorphic_downcast<ScoreComponent*>(components.at(Level::CompKey(hasScore.scoreEID, "Score")));
-					
-					score.score-=damage.damagePerSecond* currT;
-				}
-			*/
 			}
 		}
 	}
