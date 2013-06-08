@@ -10,13 +10,19 @@
 
 #include <boost/lexical_cast.hpp>
 
-BoundingBoxComponent::BoundingBoxComponent(sf::Rect<double> boundingBox, int EID)
-:Component(EID), boundingBox(boundingBox)
+BoundingBoxComponent::BoundingBoxComponent(int EID)
+:Component(EID), boundingBox(), topSolid(false), rightSolid(false),
+		bottomSolid(false), leftSolid(false)
 {
 }
-
+BoundingBoxComponent::BoundingBoxComponent(sf::Rect<double> boundingBox, int EID)
+:BoundingBoxComponent(EID)
+{
+	this->boundingBox=boundingBox;
+}
 BoundingBoxComponent::BoundingBoxComponent(rapidxml::xml_node<>* componentNode)
-:Component(-1)
+:Component(-1), topSolid(false), rightSolid(false),
+		bottomSolid(false), leftSolid(false)
 {
 	read(componentNode);
 }
@@ -37,6 +43,15 @@ void BoundingBoxComponent::read(rapidxml::xml_node<>* componentNode)
 		boundingBox.height=boost::lexical_cast<double>(componentNode->first_attribute("h")->value());
 	else
 		throw RequiredAttributeNotFound("h", "BoundingBox");
+	
+	if(componentNode->first_attribute("topSolid")!=0)
+		topSolid=boost::lexical_cast<bool>(componentNode->first_attribute("topSolid")->value());
+	if(componentNode->first_attribute("rightSolid")!=0)
+		rightSolid=boost::lexical_cast<bool>(componentNode->first_attribute("rightSolid")->value());
+	if(componentNode->first_attribute("bottomSolid")!=0)
+		bottomSolid=boost::lexical_cast<bool>(componentNode->first_attribute("bottomSolid")->value());
+	if(componentNode->first_attribute("leftSolid")!=0)
+		leftSolid=boost::lexical_cast<bool>(componentNode->first_attribute("leftSolid")->value());
 }
 
 Component* BoundingBoxComponent::clone(int newEID)
