@@ -25,7 +25,7 @@
 	</Systems>
 </Archetype>
 
-<Archetype name="Ground">
+<Archetype name="GroundStart">
 	<Components>
 		<Position x="0" y="0" z="0" />
 		<Sprite file="ground.png" />
@@ -38,7 +38,7 @@
 	</Systems>
 </Archetype>
 
-<Archetype name="Ground2">
+<Archetype name="GroundLong">
 	<Components>
 		<Position />
 		<Sprite file="ground2.png" />
@@ -51,7 +51,7 @@
 	</Systems>
 </Archetype>
 
-<Archetype name="Ground3">
+<Archetype name="GroundMid">
 	<Components>
 		<Position />
 		<Sprite file="ground3.png" />
@@ -64,7 +64,7 @@
 	</Systems>
 </Archetype>
 
-<Archetype name="Ground4">
+<Archetype name="GroundMaly1">
 	<Components>
 		<Position />
 		<Sprite file="ground4.png" />
@@ -77,7 +77,7 @@
 	</Systems>
 </Archetype>
 
-<Archetype name="Ground5">
+<Archetype name="GroundMaly2">
 	<Components>
 		<Position />
 		<Sprite file="ground5.png" />
@@ -90,20 +90,7 @@
 	</Systems>
 </Archetype>
 
-<Archetype name="Ground6">
-	<Components>
-		<Position />
-		<Sprite file="ground6.png" />
-		<BoundingBox x="0" y="0" w="38" h="79" topSolid="1" rightSolid="1" bottomSolid="1" leftSolid="1"/>
-		<Standable accelerationMultiplier="2"/>
-	</Components>
-	<Systems>
-		<Render />
-		<Collision />
-	</Systems>
-</Archetype>
-
-<Archetype name="Ground7">
+<Archetype name="GroundFat">
 	<Components>
 		<Position />
 		<Sprite file="ground7.png" />
@@ -116,11 +103,37 @@
 	</Systems>
 </Archetype>
 
-<Archetype name="Ground8">
+<Archetype name="GroundLong2">
 	<Components>
 		<Position />
 		<Sprite file="ground8.png" />
 		<BoundingBox x="0" y="0" w="222" h="34" topSolid="1" rightSolid="1" bottomSolid="1" leftSolid="1"/>
+		<Standable accelerationMultiplier="2"/>
+	</Components>
+	<Systems>
+		<Render />
+		<Collision />
+	</Systems>
+</Archetype>
+
+<Archetype name="GroundVert">
+	<Components>
+		<Position />
+		<Sprite file="ground6.png" />
+		<BoundingBox x="0" y="0" w="38" h="79" />
+		<Standable accelerationMultiplier="2"/>
+	</Components>
+	<Systems>
+		<Render />
+		<Collision />
+	</Systems>
+</Archetype>
+
+<Archetype name="GroundHor">
+	<Components>
+		<Position x="0" y="0" z="0" />
+		<Sprite file="ground9.png" />
+		<BoundingBox x="0" y="0" w="79" h="38" />
 		<Standable accelerationMultiplier="2"/>
 	</Components>
 	<Systems>
