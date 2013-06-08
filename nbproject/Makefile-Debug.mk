@@ -63,6 +63,8 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/General/SimpleIDGenerator.o \
 	${OBJECTDIR}/src/General/SoundManager.o \
 	${OBJECTDIR}/src/General/StringComponentConverter.o \
+	${OBJECTDIR}/src/States/GameState.o \
+	${OBJECTDIR}/src/States/MenuState.o \
 	${OBJECTDIR}/src/Systems/CameraSystem.o \
 	${OBJECTDIR}/src/Systems/CollisionSystem.o \
 	${OBJECTDIR}/src/Systems/CountdownSystem.o \
@@ -240,6 +242,16 @@ ${OBJECTDIR}/src/General/StringComponentConverter.o: src/General/StringComponent
 	${MKDIR} -p ${OBJECTDIR}/src/General
 	${RM} $@.d
 	$(COMPILE.cc) -g -Wall -Iinclude -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/General/StringComponentConverter.o src/General/StringComponentConverter.cpp
+
+${OBJECTDIR}/src/States/GameState.o: src/States/GameState.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/States
+	${RM} $@.d
+	$(COMPILE.cc) -g -Wall -Iinclude -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/States/GameState.o src/States/GameState.cpp
+
+${OBJECTDIR}/src/States/MenuState.o: src/States/MenuState.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/States
+	${RM} $@.d
+	$(COMPILE.cc) -g -Wall -Iinclude -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/States/MenuState.o src/States/MenuState.cpp
 
 ${OBJECTDIR}/src/Systems/CameraSystem.o: src/Systems/CameraSystem.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/Systems

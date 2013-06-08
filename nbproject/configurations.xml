@@ -86,6 +86,13 @@
       <itemPath>resources/player.png</itemPath>
       <itemPath>resources/testlevel.xml</itemPath>
     </logicalFolder>
+    <logicalFolder name="f7" displayName="States" projectFiles="true" kind="ROOT">
+      <itemPath>src/States/GameState.cpp</itemPath>
+      <itemPath>include/States/GameState.hpp</itemPath>
+      <itemPath>src/States/MenuState.cpp</itemPath>
+      <itemPath>include/States/MenuState.hpp</itemPath>
+      <itemPath>include/States/State.hpp</itemPath>
+    </logicalFolder>
     <logicalFolder name="f2" displayName="Systems" projectFiles="true">
       <itemPath>src/Systems/CameraSystem.cpp</itemPath>
       <itemPath>include/Systems/CameraSystem.hpp</itemPath>
@@ -291,6 +298,12 @@
             tool="3"
             flavor2="0">
       </item>
+      <item path="include/States/GameState.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/States/MenuState.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/States/State.hpp" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="include/Systems/CameraSystem.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="include/Systems/CollisionSystem.hpp"
@@ -466,6 +479,10 @@
             ex="false"
             tool="1"
             flavor2="0">
+      </item>
+      <item path="src/States/GameState.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/States/MenuState.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/Systems/CameraSystem.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -649,6 +666,12 @@
             tool="3"
             flavor2="0">
       </item>
+      <item path="include/States/GameState.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/States/MenuState.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/States/State.hpp" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="include/Systems/CameraSystem.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="include/Systems/CollisionSystem.hpp"
@@ -824,6 +847,10 @@
             ex="false"
             tool="1"
             flavor2="0">
+      </item>
+      <item path="src/States/GameState.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/States/MenuState.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/Systems/CameraSystem.cpp" ex="false" tool="1" flavor2="0">
       </item>
