@@ -55,7 +55,12 @@ void MovementSystem::update(sf::Time time)
 		
 		StandableComponent groundC(-1, 0, 1000, 0,0, 0);
 		if(standsOnC.standing)
-			groundC = *boost::polymorphic_downcast<StandableComponent*>(components.at(Level::CompKey(standsOnC.standsOn, "Standable")));
+		{
+			StandableComponent empty(-1);
+				groundC = (components.find(Level::CompKey(standsOnC.standsOn, "Standable"))!= components.end() ? 
+						*boost::polymorphic_downcast<StandableComponent*>(components.at(Level::CompKey(standsOnC.standsOn, "Standable"))):
+					empty);
+		}
 		else
 			groundC=StandableComponent(-1);
 		

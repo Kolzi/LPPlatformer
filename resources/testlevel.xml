@@ -2,39 +2,154 @@
 </Object>
 
 <Object name="Player">
-	<Position x="-180" y="125" z="0" />
+	<Position x="-10" y="125" z="0" />
 </Object>
 
-<Object name="Coin">
-	<Position x="300" y="125" z="0" />
+<Object name="Lava">
+	<Position x="-400" y="230" z="0" />
 </Object>
 
-<Object name="ParticleEmiter">
-	<Position x="110" y="234" z="0" />
+<Object name="Lava">
+	<Position x="-400" y="330" z="0" />
 </Object>
 
-<Object name="GroundFat">
-	<Position x="-200" y="200" z="0" />
+<Object name="Lava">
+	<Position x="600" y="230" z="0" />
 </Object>
+
+<Object name="Lava">
+	<Position x="600" y="330" z="0" />
+</Object>
+
 
 <Object name="GroundFat">
 	<Position x="0" y="200" z="0" />
+</Object>
+
+<Object name="ParticleEmiter">
+	<Position x="159" y="230" z="0" />
 </Object>
 
 <Object name="GroundFat">
 	<Position x="200" y="200" z="0" />
 </Object>
 
+<Object name="Coin">
+	<Position x="264" y="150" z="0" />
+</Object>
+
+
+<Object name="ParticleEmiter">
+	<Position x="359" y="230" z="0" />
+</Object>
+
 <Object name="GroundFat">
 	<Position x="400" y="200" z="0" />
+</Object>
+
+<Object name="Coin">
+	<Position x="464" y="150" z="0" />
+</Object>
+
+<Object name="ParticleEmiter">
+	<Position x="559" y="230" z="0" />
 </Object>
 
 <Object name="GroundFat">
 	<Position x="600" y="200" z="0" />
 </Object>
 
-<Object name="GroundVert">
-	<Position x="800" y="200" z="0" />
+<Object name="Coin">
+	<Position x="664" y="150" z="0" />
 </Object>
+
+<Object name="ParticleEmiter">
+	<Position x="759" y="230" z="0" />
+</Object>
+
+<Object name="GroundMid">
+	<Position x="800" y="180" z="0" />
+</Object>
+
+<Object name="GroundMid">
+	<Position x="900" y="146" z="0" />
+</Object>
+
+<Object name="GroundMid">
+	<Position x="1000" y="112" z="0" />
+</Object>
+
+<Object name="GroundMid">
+	<Position x="1100" y="78" z="0" />
+</Object>
+
+<Object name="GroundMid">
+	<Position x="1200" y="44" z="0" />
+</Object>
+
+<Object name="GroundMid">
+	<Position x="1300" y="10" z="0" />
+</Object>
+
+<Object name="GroundMid">
+	<Position x="1400" y="-24" z="0" />
+</Object>
+
+<Object name="GroundMid">
+	<Position x="1500" y="-58" z="0" />
+</Object>
+
+<Object name="GroundMid">
+	<Position x="1600" y="-92" z="0" />
+</Object>
+
+<Object name="GroundMid">
+	<Position x="1700" y="-126" z="0" />
+</Object>
+
+<Object name="GroundMid">
+	<Position x="1800" y="-160" z="0" />
+</Object>
+
+<Object name="GroundMid">
+	<Position x="1900" y="-194" z="0" />
+</Object>
+
+<Object name="GroundMid">
+	<Position x="2000" y="-228" z="0" />
+</Object>
+
+<Object name="GroundLong">
+	<Position x="2100" y="-262" z="0" />
+</Object>
+
+<Object name="GroundVert">
+	<Position x="2331" y="-262" z="0" />
+</Object>
+
+<Object name="GroundMid">
+	<Position x="2331" y="-183" z="0" />
+</Object>
+
+<Object name="GroundVert">
+	<Position x="2427" y="-262" z="0" />
+</Object>
+
+<Object name="GroundLong">
+	<Position x="2427" y="-262" z="0" />
+</Object>
+
+<Object name="GroundVert">
+	<Position x="2666" y="-262" z="0" />
+</Object>
+
+<Object name="GroundMid">
+	<Position x="2666" y="-183" z="0" />
+</Object>
+
+<Object name="GroundVert">
+	<Position x="2762" y="-262" z="0" />
+</Object>
+
 
 <Object name="LevelMusic" />

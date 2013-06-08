@@ -3,7 +3,7 @@
 		<Position x="0" y="0" z="0" />
 		<Sprite file="player2.png" frameWidth="38" loopTime="0.5"/>
 		<Viewport x="0" y="0" w="max" h="max" />
-		<CameraSource offsetX="100" offsetY="100" offsetZ="0" w="max" h="max" />
+		<CameraSource offsetX="270" offsetY="-80" offsetZ="0" w="max" h="max" />
 		<Physics acceleration="600" stoppingSpeed="1000" maxSpeed="200"/>
 		<BoundingBox x="0" y="0" w="38" h="61" topSolid="1" rightSolid="1" bottomSolid="1" leftSolid="1"/>
 		<Gravity g="100"/>
@@ -63,7 +63,7 @@
 	</Systems>
 </Archetype>
 
-<Archetype name="GroundMaly1">
+<Archetype name="GroundSmall">
 	<Components>
 		<Position />
 		<Sprite file="ground4.png" />
@@ -76,7 +76,7 @@
 	</Systems>
 </Archetype>
 
-<Archetype name="GroundMaly2">
+<Archetype name="GroundSmall2">
 	<Components>
 		<Position />
 		<Sprite file="ground5.png" />
@@ -119,7 +119,7 @@
 	<Components>
 		<Position />
 		<Sprite file="ground6.png" />
-		<BoundingBox x="0" y="0" w="38" h="79" />
+		<BoundingBox x="0" y="0" w="38" h="79" topSolid="1" rightSolid="1" bottomSolid="1" leftSolid="1"/>
 		<Standable accelerationMultiplier="2"/>
 	</Components>
 	<Systems>
@@ -132,7 +132,7 @@
 	<Components>
 		<Position x="0" y="0" z="0" />
 		<Sprite file="ground9.png" />
-		<BoundingBox x="0" y="0" w="79" h="38" />
+		<BoundingBox x="0" y="0" w="79" h="38" topSolid="1" rightSolid="1" bottomSolid="1" leftSolid="1" />
 		<Standable accelerationMultiplier="2"/>
 	</Components>
 	<Systems>
@@ -145,27 +145,34 @@
 	<Components>
 		<Position />
 		<Sprite file="geyser.png" />
-		<BoundingBox x="0" y="0" w="10" h="16" />
+		<BoundingBox x="0" y="0" w="10" h="16" topSolid="1" rightSolid="1" bottomSolid="1" leftSolid="1"/>
 		<Standable accelerationMultiplier="2"/>
-		<Countdown time="1" restart="1">
-			<AddToSystem target="Render" time="0.9" />
-			<AddToSystem target="Collision" time="0.9" />
-			<RemoveFromSystem target="Render" time="0" />
-			<RemoveFromSystem target="Collision" time="0" />
-		</Countdown>
 	</Components>
 	<Systems>
-		<Countdown />
+		<Render />
+		<Collision />
 	</Systems>
 </Archetype>
 
-<Archetype name="BurningGround">
+<Archetype name="GroundMid">
+	<Components>
+		<Position />
+		<Sprite file="ground3.png" />
+		<BoundingBox x="0" y="0" w="132" h="34" topSolid="1" rightSolid="1" bottomSolid="1" leftSolid="1"/>
+		<Standable accelerationMultiplier="2"/>
+	</Components>
+	<Systems>
+		<Render />
+		<Collision />
+	</Systems>
+</Archetype>
+
+<Archetype name="Lava">
 	<Components>
 		<Position x="0" y="0" z="0" />
-		<Sprite file="burningGround.png" />
-		<BoundingBox x="0" y="0" w="100" h="100" />
-		<Standable accelerationMultiplier="2"/>
-		<Damage damagePerSecond="50000"/>
+		<Sprite file="lava.png" />
+		<BoundingBox x="0" y="0" w="1000" h="100" topSolid="1" rightSolid="1" bottomSolid="1" leftSolid="1"/>
+		<Damage damagePerSecond="10000"/>
 	</Components>
 	<Systems>
 		<Render />
@@ -208,8 +215,8 @@
 
 <Archetype name="ParticleEmiter">
 	<Components>
-		<Position />
-		<Particle emits="StarParticle" minParticlesPerSec="1" maxParticlesPerSec="1" minLifeTime="0" maxLifeTime="1.2" salvo="1"/>
+		<Position angle="270" />
+		<Particle emits="StarParticle" minV="220"  maxV="260" minParticlesPerSec="1" maxParticlesPerSec="1" minLifeTime="0" maxLifeTime="1.2" salvo="1"/>
 	</Components>
 	<Systems>
 		<Particle />

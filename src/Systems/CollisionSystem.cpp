@@ -41,6 +41,7 @@ void CollisionSystem::addEntity(int EID)
 
 void CollisionSystem::update(sf::Time deltaTime)
 {
+	std::cerr<<"Collision\n";
 	for(auto it=entities.begin();it!=entities.end();it++)
 	{
 		BoundingBoxComponent& bbCi=*boost::polymorphic_downcast<BoundingBoxComponent*>(components.at(Level::CompKey(*it, "BoundingBox")));
@@ -215,4 +216,5 @@ void CollisionSystem::update(sf::Time deltaTime)
 			}
 		}
 	}
+	std::cerr<<"Collision end\n";
 }
