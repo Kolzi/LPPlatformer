@@ -26,6 +26,7 @@
 #include "Systems/ParticleSystem.hpp"
 #include "Systems/CountdownSystem.hpp"
 #include "Systems/StandsOnSystem.hpp"
+#include "Systems/ScoreSystem.hpp"
 #include "General/StringComponentConverter.h"
 #include "Exceptions/NoSuchSystem.hpp"
 
@@ -49,6 +50,9 @@ Level::Level(sf::RenderWindow& app, ArchetypesManager& archetypesManager)
 	
 	systemsMap.insert(std::pair<std::string, System*>("Collision", new CollisionSystem(components)));
 	systems.push_back(systemsMap.at("Collision"));
+	
+	systemsMap.insert(std::pair<std::string, System*>("Score", new ScoreSystem(components)));
+	systems.push_back(systemsMap.at("Score"));
 	
 	systemsMap.insert(std::pair<std::string, System*>("StandsOn", new StandsOnSystem(components)));
 	systems.push_back(systemsMap.at("StandsOn"));

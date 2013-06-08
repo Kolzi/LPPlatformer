@@ -21,6 +21,7 @@
 		<Camera />
 		<Countdown />
 		<StandsOn />
+		<Score />
 	</Systems>
 </Archetype>
 
