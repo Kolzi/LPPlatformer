@@ -48,6 +48,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/Components/PhysicsComponent.o \
 	${OBJECTDIR}/src/Components/PositionComponent.o \
 	${OBJECTDIR}/src/Components/PositionRelativeToComponent.o \
+	${OBJECTDIR}/src/Components/RemoveComponent.o \
 	${OBJECTDIR}/src/Components/ScoreComponent.o \
 	${OBJECTDIR}/src/Components/SpriteComponent.o \
 	${OBJECTDIR}/src/Components/StandableComponent.o \
@@ -74,6 +75,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/Systems/MusicSystem.o \
 	${OBJECTDIR}/src/Systems/ParticleSystem.o \
 	${OBJECTDIR}/src/Systems/PlayerInputSystem.o \
+	${OBJECTDIR}/src/Systems/RemoveOnContactSystem.o \
 	${OBJECTDIR}/src/Systems/RenderSystem.o \
 	${OBJECTDIR}/src/Systems/ScoreSystem.o \
 	${OBJECTDIR}/src/Systems/StandsOnSystem.o \
@@ -169,6 +171,11 @@ ${OBJECTDIR}/src/Components/PositionRelativeToComponent.o: src/Components/Positi
 	${MKDIR} -p ${OBJECTDIR}/src/Components
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/Components/PositionRelativeToComponent.o src/Components/PositionRelativeToComponent.cpp
+
+${OBJECTDIR}/src/Components/RemoveComponent.o: src/Components/RemoveComponent.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/Components
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/Components/RemoveComponent.o src/Components/RemoveComponent.cpp
 
 ${OBJECTDIR}/src/Components/ScoreComponent.o: src/Components/ScoreComponent.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/Components
@@ -299,6 +306,11 @@ ${OBJECTDIR}/src/Systems/PlayerInputSystem.o: src/Systems/PlayerInputSystem.cpp
 	${MKDIR} -p ${OBJECTDIR}/src/Systems
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/Systems/PlayerInputSystem.o src/Systems/PlayerInputSystem.cpp
+
+${OBJECTDIR}/src/Systems/RemoveOnContactSystem.o: src/Systems/RemoveOnContactSystem.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/Systems
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/Systems/RemoveOnContactSystem.o src/Systems/RemoveOnContactSystem.cpp
 
 ${OBJECTDIR}/src/Systems/RenderSystem.o: src/Systems/RenderSystem.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/Systems

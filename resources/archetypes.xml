@@ -12,6 +12,7 @@
 		<Countdown time="3">
 			<AddToSystem target="PlayerInput" time="0"/>
 		</Countdown>
+		<Remove removeGroup="1" target="0"/>
 	</Components>
 	<Systems>
 		<Render />
@@ -22,6 +23,7 @@
 		<Countdown />
 		<StandsOn />
 		<Score />
+		<RemoveOnContact />
 	</Systems>
 </Archetype>
 
@@ -261,6 +263,7 @@
 		<Physics acceleration="0" maxSpeed="1000" stoppingSpeed="0" angularV="60"/>
 		<Damage damagePerSecond="-10000" once="1"/>
 		<BoundingBox x="0" y="0" w="8" h="8" />
+		<Remove removeGroup="1" target="1" />
 	</Components>
 	<Systems>
 		<Movement/>

@@ -225,6 +225,11 @@
             tool="3"
             flavor2="0">
       </item>
+      <item path="include/Components/RemoveComponent.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="include/Components/ScoreComponent.hpp"
             ex="false"
             tool="3"
@@ -340,6 +345,11 @@
             tool="3"
             flavor2="0">
       </item>
+      <item path="include/Systems/RemoveOnContactSystem.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="include/Systems/RenderSystem.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="include/Systems/ScoreSystem.hpp" ex="false" tool="3" flavor2="0">
@@ -448,6 +458,8 @@
             tool="1"
             flavor2="0">
       </item>
+      <item path="src/Components/RemoveComponent.cpp" ex="false" tool="1" flavor2="0">
+      </item>
       <item path="src/Components/ScoreComponent.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/Components/SpriteComponent.cpp" ex="false" tool="1" flavor2="0">
@@ -511,6 +523,11 @@
       <item path="src/Systems/ParticleSystem.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/Systems/PlayerInputSystem.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Systems/RemoveOnContactSystem.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
       </item>
       <item path="src/Systems/RenderSystem.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -603,6 +620,11 @@
             tool="3"
             flavor2="0">
       </item>
+      <item path="include/Components/RemoveComponent.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="include/Components/ScoreComponent.hpp"
             ex="false"
             tool="3"
@@ -718,6 +740,11 @@
             tool="3"
             flavor2="0">
       </item>
+      <item path="include/Systems/RemoveOnContactSystem.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="include/Systems/RenderSystem.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="include/Systems/ScoreSystem.hpp" ex="false" tool="3" flavor2="0">
@@ -826,6 +853,8 @@
             tool="1"
             flavor2="0">
       </item>
+      <item path="src/Components/RemoveComponent.cpp" ex="false" tool="1" flavor2="0">
+      </item>
       <item path="src/Components/ScoreComponent.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/Components/SpriteComponent.cpp" ex="false" tool="1" flavor2="0">
@@ -889,6 +918,11 @@
       <item path="src/Systems/ParticleSystem.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/Systems/PlayerInputSystem.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Systems/RemoveOnContactSystem.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
       </item>
       <item path="src/Systems/RenderSystem.cpp" ex="false" tool="1" flavor2="0">
       </item>

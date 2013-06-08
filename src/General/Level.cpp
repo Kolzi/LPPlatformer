@@ -27,6 +27,7 @@
 #include "Systems/CountdownSystem.hpp"
 #include "Systems/StandsOnSystem.hpp"
 #include "Systems/ScoreSystem.hpp"
+#include "Systems/RemoveOnContactSystem.hpp"
 #include "General/StringComponentConverter.h"
 #include "Exceptions/NoSuchSystem.hpp"
 
@@ -56,6 +57,9 @@ Level::Level(sf::RenderWindow& app, ArchetypesManager& archetypesManager)
 	
 	systemsMap.insert(std::pair<std::string, System*>("StandsOn", new StandsOnSystem(components)));
 	systems.push_back(systemsMap.at("StandsOn"));
+	
+	systemsMap.insert(std::pair<std::string, System*>("RemoveOnContact", new RemoveOnContactSystem(components, *this)));
+	systems.push_back(systemsMap.at("RemoveOnContact"));
 	
 	systemsMap.insert(std::pair<std::string, System*>("DataToText", new DataToTextSystem(components)));
 	systems.push_back(systemsMap.at("DataToText"));
