@@ -86,7 +86,7 @@
       <itemPath>resources/player.png</itemPath>
       <itemPath>resources/testlevel.xml</itemPath>
     </logicalFolder>
-    <logicalFolder name="f7" displayName="States" projectFiles="true" kind="ROOT">
+    <logicalFolder name="f7" displayName="States" projectFiles="true">
       <itemPath>src/States/GameState.cpp</itemPath>
       <itemPath>include/States/GameState.hpp</itemPath>
       <itemPath>src/States/MenuState.cpp</itemPath>
