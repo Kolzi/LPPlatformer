@@ -30,6 +30,7 @@ CameraSystem::~CameraSystem()
 
 void CameraSystem::update(sf::Time deltaTime)
 {
+	sf::Clock timer;
     for(auto it=entities.begin();it!=entities.end();it++)
     {
         PositionComponent* pC=boost::polymorphic_downcast<PositionComponent*>(components.at(Level::CompKey(*it, "Position")));
@@ -39,6 +40,7 @@ void CameraSystem::update(sf::Time deltaTime)
 		view.setSize(csC->sourceWidth, csC->sourceHeight);
         window.setView(view);
     }
+	std::cerr<<"Camera system: "<<timer.getElapsedTime().asMilliseconds()<<"\n";
 }
 
 void CameraSystem::addEntity(int EID)
@@ -46,5 +48,5 @@ void CameraSystem::addEntity(int EID)
 	assert( components.find(Level::CompKey(EID, "Position")) != components.end() &&
 			components.find(Level::CompKey(EID, "CameraSource")) != components.end() &&
 			components.find(Level::CompKey(EID, "Viewport")) != components.end() );
-    entities.push_back(EID);
+    entities.insert(EID);
 }

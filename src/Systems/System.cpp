@@ -25,5 +25,5 @@ System::~System()
 
 void System::removeEntity(int EID)
 {
-	entities.remove(EID);
+	entities.erase(EID);
 }

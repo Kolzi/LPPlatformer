@@ -9,6 +9,7 @@
 #define	SYSTEM_HPP
 
 #include <list>
+#include <set>
 
 #include "General/Level.hpp"
 
@@ -23,7 +24,7 @@ public:
     virtual void update(sf::Time deltaTime)=0;
 protected:
     Level::CompMap& components;
-    std::list<int> entities;
+    std::set<int> entities;
 	
 };
 

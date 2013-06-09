@@ -115,29 +115,44 @@ void Level::update(sf::Time deltaTime)
 {
 	std::cerr<<"Update\n";
 	std::cerr<<"Components left: "<<components.size()<<"\n";
+	sf::Clock timer;
 	for(auto system:systems)
 	{
 		system->update(deltaTime);
 	}
+	std::cerr<<"Level updated: "<<timer.restart().asMilliseconds()<<"\n";
 	for(auto comp:componentToRemove)
 		components.erase(comp);
 	componentToRemove.clear();
+	
+	std::cerr<<"Components removed: "<<timer.restart().asMilliseconds()<<"\n";
 	
 	for(auto enP : entitiesToRemoveFromSystems )
 		systemsMap.at(enP.second)->removeEntity(enP.first);
 	entitiesToRemoveFromSystems.clear();
 	
+	std::cerr<<"Entities removed from systems: "<<timer.restart().asMilliseconds()<<"\n";
+	
+	sf::Clock preciseTimer;
+	long long int t1=0, t2=0;
 	for(int EID : entitiesToRemove)
 	{
 		for(auto compName:StringComponentConverter::componentNames)
 		{
 			components.erase(CompKey(EID, compName));
 		}
+		t1+=preciseTimer.restart().asMicroseconds();
+		
 		for(auto system:systems)
 		{
 			system->removeEntity(EID);
 		}
+		t2+=preciseTimer.restart().asMicroseconds();
+
 	}
+	std::cerr<<"Entity components removed in: "<<t1<<"\n";
+	std::cerr<<"From systems removed in: "<<t2<<"\n";
+	std::cerr<<"Entities removed: "<<timer.restart().asMilliseconds()<<"\n";
 }
 
 void Level::addComponent(int EID, std::string compName, Component* comp)

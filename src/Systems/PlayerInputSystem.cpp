@@ -30,11 +30,12 @@ PlayerInputSystem::~PlayerInputSystem()
 void PlayerInputSystem::addEntity(int EID)
 {
     assert(components.find(Level::CompKey(EID, "Physics")) != components.end());
-	entities.push_back(EID);
+	entities.insert(EID);
 }
 
 void PlayerInputSystem::update(sf::Time deltaTime)
 {
+	sf::Clock timer;
     for(auto eid: entities)
     {
 		PhysicsComponent& pC=*boost::polymorphic_downcast<PhysicsComponent*>(components.at(Level::CompKey(eid, "Physics")));
@@ -80,4 +81,5 @@ void PlayerInputSystem::update(sf::Time deltaTime)
 			soC.jumpingTimeLeft=0;
 		}
     }
+	std::cerr<<"Player input system: "<<timer.getElapsedTime().asMilliseconds()<<"\n";
 }

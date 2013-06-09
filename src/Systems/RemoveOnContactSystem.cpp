@@ -29,11 +29,12 @@ void RemoveOnContactSystem::addEntity(int EID)
 {
 	assert(components.find(Level::CompKey(EID, "Remove")) != components.end() &&
 		components.find(Level::CompKey(EID, "BoundingBox")) != components.end());
-	entities.push_back(EID);
+	entities.insert(EID);
 }
 
 void RemoveOnContactSystem::update(sf::Time deltaTime)
 {
+	sf::Clock timer;
 	for (auto it = entities.begin(); it != entities.end(); it++)
 	{
 		BoundingBoxComponent& bbi = *boost::polymorphic_downcast<BoundingBoxComponent*>(components.at(Level::CompKey(*it, "BoundingBox")));
@@ -50,4 +51,5 @@ void RemoveOnContactSystem::update(sf::Time deltaTime)
 			}
 		}
 	}
+	std::cerr<<"Remove on contact system: "<<timer.getElapsedTime().asMilliseconds()<<"\n";
 }

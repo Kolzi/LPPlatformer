@@ -45,11 +45,12 @@ void StandsOnSystem::addEntity(int EID)
 {
 	assert(components.find(Level::CompKey(EID, "StandsOn")) != components.end() &&
 		components.find(Level::CompKey(EID, "BoundingBox")) != components.end());
-	entities.push_back(EID);
+	entities.insert(EID);
 }
 
 void StandsOnSystem::update(sf::Time deltaTime)
 {
+	sf::Clock timer;
 	for (auto it = entities.begin(); it != entities.end(); it++)
 	{
 		if (components.find(Level::CompKey(*it, "StandsOn")) != components.end())
@@ -87,4 +88,5 @@ void StandsOnSystem::update(sf::Time deltaTime)
 			}
 		}	
 	}
+	std::cerr<<"StandsOn system: "<<timer.getElapsedTime().asMilliseconds()<<"\n";
 }

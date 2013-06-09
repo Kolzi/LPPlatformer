@@ -37,6 +37,7 @@ try
 	GameState gameS(app, archMan, "testlevel.xml");
 	
     std::cerr << "Loop\n";
+	sf::Clock timer;
     while (app.isOpen())
     {
         sf::Event event;
@@ -49,6 +50,7 @@ try
 		app.clear(sf::Color(128,128,255));
 		gameS.update();
 		app.display();
+		std::cerr<<"Main: "<<timer.restart().asMilliseconds()<<"\n";
     }
 
     return EXIT_SUCCESS;

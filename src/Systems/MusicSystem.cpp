@@ -27,7 +27,7 @@ MusicSystem::~MusicSystem()
 void MusicSystem::addEntity(int EID)
 {
 	assert(components.find(Level::CompKey(EID, "Music")) != components.end());
-	entities.push_back(EID);
+	entities.insert(EID);
 	MusicComponent& musC = *boost::polymorphic_downcast<MusicComponent*>(components.at(Level::CompKey(EID, "Music")));
 	musC.music->play();
 }
