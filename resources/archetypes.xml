@@ -247,6 +247,27 @@
 	</Systems>
 </Archetype>
 
+<Archetype name="Stone">
+	<Components>
+		<Damage damagePerSecond="50000"/>
+		<Position />
+		<Sprite file="stone.png"/>
+		<BoundingBox x="0" y="0" w="25" h="25" topSolid="1" rightSolid="1" bottomSolid="1" leftSolid="1"/>
+		<Gravity />
+		<Physics acceleration="0" maxSpeed="1000" stoppingSpeed="0"/>
+		<Countdown time="15">
+			<Remove time="0"/>
+		</Countdown>
+	</Components>
+	<Systems>
+		<Movement/>
+		<Render/>
+		<Gravity/>
+		<Countdown/>
+		<Collision />
+	</Systems>
+</Archetype>
+
 <Archetype name="Coin">
 	<Components>
 		<Position />

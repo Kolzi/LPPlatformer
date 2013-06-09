@@ -21,6 +21,9 @@
 	<Position x="600" y="330" z="0" />
 </Object>
 
+<Object name="Stone">
+	<Position x="50" y="175" z="0" />
+</Object>
 
 <Object name="GroundFat">
 	<Position x="0" y="200" z="0" />
