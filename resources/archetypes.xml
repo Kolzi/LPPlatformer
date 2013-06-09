@@ -11,6 +11,8 @@
 		<HasScore scoreEID="1" />
 		<Countdown time="3">
 			<AddToSystem target="PlayerInput" time="0"/>
+			<RemoveFromSystem target="Countdown"time="0"/>
+			<RemoveComponent target="Countdown" time="0"/>
 		</Countdown>
 		<Remove removeGroup="1" target="0"/>
 	</Components>
@@ -219,10 +221,15 @@
 <Archetype name="ParticleEmiter">
 	<Components>
 		<Position angle="270" />
-		<Particle emits="StarParticle" minAngle="-7.5" maxAngle="7.5"  minV="240"  maxV="250" minParticlesPerSec="1" maxParticlesPerSec="1" minLifeTime="0" maxLifeTime="1.2" salvo="1"/>
+		<Particle emits="StarParticle" minAngle="-7.5" maxAngle="7.5"  minV="240"  maxV="250" minInterval="1.046" maxInterval="1.046" minLifeTime="0" maxLifeTime="1.2" salvo="1"/>
+		<Countdown time="3">
+			<AddToSystem target="Particle" time="0"/>
+			<RemoveFromSystem target="Countdown" time="0"/>
+			<RemoveComponent target="Countdown" time="0"/>
+		</Countdown>
 	</Components>
 	<Systems>
-		<Particle />
+		<Countdown />
 	</Systems>
 </Archetype>
 
