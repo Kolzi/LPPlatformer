@@ -30,6 +30,7 @@ DataToTextSystem::~DataToTextSystem()
 
 void DataToTextSystem::update(sf::Time deltaTime)
 {
+	sf::Clock timer;
 	for(int EID : entities)
 	{
 		TextComponent& tC=*boost::polymorphic_downcast<TextComponent*>(components.at(Level::CompKey(EID, "Text")));
@@ -45,8 +46,8 @@ void DataToTextSystem::update(sf::Time deltaTime)
 			if(cC.toText)
 				tC.text.setString(boost::lexical_cast<std::string> ((int)cC.timeLeft));
 		}
-		
 	}
+	std::cerr<<"DataToText system: "<<timer.getElapsedTime().asMilliseconds()<<"\n";
 }
 
 void DataToTextSystem::addEntity(int EID)
@@ -55,6 +56,6 @@ void DataToTextSystem::addEntity(int EID)
 			components.find(Level::CompKey(EID, "Countdown")) != components.end() )
 			&&
 			components.find(Level::CompKey(EID, "Text")) != components.end() );
-    entities.push_back(EID);
+    entities.insert(EID);
 }
 

@@ -28,7 +28,7 @@ RenderSystem::~RenderSystem()
 
 void RenderSystem::update(sf::Time deltaTime)
 {
-	std::cerr<<"Render\n";
+	sf::Clock timer;
     for(auto it=entities.begin();it!=entities.end();it++)
     {
         PositionComponent* pC=boost::polymorphic_downcast<PositionComponent*>(components.at(Level::CompKey(*it, "Position")));
@@ -60,12 +60,12 @@ void RenderSystem::update(sf::Time deltaTime)
 		sC->sprite.setTextureRect(textRect);
         window.draw(sC->sprite);
     }
-	std::cerr<<"Render end\n";
+	std::cerr<<"Render system: "<<timer.getElapsedTime().asMilliseconds()<<"\n";
 }
 
 void RenderSystem::addEntity(int EID)
 {
 	assert( components.find(Level::CompKey(EID, "Position")) != components.end() &&
 			components.find(Level::CompKey(EID, "Sprite")) != components.end() );
-    entities.push_back(EID);
+    entities.insert(EID);
 }

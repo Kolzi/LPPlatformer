@@ -30,17 +30,19 @@ GravitySystem::~GravitySystem()
 
 void GravitySystem::update(sf::Time deltaTime)
 {
+	sf::Clock timer;
 	for(int EID : entities)
 	{
 		GravityComponent* gC=boost::polymorphic_downcast<GravityComponent*>(components.at(Level::CompKey(EID, "Gravity")));
 		PhysicsComponent* pC=boost::polymorphic_downcast<PhysicsComponent*>(components.at(Level::CompKey(EID, "Physics")));
 		pC->ay+=gC->g;
 	}
+	std::cerr<<"Gravity system: "<<timer.getElapsedTime().asMilliseconds()<<"\n";
 }
 
 void GravitySystem::addEntity(int EID)
 {
 	assert( components.find(Level::CompKey(EID, "Physics")) != components.end() &&
 			components.find(Level::CompKey(EID, "Gravity")) != components.end() );
-    entities.push_back(EID);
+    entities.insert(EID);
 }

@@ -28,6 +28,7 @@ TextRenderSystem::~TextRenderSystem()
 
 void TextRenderSystem::update(sf::Time deltaTime)
 {
+	sf::Clock timer;
     for(auto it=entities.begin();it!=entities.end();it++)
     {
         PositionComponent* pC=boost::polymorphic_downcast<PositionComponent*>(components.at(Level::CompKey(*it, "Position")));
@@ -39,12 +40,13 @@ void TextRenderSystem::update(sf::Time deltaTime)
         window.draw(tC->text);
 		window.setView(view);
     }
+	std::cerr<<"Text render system: "<<timer.getElapsedTime().asMilliseconds()<<"\n";
 }
 
 void TextRenderSystem::addEntity(int EID)
 {
 	assert( components.find(Level::CompKey(EID, "Position")) != components.end() &&
 			components.find(Level::CompKey(EID, "Text")) != components.end() );
-    entities.push_back(EID);
+    entities.insert(EID);
 }
 

@@ -37,6 +37,7 @@ ParticleSystem::~ParticleSystem()
 
 void ParticleSystem::update(sf::Time deltaTime)
 {
+	sf::Clock timer;
     for(auto it=entities.begin();it!=entities.end();it++)
     {
         PositionComponent& posC=*boost::polymorphic_downcast<PositionComponent*>(components.at(Level::CompKey(*it, "Position")));
@@ -101,13 +102,13 @@ void ParticleSystem::update(sf::Time deltaTime)
 			}			
 		}
 	}
-	std::cerr<<"Particle system end\n";
+	std::cerr<<"Particle system: "<<timer.getElapsedTime().asMilliseconds()<<"\n";
 }
 
 void ParticleSystem::addEntity(int EID)
 {
 	assert( components.find(Level::CompKey(EID, "Position")) != components.end() &&
 			components.find(Level::CompKey(EID, "Particle")) != components.end() );
-    entities.push_back(EID);
+    entities.insert(EID);
 }
 

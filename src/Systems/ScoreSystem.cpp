@@ -30,11 +30,12 @@ void ScoreSystem::addEntity(int EID)
 {
 	assert(components.find(Level::CompKey(EID, "HasScore")) != components.end() &&
 		components.find(Level::CompKey(EID, "BoundingBox")) != components.end());
-	entities.push_back(EID);
+	entities.insert(EID);
 }
 
 void ScoreSystem::update(sf::Time deltaTime)
 {
+	sf::Clock timer;
 	for (auto it = entities.begin(); it != entities.end(); it++)
 	{
 		BoundingBoxComponent& bbi = *boost::polymorphic_downcast<BoundingBoxComponent*>(components.at(Level::CompKey(*it, "BoundingBox")));
@@ -57,4 +58,5 @@ void ScoreSystem::update(sf::Time deltaTime)
 			}
 		}
 	}
+	std::cerr<<"Score system: "<<timer.getElapsedTime().asMilliseconds()<<"\n";
 }

@@ -36,12 +36,12 @@ void CollisionSystem::addEntity(int EID)
 {
 	assert( components.find(Level::CompKey(EID, "Position")) != components.end() &&
 			components.find(Level::CompKey(EID, "BoundingBox")) != components.end() );
-    entities.push_back(EID);
+    entities.insert(EID);
 }
 
 void CollisionSystem::update(sf::Time deltaTime)
 {
-	std::cerr<<"Collision\n";
+	sf::Clock timer;
 	for(auto it=entities.begin();it!=entities.end();it++)
 	{
 		BoundingBoxComponent& bbCi=*boost::polymorphic_downcast<BoundingBoxComponent*>(components.at(Level::CompKey(*it, "BoundingBox")));
@@ -104,9 +104,11 @@ void CollisionSystem::update(sf::Time deltaTime)
 				colDatai.EID=*jt;
 				colDataj.EID=*it;
 				
+				colDataj.tx=colDatai.tx=std::min(tx, (double)deltaTime.asSeconds());
+				colDataj.ty=colDatai.ty=std::min(ty, (double)deltaTime.asSeconds());
+				
 				if(tx<=deltaTime.asSeconds()+eps)
-				{
-					colDataj.tx=colDatai.tx=tx;
+				{	
 					if(posCi.x-(tx*physCi.vx)<=posCj.x-(t*physCj.vx))
 					{
 						colDatai.right=true;
@@ -120,7 +122,6 @@ void CollisionSystem::update(sf::Time deltaTime)
 				}
 				if(ty<=deltaTime.asSeconds()+eps)
 				{
-					colDataj.ty=colDatai.ty=ty;
 					if(posCi.y-(ty*physCi.vy)<=posCj.y-(t*physCj.vy))
 					{
 						colDatai.bottom=true;
@@ -185,5 +186,5 @@ void CollisionSystem::update(sf::Time deltaTime)
 			}
 		}
 	}
-	std::cerr<<"Collision end\n";
+	std::cerr<<"Collision system: "<<timer.getElapsedTime().asMilliseconds()<<"\n";
 }

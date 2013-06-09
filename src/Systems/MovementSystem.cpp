@@ -34,12 +34,12 @@ void MovementSystem::addEntity(int EID)
 	assert( components.find(Level::CompKey(EID, "Position")) != components.end() &&
 			components.find(Level::CompKey(EID, "Physics")) != components.end() ); 
 		//	components.find(Level::CompKey(EID, "StandsOn")) != components.end() );
-	entities.push_back(EID);
+	entities.insert(EID);
 }
 
 void MovementSystem::update(sf::Time time)
 {
-	std::cerr<<"Movement\n";
+	sf::Clock timer;
     double deltaT=time.asSeconds();
 	for(auto it=entities.begin();it!=entities.end();it++)
     {
@@ -92,5 +92,5 @@ void MovementSystem::update(sf::Time time)
 		posC.angle+=deltaT*physC.angularV;
 		posC.angle-=(360.0*int(posC.angle/360.0));
 	}
-	std::cerr<<"Movement end\n";
+	std::cerr<<"Movement system: "<<timer.getElapsedTime().asMilliseconds()<<"\n";
 }

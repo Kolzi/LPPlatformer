@@ -32,7 +32,7 @@ CountdownSystem::~CountdownSystem()
 
 void CountdownSystem::update(sf::Time deltaTime)
 {
-	std::cerr<<"Countdown system\n";
+	sf::Clock timer;
 	std::list<int> toRemove;
 	std::list<std::pair<int, std::string> > toRemoveFromSystems;
 	std::list<std::pair<int, std::string> > componentsToRemove;
@@ -83,12 +83,12 @@ void CountdownSystem::update(sf::Time deltaTime)
 	{
 		level.removeEntity(id);
 	}
-	std::cerr<<"End countdown system\n";
+	std::cerr<<"Countdown system: "<<timer.getElapsedTime().asMilliseconds()<<"\n";
 }
 
 void CountdownSystem::addEntity(int EID)
 {
 	assert( components.find(Level::CompKey(EID, "Countdown")) != components.end() );
-    entities.push_back(EID);
+    entities.insert(EID);
 }
 
