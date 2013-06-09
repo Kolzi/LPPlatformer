@@ -9,7 +9,7 @@
 #define	SYSTEM_HPP
 
 #include <list>
-#include <set>
+#include <unordered_set>
 
 #include "General/Level.hpp"
 
@@ -24,7 +24,7 @@ public:
     virtual void update(sf::Time deltaTime)=0;
 protected:
     Level::CompMap& components;
-    std::set<int> entities;
+    std::unordered_set<int> entities;
 	
 };
 
