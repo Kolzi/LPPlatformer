@@ -2,7 +2,7 @@
 </Object>
 
 <Object name="Player">
-	<Position x="3080" y="-323" z="0" />
+	<Position x="0" y="139" z="0" />
 </Object>
 <!-- hjhjahjasj -->
 <Object name="Lava">
@@ -131,77 +131,106 @@
 	<Position x="1970" y="-220" z="0" />
 </Object>
 
-<Object name="GroundMid">
+<Object name="GroundSmall2">
 	<Position x="2100" y="-262" z="0" />
 </Object>
 
-<Object name="GroundVert">
-	<Position x="2232" y="-262" z="0" />
+<Object name="Laser">
+	<Position x="2100" y="-310" z="0" />
 </Object>
 
-<Object name="GroundMid">
-	<Position x="2232" y="-183" z="0" />
+<Object name="Laser">
+	<Position x="3100" y="-310" z="0" />
 </Object>
 
-<Object name="GroundVert">
-	<Position x="2326" y="-262" z="0" />
-</Object>
-
-<Object name="GroundMid">
-	<Position x="2364" y="-262" z="0" />
+<Object name="Laser">
+	<Position x="4100" y="-310" z="0" />
 </Object>
 
 <Object name="GroundVert">
-	<Position x="2458" y="-262" z="0" />
+	<Position x="2136" y="-262" z="0" />
 </Object>
 
 <Object name="GroundMid">
-	<Position x="2458" y="-183" z="0" />
+	<Position x="2136" y="-183" z="0" />
 </Object>
 
 <Object name="GroundVert">
-	<Position x="2552" y="-262" z="0" />
+	<Position x="2230" y="-262" z="0" />
 </Object>
 
-<Object name="GroundMid">
-	<Position x="2592" y="-262" z="0" />
-</Object>
-
-<Object name="GroundVert">
-	<Position x="2684" y="-262" z="0" />
-</Object>
-
-<Object name="GroundMid">
-	<Position x="2684" y="-183" z="0" />
+<Object name="GroundSmall2">
+	<Position x="2268" y="-262" z="0" />
 </Object>
 
 <Object name="GroundVert">
-	<Position x="2778" y="-262" z="0" />
+	<Position x="2304" y="-262" z="0" />
 </Object>
 
 <Object name="GroundMid">
-	<Position x="2816" y="-262" z="0" />
+	<Position x="2304" y="-183" z="0" />
 </Object>
 
 <Object name="GroundVert">
-	<Position x="2948" y="-262" z="0" />
+	<Position x="2398" y="-262" z="0" />
 </Object>
 
-<Object name="GroundMid">
-	<Position x="2948" y="-183" z="0" />
+<Object name="GroundSmall2">
+	<Position x="2436" y="-262" z="0" />
 </Object>
 
 <Object name="GroundVert">
-	<Position x="3042" y="-262" z="0" />
+	<Position x="2472" y="-262" z="0" />
 </Object>
 
 <Object name="GroundMid">
-	<Position x="3080" y="-262" z="0" />
+	<Position x="2472" y="-183" z="0" />
+</Object>
+
+<Object name="GroundVert">
+	<Position x="2566" y="-262" z="0" />
+</Object>
+
+<Object name="GroundSmall2">
+	<Position x="2604" y="-262" z="0" />
+</Object>
+
+<Object name="GroundVert">
+	<Position x="2640" y="-262" z="0" />
 </Object>
 
 <Object name="GroundMid">
-	<Position x="3212" y="-262" z="0" />
+	<Position x="2640" y="-183" z="0" />
 </Object>
+
+<Object name="GroundVert">
+	<Position x="2734" y="-262" z="0" />
+</Object>
+
+<Object name="GroundMid">
+	<Position x="2772" y="-262" z="0" />
+</Object>
+
+<Object name="GroundMid">
+	<Position x="2904" y="-262" z="0" />
+</Object>
+
+<Object name="GroundSmall2">
+	<Position x="2764" y="-360" z="0" />
+</Object>
+
+<Object name="GroundSmall2">
+	<Position x="2888" y="-360" z="0" />
+</Object>
+
+<Object name="GroundSmall2">
+	<Position x="3012" y="-360" z="0" />
+</Object>
+
+<Object name="GroundSmall2">
+	<Position x="3136" y="-360" z="0" />
+</Object>
+
 
 <!--- pierwszy small, gejzer i złoto -->
 
@@ -246,11 +275,11 @@
 </Object>
 
 <Object name="GroundMid">
-	<Position x="3344" y="-262" z="0" />
+	<Position x="3036" y="-262" z="0" />
 </Object>
 
 <Object name="GroundMid">
-	<Position x="3476" y="-262" z="0" />
+	<Position x="3168" y="-262" z="0" />
 </Object>
 
 <!--- drugi small, gejzer i złoto -->
@@ -296,11 +325,11 @@
 </Object>
 
 <Object name="GroundMid">
-	<Position x="3608" y="-262" z="0" />
+	<Position x="3300" y="-262" z="0" />
 </Object>
 
 <Object name="GroundMid">
-	<Position x="3740" y="-262" z="0" />
+	<Position x="3432" y="-262" z="0" />
 </Object>
 
 <!--- trzeci small, gejzer i złoto -->
@@ -344,5 +373,19 @@
 <Object name="Coin">
 	<Position x="3854" y="-345" z="0" />
 </Object>
+
+<Object name="GroundMid">
+	<Position x="3564" y="-262" z="0" />
+</Object>
+
+<Object name="GroundMid">
+	<Position x="3696" y="-262" z="0" />
+</Object>
+
+<Object name="GroundMid">
+	<Position x="3828" y="-262" z="0" />
+</Object>
+
+
 
 <Object name="LevelMusic" />

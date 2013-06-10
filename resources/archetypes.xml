@@ -283,7 +283,7 @@
 <Archetype name="LavaEmiter">
 	<Components>
 		<Position angle="270" />
-		<Particle emits="LavaParticle" minAngle="-7.5" maxAngle="7.5"  minV="240"  maxV="250" minInterval="1.046" maxInterval="1.046" minLifeTime="0" maxLifeTime="1.2" salvo="1"/>
+		<Particle emits="LavaParticle" minAngle="-7.5" maxAngle="7.5"  minV="240"  maxV="250" minInterval="1.046" maxInterval="1.046" minLifeTime="0" maxLifeTime="0.8" salvo="1"/>
 		<Countdown time="3">
 			<AddToSystem target="Particle" time="0"/>
 			<RemoveFromSystem target="Countdown" time="0"/>
@@ -352,6 +352,76 @@
 		<Gravity/>
 		<Countdown/>
 		<Collision />
+	</Systems>
+</Archetype>
+
+<Archetype name="Laser">
+	<Components>
+		<Damage damagePerSecond="80000"/>
+		<Position />
+		<Sprite file="laser.png"/>
+		<BoundingBox x="0" y="0" w="1000" h="3"/>
+		<Countdown time="53">
+			<AddToSystem target="Render" time="37.486"/>
+			<AddToSystem target="Collision" time="37.486"/>
+			<RemoveFromSystem target="Render" time="36.786"/>
+			<RemoveFromSystem target="Collision" time="36.786"/>
+			
+			<AddToSystem target="Render" time="35.384"/>
+			<AddToSystem target="Collision" time="35.384"/>
+			<RemoveFromSystem target="Render" time="34.684"/>
+			<RemoveFromSystem target="Collision" time="34.684"/>
+			
+			<AddToSystem target="Render" time="33.282"/>
+			<AddToSystem target="Collision" time="33.282"/>
+			<RemoveFromSystem target="Render" time="32.582"/>
+			<RemoveFromSystem target="Collision" time="32.582"/>
+			
+			<AddToSystem target="Render" time="31.18"/>
+			<AddToSystem target="Collision" time="31.18"/>
+			<RemoveFromSystem target="Render" time="30.48"/>
+			<RemoveFromSystem target="Collision" time="30.48"/>
+			
+			<AddToSystem target="Render" time="29.078"/>
+			<AddToSystem target="Collision" time="29.078"/>
+			<RemoveFromSystem target="Render" time="28.378"/>
+			<RemoveFromSystem target="Collision" time="28.378"/>
+			
+			<AddToSystem target="Render" time="26.976"/>
+			<AddToSystem target="Collision" time="26.976"/>
+			<RemoveFromSystem target="Render" time="26.276"/>
+			<RemoveFromSystem target="Collision" time="26.276"/>
+			
+			<AddToSystem target="Render" time="24.874"/>
+			<AddToSystem target="Collision" time="24.874"/>
+			<RemoveFromSystem target="Render" time="24.174"/>
+			<RemoveFromSystem target="Collision" time="24.174"/>	
+			
+			<AddToSystem target="Render" time="22.772"/>
+			<AddToSystem target="Collision" time="22.772"/>
+			<RemoveFromSystem target="Render" time="22.072"/>
+			<RemoveFromSystem target="Collision" time="22.072"/>	
+			
+			<AddToSystem target="Render" time="20.67"/>
+			<AddToSystem target="Collision" time="20.67"/>
+			<RemoveFromSystem target="Render" time="19.97"/>
+			<RemoveFromSystem target="Collision" time="19.97"/>	
+			
+			<AddToSystem target="Render" time="18.569"/>
+			<AddToSystem target="Collision" time="18.569"/>
+			<RemoveFromSystem target="Render" time="17.869"/>
+			<RemoveFromSystem target="Collision" time="17.869"/>
+			
+			<AddToSystem target="Render" time="16.466"/>
+			<AddToSystem target="Collision" time="16.466"/>
+			<RemoveFromSystem target="Render" time="15.766"/>
+			<RemoveFromSystem target="Collision" time="15.766"/>
+			
+			<Remove time="0"/>
+		</Countdown>
+	</Components>
+	<Systems>
+		<Countdown/>
 	</Systems>
 </Archetype>
 
