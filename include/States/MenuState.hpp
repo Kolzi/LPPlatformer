@@ -8,14 +8,28 @@
 #ifndef NEWCLASS_HPP
 #define	NEWCLASS_HPP
 #include "State.hpp"
+#include "StateEngine.hpp"
+#include "SFML/Graphics.hpp"
 
 class MenuState: public State
 {
-public:
-	void update()
+public:	
+	MenuState(StateEngine& se, sf::RenderWindow& window);
+	void update();
+	void Pause();
+	void Resume();
+private:
+	struct MenuOption
 	{
-		
-	}
+		std::string name;
+		sf::Color selectedColor;
+		sf::Color defaultColor;
+	};
+	static const int numOptions=2;
+	MenuOption selections[numOptions];
+	sf::RenderWindow& window;
+	int active;
+	StateEngine& se;
 };
 
 #endif	/* NEWCLASS_HPP */

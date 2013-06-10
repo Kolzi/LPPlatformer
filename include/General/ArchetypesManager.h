@@ -23,7 +23,7 @@ public:
     ArchetypesManager(const ArchetypesManager& orig);
     virtual ~ArchetypesManager();
     void read(std::istream& str);
-	void addEntity(int EID, std::string archetype, Level::CompMap& components, Level::SysMap& systems);
+	void addEntity(int EID, std::string archetype, Level::CompMap& components, Level::SysMap& systems) const;
 private:
     std::unordered_map<std::string, Archetype*> archetypes;
 };

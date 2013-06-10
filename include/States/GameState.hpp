@@ -16,8 +16,10 @@
 class GameState: public State
 {
 public:
-	GameState(sf::RenderWindow& app, ArchetypesManager& archMan, std::string gameFile);
+	GameState(sf::RenderWindow& app, const ArchetypesManager& archMan, std::string gameFile);
 	void update();
+	void Pause();
+	void Resume();
 private:
 	Level level;
 	sf::Clock clock;

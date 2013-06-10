@@ -39,7 +39,7 @@ void ArchetypesManager::read(std::istream& str)
     }
 }
 
-void ArchetypesManager::addEntity(int EID, std::string archName,Level::CompMap& components, Level::SysMap& systems)
+void ArchetypesManager::addEntity(int EID, std::string archName,Level::CompMap& components, Level::SysMap& systems) const
 {
 	//std::cerr<<"Adding: "<<archName<<"\n";
 	Archetype* archetype=archetypes.at(archName);

@@ -31,7 +31,7 @@
 #include "General/StringComponentConverter.h"
 #include "Exceptions/NoSuchSystem.hpp"
 
-Level::Level(sf::RenderWindow& app, ArchetypesManager& archetypesManager)
+Level::Level(sf::RenderWindow& app, const ArchetypesManager& archetypesManager)
 :app(app), archetypesManager(archetypesManager), idGenerator(new SimpleIDGenerator())
 {
 	systemsMap.insert(std::pair<std::string, System*>("Music", new MusicSystem(components)));

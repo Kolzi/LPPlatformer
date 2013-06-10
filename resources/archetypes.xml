@@ -29,6 +29,19 @@
 	</Systems>
 </Archetype>
 
+<Archetype name="StoneRemover">
+	<Components>
+		<Position />
+		<BoundingBox x="0" y="0" w="72" h="10"/>
+		<Remove removeGroup="2" target="0"/>
+	</Components>
+	<Systems>
+		<Collision />
+		<RemoveOnContact/>
+	</Systems>
+</Archetype>
+	
+
 <Archetype name="GroundStart">
 	<Components>
 		<Position x="0" y="0" z="0" />
@@ -159,6 +172,19 @@
 	</Systems>
 </Archetype>
 
+<Archetype name="Armata">
+	<Components>
+		<Position />
+		<Sprite file="armata.png" />
+		<BoundingBox x="0" y="0" w="50" h="25" topSolid="1" rightSolid="1" bottomSolid="1" leftSolid="1"/>
+		<Standable accelerationMultiplier="2"/>
+	</Components>
+	<Systems>
+		<Render />
+		<Collision />
+	</Systems>
+</Archetype>
+
 <Archetype name="GroundMid">
 	<Components>
 		<Position />
@@ -218,10 +244,10 @@
 	</Systems>
 </Archetype>
 
-<Archetype name="ParticleEmiter">
+<Archetype name="GasEmiter">
 	<Components>
 		<Position angle="270" />
-		<Particle emits="StarParticle" minAngle="-7.5" maxAngle="7.5"  minV="240"  maxV="250" minInterval="1.046" maxInterval="1.046" minLifeTime="0" maxLifeTime="1.2" salvo="1"/>
+		<Particle emits="GasParticle" minAngle="5" maxAngle="5"  minV="200"  maxV="200" minInterval="1.046" maxInterval="1.046" minLifeTime="0" maxLifeTime="1" salvo="1" particlesInSalvo="1"/>
 		<Countdown time="3">
 			<AddToSystem target="Particle" time="0"/>
 			<RemoveFromSystem target="Countdown" time="0"/>
@@ -233,11 +259,47 @@
 	</Systems>
 </Archetype>
 
-<Archetype name="StarParticle">
+<Archetype name="GasParticle">
+	<Components>
+		<Damage damagePerSecond="5000"/>
+		<Position />
+		<Sprite file="gas3.png"/>
+		<BoundingBox x="0" y="0" w="20" h="30" />
+		<Gravity />
+		<Physics acceleration="0" maxSpeed="500" stoppingSpeed="0"/>
+		<Countdown time="1">
+			<Remove time="0"/>
+		</Countdown>
+	</Components>
+	<Systems>
+		<Movement/>
+		<Render/>
+		<Gravity/>
+		<Countdown/>
+		<Collision />
+	</Systems>
+</Archetype>
+
+<Archetype name="LavaEmiter">
+	<Components>
+		<Position angle="270" />
+		<Particle emits="LavaParticle" minAngle="-7.5" maxAngle="7.5"  minV="240"  maxV="250" minInterval="1.046" maxInterval="1.046" minLifeTime="0" maxLifeTime="1.2" salvo="1"/>
+		<Countdown time="3">
+			<AddToSystem target="Particle" time="0"/>
+			<RemoveFromSystem target="Countdown" time="0"/>
+			<RemoveComponent target="Countdown" time="0"/>
+		</Countdown>
+	</Components>
+	<Systems>
+		<Countdown />
+	</Systems>
+</Archetype>
+
+<Archetype name="LavaParticle">
 	<Components>
 		<Damage damagePerSecond="10000"/>
 		<Position />
-		<Sprite file="particle.png"/>
+		<Sprite file="lavadrop.png"/>
 		<BoundingBox x="0" y="0" w="8" h="8" />
 		<Gravity />
 		<Physics acceleration="0" maxSpeed="1000" stoppingSpeed="0"/>
@@ -254,14 +316,32 @@
 	</Systems>
 </Archetype>
 
+<Archetype name="StoneEmiter">
+	<Components>
+		<Position angle="180" />
+		<Particle emits="Stone" minAngle="0" maxAngle="0"  minV="300"  maxV="300" 
+		minInterval="3" maxInterval="3" minLifeTime="5" maxLifeTime="10" salvo="1" 
+		particlesInSalvo="1" minGravity="500" maxGravity="500" />
+		<Countdown time="3">
+			<AddToSystem target="Particle" time="0"/>
+			<RemoveFromSystem target="Countdown" time="0"/>
+			<RemoveComponent target="Countdown" time="0"/>
+		</Countdown>
+	</Components>
+	<Systems>
+		<Countdown />
+	</Systems>
+</Archetype>
+
 <Archetype name="Stone">
 	<Components>
 		<Damage damagePerSecond="50000"/>
 		<Position />
 		<Sprite file="stone.png"/>
 		<BoundingBox x="0" y="0" w="25" h="25" topSolid="1" rightSolid="1" bottomSolid="1" leftSolid="1"/>
-		<Gravity />
-		<Physics acceleration="0" maxSpeed="1000" stoppingSpeed="0"/>
+		<Gravity g="150000"/>
+		<Physics acceleration="0" maxSpeed="10000" stoppingSpeed="0"/>
+		<Remove removeGroup="2" target="1"/>
 		<Countdown time="15">
 			<Remove time="0"/>
 		</Countdown>

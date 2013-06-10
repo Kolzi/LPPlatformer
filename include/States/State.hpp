@@ -12,7 +12,8 @@ class State
 {
 public:
 	virtual void update()=0;
+	virtual void Pause()=0;
+	virtual void Resume()=0;
 };
-
 #endif	/* STATE_HPP */
 

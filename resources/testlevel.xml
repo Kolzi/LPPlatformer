@@ -2,7 +2,7 @@
 </Object>
 
 <Object name="Player">
-	<Position x="-10" y="125" z="0" />
+	<Position x="3080" y="-323" z="0" />
 </Object>
 <!-- hjhjahjasj -->
 <Object name="Lava">
@@ -21,15 +21,11 @@
 	<Position x="600" y="330" z="0" />
 </Object>
 
-<Object name="Stone">
-	<Position x="50" y="175" z="0" />
-</Object>
-
 <Object name="GroundFat">
 	<Position x="0" y="200" z="0" />
 </Object>
 
-<Object name="ParticleEmiter">
+<Object name="LavaEmiter">
 	<Position x="159" y="230" z="0" />
 </Object>
 
@@ -43,7 +39,7 @@
 </Object>
 
 
-<Object name="ParticleEmiter">
+<Object name="LavaEmiter">
 	<Position x="359" y="230" z="0" />
 </Object>
 
@@ -55,7 +51,7 @@
 	<Position x="464" y="150" z="0" />
 </Object>
 
-<Object name="ParticleEmiter">
+<Object name="LavaEmiter">
 	<Position x="559" y="230" z="0" />
 </Object>
 
@@ -67,8 +63,12 @@
 	<Position x="664" y="150" z="0" />
 </Object>
 
-<Object name="ParticleEmiter">
+<Object name="LavaEmiter">
 	<Position x="759" y="230" z="0" />
+</Object>
+
+<Object name="StoneRemover">
+	<Position x="728" y="229" z="0" />
 </Object>
 
 <Object name="GroundMid">
@@ -121,6 +121,14 @@
 
 <Object name="GroundMid">
 	<Position x="2000" y="-228" z="0" />
+</Object>
+
+<Object name="StoneEmiter">
+	<Position x="1970" y="-220" z="0" />
+</Object>
+
+<Object name="Armata">
+	<Position x="1970" y="-220" z="0" />
 </Object>
 
 <Object name="GroundMid">
@@ -195,6 +203,48 @@
 	<Position x="3212" y="-262" z="0" />
 </Object>
 
+<!--- pierwszy small, gejzer i złoto -->
+
+<Object name="GroundSmall2">
+	<Position x="3260" y="-360" z="0" />
+</Object>
+
+<Object name="Geyser">
+	<Position x="3274" y="-376" z="0" />
+</Object>
+
+<Object name="GasEmiter">
+	<Position x="3269" y="-402" z="0" />
+</Object>
+
+<Object name="Coin">
+	<Position x="3230" y="-345" z="0" />
+</Object>
+
+<Object name="Coin">
+	<Position x="3235" y="-375" z="0" />
+</Object>
+
+<Object name="Coin">
+	<Position x="3250" y="-405" z="0" />
+</Object>
+
+<Object name="Coin">
+	<Position x="3278" y="-425" z="0" />
+</Object>
+
+<Object name="Coin">
+	<Position x="3306" y="-405" z="0" />
+</Object>
+
+<Object name="Coin">
+	<Position x="3321" y="-375" z="0" />
+</Object>
+
+<Object name="Coin">
+	<Position x="3326" y="-345" z="0" />
+</Object>
+
 <Object name="GroundMid">
 	<Position x="3344" y="-262" z="0" />
 </Object>
@@ -203,5 +253,96 @@
 	<Position x="3476" y="-262" z="0" />
 </Object>
 
+<!--- drugi small, gejzer i złoto -->
+
+<Object name="GroundSmall2">
+	<Position x="3524" y="-360" z="0" />
+</Object>
+
+<Object name="Geyser">
+	<Position x="3538" y="-376" z="0" />
+</Object>
+
+<Object name="GasEmiter">
+	<Position x="3533" y="-402" z="0" />
+</Object>
+
+<Object name="Coin">
+	<Position x="3494" y="-345" z="0" />
+</Object>
+
+<Object name="Coin">
+	<Position x="3499" y="-375" z="0" />
+</Object>
+
+<Object name="Coin">
+	<Position x="3514" y="-405" z="0" />
+</Object>
+
+<Object name="Coin">
+	<Position x="3542" y="-425" z="0" />
+</Object>
+
+<Object name="Coin">
+	<Position x="3570" y="-405" z="0" />
+</Object>
+
+<Object name="Coin">
+	<Position x="3585" y="-375" z="0" />
+</Object>
+
+<Object name="Coin">
+	<Position x="3590" y="-345" z="0" />
+</Object>
+
+<Object name="GroundMid">
+	<Position x="3608" y="-262" z="0" />
+</Object>
+
+<Object name="GroundMid">
+	<Position x="3740" y="-262" z="0" />
+</Object>
+
+<!--- trzeci small, gejzer i złoto -->
+
+<Object name="GroundSmall2">
+	<Position x="3788" y="-360" z="0" />
+</Object>
+
+<Object name="Geyser">
+	<Position x="3802" y="-376" z="0" />
+</Object>
+
+<Object name="GasEmiter">
+	<Position x="3797" y="-402" z="0" />
+</Object>
+
+<Object name="Coin">
+	<Position x="3758" y="-345" z="0" />
+</Object>
+
+<Object name="Coin">
+	<Position x="3763" y="-375" z="0" />
+</Object>
+
+<Object name="Coin">
+	<Position x="3778" y="-405" z="0" />
+</Object>
+
+<Object name="Coin">
+	<Position x="3806" y="-425" z="0" />
+</Object>
+
+<Object name="Coin">
+	<Position x="3834" y="-405" z="0" />
+</Object>
+
+<Object name="Coin">
+	<Position x="3849" y="-375" z="0" />
+</Object>
+
+<Object name="Coin">
+	<Position x="3854" y="-345" z="0" />
+</Object>
 
 <Object name="LevelMusic" />

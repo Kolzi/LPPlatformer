@@ -11,7 +11,7 @@
 #include <iostream>
 #include <fstream>
 
-GameState::GameState(sf::RenderWindow& app, ArchetypesManager& archMan, std::string gameFile)
+GameState::GameState(sf::RenderWindow& app, const ArchetypesManager& archMan, std::string gameFile)
 :level(app, archMan)
 {
 	std::ifstream levelFile("resources/" + gameFile);
@@ -24,3 +24,9 @@ void GameState::update()
 {
 	level.update(clock.restart());
 }
+
+void GameState::Pause()
+{}
+
+void GameState::Resume()
+{}

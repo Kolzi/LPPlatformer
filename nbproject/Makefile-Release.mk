@@ -66,6 +66,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/General/StringComponentConverter.o \
 	${OBJECTDIR}/src/States/GameState.o \
 	${OBJECTDIR}/src/States/MenuState.o \
+	${OBJECTDIR}/src/States/StateEngine.o \
 	${OBJECTDIR}/src/Systems/CameraSystem.o \
 	${OBJECTDIR}/src/Systems/CollisionSystem.o \
 	${OBJECTDIR}/src/Systems/CountdownSystem.o \
@@ -261,6 +262,11 @@ ${OBJECTDIR}/src/States/MenuState.o: src/States/MenuState.cpp
 	${MKDIR} -p ${OBJECTDIR}/src/States
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/States/MenuState.o src/States/MenuState.cpp
+
+${OBJECTDIR}/src/States/StateEngine.o: src/States/StateEngine.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/States
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/States/StateEngine.o src/States/StateEngine.cpp
 
 ${OBJECTDIR}/src/Systems/CameraSystem.o: src/Systems/CameraSystem.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/Systems

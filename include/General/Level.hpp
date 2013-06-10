@@ -27,7 +27,7 @@ public:
 	typedef std::unordered_map <CompKey, Component*, PairIntStringHash> CompMap;
 	typedef std::unordered_map <std::string, System*> SysMap;
 	
-	Level(sf::RenderWindow& app, ArchetypesManager& archetypesManager);
+	Level(sf::RenderWindow& app, const ArchetypesManager& archetypesManager);
 	Level(const Level& orig);
 	virtual ~Level();
 	
@@ -49,7 +49,7 @@ public:
 	
 private:
 	sf::RenderWindow& app;
-	ArchetypesManager& archetypesManager;
+	const ArchetypesManager& archetypesManager;
 	std::unique_ptr<IDGenerator> idGenerator;
 	std::list <System*> systems;
 	std::unordered_map <std::string, System*> systemsMap;

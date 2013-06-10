@@ -14,7 +14,6 @@ const std::string FontManager::fontDirectory="resources/";
 
 const sf::Font& FontManager::getFont(std::string filename)
 {
-	std::cerr<<"Font manager\n";
 	if(fonts.find(filename)==fonts.end())
 	{
 		std::unique_ptr<sf::Font> fontPtr (new sf::Font);

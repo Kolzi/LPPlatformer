@@ -22,35 +22,27 @@
 #include "Exceptions/RequiredAttributeNotFound.hpp"
 #include <iostream>
 #include <fstream>
-#include "States/GameState.hpp"
+#include "States/MenuState.hpp"
+#include "States/StateEngine.hpp"
 
 int main(int argc, char** argv)
 {
 try
 {
-	ArchetypesManager archMan;
-	std::ifstream file("resources/archetypes.xml");
-	archMan.read(file);
-	std::cerr<<"Archetypes read!\n";
     sf::RenderWindow app(sf::VideoMode(800, 600, 32), "SFML Graphics");
 	
-	GameState gameS(app, archMan, "testlevel.xml");
+	StateEngine se;
+	se.pushState(std::unique_ptr<State>(new MenuState(se, app)));
 	
     std::cerr << "Loop\n";
 	sf::Clock timer;
     while (app.isOpen())
     {
-        sf::Event event;
-        while (app.pollEvent(event))
-        {
-            // Close window : exit
-            if (event.type == sf::Event::Closed)
-                app.close();
-        }
+		//std::cerr<<"nasmnmasdn\n";
 		app.clear(sf::Color(128,128,255));
-		gameS.update();
+		se.update();
 		app.display();
-		std::cerr<<"Main: "<<timer.restart().asMilliseconds()<<"\n";
+	//	std::cerr<<"Main: "<<timer.restart().asMilliseconds()<<"\n";
     }
 
     return EXIT_SUCCESS;
