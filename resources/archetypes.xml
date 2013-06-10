@@ -1,7 +1,7 @@
 <Archetype name="Player">
 	<Components>
 		<Position x="0" y="0" z="0" />
-		<Sprite file="player2.png" frameWidth="38" loopTime="0.5"/>
+		<Sprite file="player2.png" frameWidth="38" loopTime="0.5" layer="2"/>
 		<Viewport x="0" y="0" w="max" h="max" />
 		<CameraSource offsetX="270" offsetY="-80" offsetZ="0" w="max" h="max" />
 		<Physics acceleration="600" stoppingSpeed="1000" maxSpeed="200"/>
@@ -29,6 +29,17 @@
 	</Systems>
 </Archetype>
 
+<Archetype name="Background">
+	<Components>
+		<Sprite file="background.png" layer="4"/>
+		<Position x="-130" y="-385" />
+		<PositionRelativeTo relativeTo="2"/>
+	</Components>
+	<Systems>
+		<Render/>
+	</Systems>
+</Archetype>
+
 <Archetype name="StoneRemover">
 	<Components>
 		<Position />
@@ -45,7 +56,7 @@
 <Archetype name="GroundStart">
 	<Components>
 		<Position x="0" y="0" z="0" />
-		<Sprite file="ground.png" />
+		<Sprite file="ground.png" layer="2"/>
 		<BoundingBox x="0" y="0" w="176" h="31" topSolid="1" rightSolid="1" bottomSolid="1" leftSolid="1"/>
 		<Standable accelerationMultiplier="2"/>
 	</Components>
@@ -58,7 +69,7 @@
 <Archetype name="GroundLong">
 	<Components>
 		<Position />
-		<Sprite file="ground2.png" />
+		<Sprite file="ground2.png" layer="2" />
 		<BoundingBox x="0" y="0" w="239" h="34" topSolid="1" rightSolid="1" bottomSolid="1" leftSolid="1"/>
 		<Standable accelerationMultiplier="2"/>
 	</Components>
@@ -71,7 +82,7 @@
 <Archetype name="GroundMid">
 	<Components>
 		<Position />
-		<Sprite file="ground3.png" />
+		<Sprite file="ground3.png" layer="2" />
 		<BoundingBox x="0" y="0" w="132" h="34" topSolid="1" rightSolid="1" bottomSolid="1" leftSolid="1"/>
 		<Standable accelerationMultiplier="2"/>
 	</Components>
@@ -84,7 +95,7 @@
 <Archetype name="GroundSmall">
 	<Components>
 		<Position />
-		<Sprite file="ground4.png" />
+		<Sprite file="ground4.png" layer="2" />
 		<BoundingBox x="0" y="0" w="36" h="31" topSolid="1" rightSolid="1" bottomSolid="1" leftSolid="1"/>
 		<Standable accelerationMultiplier="2"/>
 	</Components>
@@ -97,7 +108,7 @@
 <Archetype name="GroundSmall2">
 	<Components>
 		<Position />
-		<Sprite file="ground5.png" />
+		<Sprite file="ground5.png" layer="2"/>
 		<BoundingBox x="0" y="0" w="36" h="35" topSolid="1" rightSolid="1" bottomSolid="1" leftSolid="1"/>
 		<Standable accelerationMultiplier="2"/>
 	</Components>
@@ -110,7 +121,7 @@
 <Archetype name="GroundFat">
 	<Components>
 		<Position />
-		<Sprite file="ground7.png" />
+		<Sprite file="ground7.png" layer="2"/>
 		<BoundingBox x="0" y="0" w="128" h="41" topSolid="1" rightSolid="1" bottomSolid="1" leftSolid="1"/>
 		<Standable accelerationMultiplier="2"/>
 	</Components>
@@ -123,7 +134,7 @@
 <Archetype name="GroundLong2">
 	<Components>
 		<Position />
-		<Sprite file="ground8.png" />
+		<Sprite file="ground8.png" layer="2"/>
 		<BoundingBox x="0" y="0" w="222" h="34" topSolid="1" rightSolid="1" bottomSolid="1" leftSolid="1"/>
 		<Standable accelerationMultiplier="2"/>
 	</Components>
@@ -136,7 +147,7 @@
 <Archetype name="GroundVert">
 	<Components>
 		<Position />
-		<Sprite file="ground6.png" />
+		<Sprite file="ground6.png" layer="2"/>
 		<BoundingBox x="0" y="0" w="38" h="79" topSolid="1" rightSolid="1" bottomSolid="1" leftSolid="1"/>
 		<Standable accelerationMultiplier="2"/>
 	</Components>
@@ -149,7 +160,7 @@
 <Archetype name="GroundHor">
 	<Components>
 		<Position x="0" y="0" z="0" />
-		<Sprite file="ground9.png" />
+		<Sprite file="ground9.png" layer="2" />
 		<BoundingBox x="0" y="0" w="79" h="38" topSolid="1" rightSolid="1" bottomSolid="1" leftSolid="1" />
 		<Standable accelerationMultiplier="2"/>
 	</Components>
@@ -162,7 +173,7 @@
 <Archetype name="Geyser">
 	<Components>
 		<Position />
-		<Sprite file="geyser.png" />
+		<Sprite file="geyser.png" layer="2"/>
 		<BoundingBox x="0" y="0" w="10" h="16" topSolid="1" rightSolid="1" bottomSolid="1" leftSolid="1"/>
 		<Standable accelerationMultiplier="2"/>
 	</Components>
@@ -175,7 +186,7 @@
 <Archetype name="Armata">
 	<Components>
 		<Position />
-		<Sprite file="armata.png" />
+		<Sprite file="armata.png" layer="2"/>
 		<BoundingBox x="0" y="0" w="50" h="25" topSolid="1" rightSolid="1" bottomSolid="1" leftSolid="1"/>
 		<Standable accelerationMultiplier="2"/>
 	</Components>
@@ -188,7 +199,7 @@
 <Archetype name="GroundMid">
 	<Components>
 		<Position />
-		<Sprite file="ground3.png" />
+		<Sprite file="ground3.png" layer="2"/>
 		<BoundingBox x="0" y="0" w="132" h="34" topSolid="1" rightSolid="1" bottomSolid="1" leftSolid="1"/>
 		<Standable accelerationMultiplier="2"/>
 	</Components>
@@ -201,7 +212,7 @@
 <Archetype name="Lava">
 	<Components>
 		<Position x="0" y="0" z="0" />
-		<Sprite file="lava.png" />
+		<Sprite file="lava.png" layer="0"/>
 		<BoundingBox x="0" y="0" w="1000" h="100" topSolid="1" rightSolid="1" bottomSolid="1" leftSolid="1"/>
 		<Damage damagePerSecond="50000"/>
 	</Components>
@@ -263,7 +274,7 @@
 	<Components>
 		<Damage damagePerSecond="5000"/>
 		<Position />
-		<Sprite file="gas3.png"/>
+		<Sprite file="gas3.png" layer="1"/>
 		<BoundingBox x="0" y="0" w="20" h="30" />
 		<Gravity />
 		<Physics acceleration="0" maxSpeed="500" stoppingSpeed="0"/>
@@ -299,7 +310,7 @@
 	<Components>
 		<Damage damagePerSecond="10000"/>
 		<Position />
-		<Sprite file="lavadrop.png"/>
+		<Sprite file="lavadrop.png" layer="1"/>
 		<BoundingBox x="0" y="0" w="8" h="8" />
 		<Gravity />
 		<Physics acceleration="0" maxSpeed="1000" stoppingSpeed="0"/>
@@ -337,7 +348,7 @@
 	<Components>
 		<Damage damagePerSecond="50000"/>
 		<Position />
-		<Sprite file="stone.png"/>
+		<Sprite file="stone.png" layer="1"/>
 		<BoundingBox x="0" y="0" w="25" h="25" topSolid="1" rightSolid="1" bottomSolid="1" leftSolid="1"/>
 		<Gravity g="150000"/>
 		<Physics acceleration="0" maxSpeed="10000" stoppingSpeed="0"/>
@@ -358,7 +369,7 @@
 <Archetype name="Coin">
 	<Components>
 		<Position />
-		<Sprite file="particle.png"/>
+		<Sprite file="particle.png" layer="1"/>
 		<Physics acceleration="0" maxSpeed="1000" stoppingSpeed="0" angularV="60"/>
 		<Damage damagePerSecond="-10000" once="1"/>
 		<BoundingBox x="0" y="0" w="8" h="8" />
