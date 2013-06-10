@@ -9,6 +9,7 @@
 #include "States/GameState.hpp"
 #include "States/MenuState.hpp"
 #include "General/FontManager.hpp"
+#include "General/ImageManager.hpp"
 #include <memory>
 #include <iostream>
 
@@ -16,14 +17,17 @@ MenuState::MenuState(StateEngine& se, sf::RenderWindow& window)
 :window(window),se(se)
 {
 	selections[0].name="New game";
-	selections[0].selectedColor=sf::Color(0,0,0);
-	selections[0].defaultColor=sf::Color(140,140,140);
+	selections[0].defaultColor=sf::Color(0,0,0);
+	selections[0].selectedColor=sf::Color(140,140,140);
 	
 	selections[1].name="Quit game";
-	selections[1].selectedColor=sf::Color(0,0,0);
-	selections[1].defaultColor=sf::Color(140,140,140);
+	selections[1].defaultColor=sf::Color(0,0,0);
+	selections[1].selectedColor=sf::Color(140,140,140);
 	
 	active=0;
+	
+	background = ImageManager::getSprite("background.png");
+	background.setScale(1,1.25);
 
 }
 
@@ -65,9 +69,12 @@ void MenuState::update()
 		}
 	}
 	
+	window.draw(background);
+	
 	sf::Text text;
 	for(int i=0;i<numOptions;i++)
 	{
+		text.setCharacterSize(50);
 		text.setFont(FontManager::getFont("DejaVuSans.ttf"));
 		text.setString(selections[i].name);
 		if(i==active)

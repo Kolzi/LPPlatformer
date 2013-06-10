@@ -18,7 +18,7 @@
 class RenderSystem : public System
 {
 public:
-    RenderSystem(	sf::RenderWindow& window, Level::CompMap& components);
+    RenderSystem(sf::RenderWindow& window, Level::CompMap& components);
     RenderSystem(const RenderSystem& orig);
     virtual ~RenderSystem();
     void update(sf::Time deltaTime);
