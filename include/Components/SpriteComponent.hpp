@@ -14,7 +14,7 @@
 
 struct SpriteComponent : public Component
 {
-    SpriteComponent(sf::Sprite sprite, int EID);
+    SpriteComponent(sf::Sprite sprite, int layer, int EID);
     SpriteComponent(const SpriteComponent& orig);
     SpriteComponent(rapidxml::xml_node<>* componentNode);
     virtual ~SpriteComponent();
@@ -26,6 +26,7 @@ struct SpriteComponent : public Component
 	double loopTime;
 	int numberOfFrames;
 	double currentFrameTime;
+	int layer;
 };
 
 #endif	/* SPRITECOMPONENT_HPP */

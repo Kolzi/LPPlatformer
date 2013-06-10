@@ -23,6 +23,7 @@ public:
     virtual ~RenderSystem();
     void update(sf::Time deltaTime);
     void addEntity(int EID);
+	static const int numLayers=5;
 private:
     sf::RenderWindow& window;
 };
