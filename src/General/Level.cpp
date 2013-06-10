@@ -40,7 +40,7 @@ Level::Level(sf::RenderWindow& app, const ArchetypesManager& archetypesManager)
 	systemsMap.insert(std::pair<std::string, System*>("Particle", new ParticleSystem(components, *this)));
 	systems.push_back(systemsMap.at("Particle"));
 	
-	systemsMap.insert(std::pair<std::string, System*>("PlayerInput", new PlayerInputSystem(components)));
+	systemsMap.insert(std::pair<std::string, System*>("PlayerInput", new PlayerInputSystem(components, app)));
 	systems.push_back(systemsMap.at("PlayerInput"));
 	
 	systemsMap.insert(std::pair<std::string, System*>("Gravity", new GravitySystem(components)));

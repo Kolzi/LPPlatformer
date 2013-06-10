@@ -4,7 +4,10 @@
 <Object name="Player">
 	<Position x="0" y="139" z="0" />
 </Object>
-<!-- hjhjahjasj -->
+
+<Object name="Background">
+</Object>
+
 <Object name="Lava">
 	<Position x="-400" y="230" z="0" />
 </Object>

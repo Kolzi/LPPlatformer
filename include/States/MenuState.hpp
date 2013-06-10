@@ -30,6 +30,7 @@ private:
 	sf::RenderWindow& window;
 	int active;
 	StateEngine& se;
+	sf::Sprite background;
 };
 
 #endif	/* NEWCLASS_HPP */

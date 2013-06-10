@@ -12,6 +12,7 @@
 #include "Systems/System.hpp"
 #include "Components/GravityComponent.hpp"
 #include "Components/PhysicsComponent.hpp"
+#include "Components/StandsOnComponent.hpp"
 
 
 GravitySystem::GravitySystem(Level::CompMap& components)
@@ -35,7 +36,9 @@ void GravitySystem::update(sf::Time deltaTime)
 	{
 		GravityComponent* gC=boost::polymorphic_downcast<GravityComponent*>(components.at(Level::CompKey(EID, "Gravity")));
 		PhysicsComponent* pC=boost::polymorphic_downcast<PhysicsComponent*>(components.at(Level::CompKey(EID, "Physics")));
-		pC->ay+=gC->g;
+		if(components.find(Level::CompKey(EID, "StandsOn"))==components.end() ||
+			!boost::polymorphic_downcast<StandsOnComponent*>(components.at(Level::CompKey(EID, "StandsOn")))->standing)	
+			pC->ay+=gC->g;
 	}
 	std::cerr<<"Gravity system: "<<timer.getElapsedTime().asMilliseconds()<<"\n";
 }

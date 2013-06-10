@@ -18,11 +18,12 @@
 class PlayerInputSystem : public System
 {
 public:
-    PlayerInputSystem(Level::CompMap& components);
+    PlayerInputSystem(Level::CompMap& components, sf::RenderWindow& app);
     PlayerInputSystem(const PlayerInputSystem& orig);
     virtual ~PlayerInputSystem();
 	void update(sf::Time deltaTime);
     void addEntity(int entity);
+	sf::RenderWindow& app;
 };
 
 #endif	/* PLAYERINPUTSYSTEM_HPP */
