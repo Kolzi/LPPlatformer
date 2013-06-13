@@ -8,14 +8,22 @@
 #include "Exceptions/RequiredAttributeNotFound.hpp"
 
 #include <boost/lexical_cast.hpp>
+#include <set>
 
 CountdownComponent::CountdownComponent(int EID)
-: Component(EID), startTime(-1), timeLeft(-1), toText(false), restart(false), actions()
+: Component(EID), startTime(-1), timeLeft(-1), toText(false), restart(false), actions(), actIt(actions.begin())
 {
 }
 
 CountdownComponent::CountdownComponent(int EID, double startTime)
-: Component(EID), startTime(startTime), timeLeft(startTime), toText(false), restart(false), actions()
+: Component(EID), startTime(startTime), timeLeft(startTime), toText(false), restart(false), actions(), actIt(actions.begin())
+{
+}
+
+CountdownComponent::CountdownComponent(CountdownComponent& orig)
+:Component(orig.EID), startTime(orig.startTime), timeLeft(orig.timeLeft),
+		toText(orig.toText), restart(orig.restart), actions(orig.actions),
+		actIt(actions.begin())
 {
 }
 
@@ -23,6 +31,11 @@ CountdownComponent::CountdownComponent(rapidxml::xml_node<>* componentNode)
 : CountdownComponent(-1)
 {
 	read(componentNode);
+	std::cerr<<"Countdown read!\n";
+	for(Action act : actions)
+	{
+		std::cerr<<act.name<<" "<<act.target<<" "<<act.time<<"\n";
+	}
 }
 
 void CountdownComponent::read(rapidxml::xml_node<>* componentNode)
@@ -45,9 +58,9 @@ void CountdownComponent::read(rapidxml::xml_node<>* componentNode)
 
 		if (actionNode->first_attribute("target") != 0)
 			a.target = actionNode->first_attribute("target")->value();
-		actions.push(a);
-		startActions.push(a);
+		actions.insert(a);
 	}
+	actIt=actions.begin();
 }
 
 Component* CountdownComponent::clone(int newEID)

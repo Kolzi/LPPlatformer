@@ -9,6 +9,7 @@
 #include "Exceptions/RequiredAttributeNotFound.hpp"
 
 #include <boost/lexical_cast.hpp>
+#include <set>
 
 BoundingBoxComponent::BoundingBoxComponent(int EID)
 :Component(EID), boundingBox(), topSolid(false), rightSolid(false),
@@ -52,6 +53,12 @@ void BoundingBoxComponent::read(rapidxml::xml_node<>* componentNode)
 		bottomSolid=boost::lexical_cast<bool>(componentNode->first_attribute("bottomSolid")->value());
 	if(componentNode->first_attribute("leftSolid")!=0)
 		leftSolid=boost::lexical_cast<bool>(componentNode->first_attribute("leftSolid")->value());
+	
+	for(rapidxml::xml_attribute<> *att=componentNode->first_attribute("collisionGroup");
+			att;att=att->next_attribute("collisionGroup"))
+	{
+		collisionGroups.insert(boost::lexical_cast<int>(att->value()));
+	}
 }
 
 Component* BoundingBoxComponent::clone(int newEID)

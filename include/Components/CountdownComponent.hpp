@@ -8,7 +8,7 @@
 #ifndef COUNTDOWNCOMPONENT_HPP
 #define	COUNTDOWNCOMPONENT_HPP
 
-#include <queue>
+#include <set>
 
 #include "Component.hpp"
 
@@ -24,7 +24,7 @@ class CompareByTime
 public:
 	bool operator() (const Action& lhs, const Action& rhs) const
 	{
-		return (lhs.time < rhs.time);
+		return (lhs.time > rhs.time);
 	}
 };
 
@@ -32,6 +32,7 @@ struct CountdownComponent : public Component
 {
 	CountdownComponent(int EID);
 	CountdownComponent(int EID, double startTime);
+	CountdownComponent(CountdownComponent& orig);
     CountdownComponent(rapidxml::xml_node<>* componentNode);
 	
 	Component* clone(int newEID);
@@ -42,8 +43,8 @@ struct CountdownComponent : public Component
 	bool toText;
 	bool restart;
 	
-	std::priority_queue<Action, std::vector<Action>, CompareByTime> actions;
-	std::priority_queue<Action, std::vector<Action>, CompareByTime> startActions;
+	std::multiset<Action, CompareByTime> actions;
+	std::multiset<Action, CompareByTime>::iterator actIt;
 };
 
 #endif	/* COUNTDOWNCOMPONENT_HPP */

@@ -7,6 +7,7 @@
 
 #include <assert.h>
 #include <boost/cast.hpp>
+#include <set>
 
 #include "Systems/CountdownSystem.hpp"
 #include "Components/ScoreComponent.hpp"
@@ -41,34 +42,32 @@ void CountdownSystem::update(sf::Time deltaTime)
     {
         CountdownComponent& countC=*boost::polymorphic_downcast<CountdownComponent*>(components.at(Level::CompKey(*it, "Countdown")));
 		countC.timeLeft-=deltaTime.asSeconds();
-		while(!countC.actions.empty() && countC.timeLeft<=countC.actions.top().time)
+		while(countC.actIt!=countC.actions.end() && countC.timeLeft<=countC.actIt->time)
 		{
-			if(countC.actions.top().name=="Remove")
+			std::cerr<<countC.actIt->name<<"\n";
+			if(countC.actIt->name=="Remove")
 			{
-				countC.actions.pop();
 				toRemove.push_back(*it);
 			}
-			else if(countC.actions.top().name=="AddToSystem")
+			else if(countC.actIt->name=="AddToSystem")
 			{
-				level.addEntityToSystem(*it, countC.actions.top().target);
-				countC.actions.pop();
+				level.addEntityToSystem(*it, countC.actIt->target);
 			}
-			else if(countC.actions.top().name=="RemoveFromSystem")
+			else if(countC.actIt->name=="RemoveFromSystem")
 			{
-				toRemoveFromSystems.push_back(std::make_pair(*it, countC.actions.top().target));				
-				countC.actions.pop();
+				toRemoveFromSystems.push_back(std::make_pair(*it, countC.actIt->target));				
 			}
-			else if(countC.actions.top().name=="RemoveComponent")
+			else if(countC.actIt->name=="RemoveComponent")
 			{
-				componentsToRemove.push_back(std::make_pair(*it, countC.actions.top().target));
-				countC.actions.pop();
+				componentsToRemove.push_back(std::make_pair(*it, countC.actIt->target));
 			}
+			countC.actIt++;
 		}
 		
 		if(countC.timeLeft<=0 && countC.restart)
 		{
 			countC.timeLeft=countC.startTime;
-			countC.actions=countC.startActions;
+			countC.actIt=countC.actions.begin();
 		}			
 	}
 	for(auto p:toRemoveFromSystems)

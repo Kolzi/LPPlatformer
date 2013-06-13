@@ -5,7 +5,7 @@
 		<Viewport x="0" y="0" w="max" h="max" />
 		<CameraSource offsetX="270" offsetY="-80" offsetZ="0" w="max" h="max" />
 		<Physics acceleration="600" stoppingSpeed="1000" maxSpeed="200"/>
-		<BoundingBox x="0" y="0" w="38" h="61" topSolid="1" rightSolid="1" bottomSolid="1" leftSolid="1"/>
+		<BoundingBox x="0" y="0" w="38" h="61" topSolid="1" rightSolid="1" bottomSolid="1" leftSolid="1" collisionGroup="1"/>
 		<Gravity g="100"/>
 		<StandsOn jumpingPower="300" jumpingTime="0.3"/>
 		<HasScore scoreEID="1" />
@@ -57,7 +57,7 @@
 	<Components>
 		<Position x="0" y="0" z="0" />
 		<Sprite file="ground.png" layer="2"/>
-		<BoundingBox x="0" y="0" w="176" h="31" topSolid="1" rightSolid="1" bottomSolid="1" leftSolid="1"/>
+		<BoundingBox x="0" y="0" w="176" h="31" topSolid="1" rightSolid="1" bottomSolid="1" leftSolid="1" collisionGroup="1" collisionGroup="2"/>
 		<Standable accelerationMultiplier="2"/>
 	</Components>
 	<Systems>
@@ -70,7 +70,7 @@
 	<Components>
 		<Position />
 		<Sprite file="ground2.png" layer="2" />
-		<BoundingBox x="0" y="0" w="239" h="34" topSolid="1" rightSolid="1" bottomSolid="1" leftSolid="1"/>
+		<BoundingBox x="0" y="0" w="239" h="34" topSolid="1" rightSolid="1" bottomSolid="1" leftSolid="1" collisionGroup="1" collisionGroup="2"/>
 		<Standable accelerationMultiplier="2"/>
 	</Components>
 	<Systems>
@@ -83,7 +83,7 @@
 	<Components>
 		<Position />
 		<Sprite file="ground3.png" layer="2" />
-		<BoundingBox x="0" y="0" w="132" h="34" topSolid="1" rightSolid="1" bottomSolid="1" leftSolid="1"/>
+		<BoundingBox x="0" y="0" w="132" h="34" topSolid="1" rightSolid="1" bottomSolid="1" leftSolid="1" collisionGroup="1" collisionGroup="2"/>
 		<Standable accelerationMultiplier="2"/>
 	</Components>
 	<Systems>
@@ -96,7 +96,7 @@
 	<Components>
 		<Position />
 		<Sprite file="ground4.png" layer="2" />
-		<BoundingBox x="0" y="0" w="36" h="31" topSolid="1" rightSolid="1" bottomSolid="1" leftSolid="1"/>
+		<BoundingBox x="0" y="0" w="36" h="31" topSolid="1" rightSolid="1" bottomSolid="1" leftSolid="1" collisionGroup="1" collisionGroup="2"/>
 		<Standable accelerationMultiplier="2"/>
 	</Components>
 	<Systems>
@@ -109,7 +109,7 @@
 	<Components>
 		<Position />
 		<Sprite file="ground5.png" layer="2"/>
-		<BoundingBox x="0" y="0" w="36" h="35" topSolid="1" rightSolid="1" bottomSolid="1" leftSolid="1"/>
+		<BoundingBox x="0" y="0" w="36" h="35" topSolid="1" rightSolid="1" bottomSolid="1" leftSolid="1"collisionGroup="1" collisionGroup="2"/>
 		<Standable accelerationMultiplier="2"/>
 	</Components>
 	<Systems>
@@ -122,7 +122,7 @@
 	<Components>
 		<Position />
 		<Sprite file="ground7.png" layer="2"/>
-		<BoundingBox x="0" y="0" w="128" h="41" topSolid="1" rightSolid="1" bottomSolid="1" leftSolid="1"/>
+		<BoundingBox x="0" y="0" w="128" h="41" topSolid="1" rightSolid="1" bottomSolid="1" leftSolid="1" collisionGroup="1" collisionGroup="2"/>
 		<Standable accelerationMultiplier="2"/>
 	</Components>
 	<Systems>
@@ -135,7 +135,7 @@
 	<Components>
 		<Position />
 		<Sprite file="ground8.png" layer="2"/>
-		<BoundingBox x="0" y="0" w="222" h="34" topSolid="1" rightSolid="1" bottomSolid="1" leftSolid="1"/>
+		<BoundingBox x="0" y="0" w="222" h="34" topSolid="1" rightSolid="1" bottomSolid="1" leftSolid="1" collisionGroup="1" collisionGroup="2"/>
 		<Standable accelerationMultiplier="2"/>
 	</Components>
 	<Systems>
@@ -148,7 +148,7 @@
 	<Components>
 		<Position />
 		<Sprite file="ground6.png" layer="2"/>
-		<BoundingBox x="0" y="0" w="38" h="79" topSolid="1" rightSolid="1" bottomSolid="1" leftSolid="1"/>
+		<BoundingBox x="0" y="0" w="38" h="79" topSolid="1" rightSolid="1" bottomSolid="1" leftSolid="1" collisionGroup="1" collisionGroup="2"/>
 		<Standable accelerationMultiplier="2"/>
 	</Components>
 	<Systems>
@@ -161,7 +161,7 @@
 	<Components>
 		<Position x="0" y="0" z="0" />
 		<Sprite file="ground9.png" layer="2" />
-		<BoundingBox x="0" y="0" w="79" h="38" topSolid="1" rightSolid="1" bottomSolid="1" leftSolid="1" />
+		<BoundingBox x="0" y="0" w="79" h="38" topSolid="1" rightSolid="1" bottomSolid="1" leftSolid="1" collisionGroup="1" collisionGroup="2"/>
 		<Standable accelerationMultiplier="2"/>
 	</Components>
 	<Systems>
@@ -174,7 +174,7 @@
 	<Components>
 		<Position />
 		<Sprite file="geyser.png" layer="2"/>
-		<BoundingBox x="0" y="0" w="10" h="16" topSolid="1" rightSolid="1" bottomSolid="1" leftSolid="1"/>
+		<BoundingBox x="0" y="0" w="10" h="16" topSolid="1" rightSolid="1" bottomSolid="1" leftSolid="1" collisionGroup="1" collisionGroup="2"/>
 		<Standable accelerationMultiplier="2"/>
 	</Components>
 	<Systems>
@@ -187,7 +187,7 @@
 	<Components>
 		<Position />
 		<Sprite file="armata.png" layer="2"/>
-		<BoundingBox x="0" y="0" w="50" h="25" topSolid="1" rightSolid="1" bottomSolid="1" leftSolid="1"/>
+		<BoundingBox x="0" y="0" w="50" h="25" topSolid="1" rightSolid="1" bottomSolid="1" leftSolid="1" collisionGroup="1"/>
 		<Standable accelerationMultiplier="2"/>
 	</Components>
 	<Systems>
@@ -200,7 +200,7 @@
 	<Components>
 		<Position />
 		<Sprite file="ground3.png" layer="2"/>
-		<BoundingBox x="0" y="0" w="132" h="34" topSolid="1" rightSolid="1" bottomSolid="1" leftSolid="1"/>
+		<BoundingBox x="0" y="0" w="132" h="34" topSolid="1" rightSolid="1" bottomSolid="1" leftSolid="1" collisionGroup="1" collisionGroup="2"/>
 		<Standable accelerationMultiplier="2"/>
 	</Components>
 	<Systems>
@@ -213,14 +213,14 @@
 	<Components>
 		<Position x="0" y="0" z="0" />
 		<Sprite file="lava.png" layer="0"/>
-		<BoundingBox x="0" y="0" w="1000" h="100" topSolid="1" rightSolid="1" bottomSolid="1" leftSolid="1"/>
+		<BoundingBox x="0" y="0" w="1000" h="100" topSolid="1" rightSolid="1" bottomSolid="1" leftSolid="1" collisionGroup="1" collisionGroup="2"/>
 		<Damage damagePerSecond="50000"/>
 	</Components>
 	<Systems>
 		<Render />
 		<Collision />
 	</Systems>
-</Archetype>	
+</Archetype>
 
 <Archetype name="LevelMusic">
 	<Components>
@@ -349,7 +349,7 @@
 		<Damage damagePerSecond="50000"/>
 		<Position />
 		<Sprite file="stone.png" layer="1"/>
-		<BoundingBox x="0" y="0" w="25" h="25" topSolid="1" rightSolid="1" bottomSolid="1" leftSolid="1"/>
+		<BoundingBox x="0" y="0" w="25" h="25" topSolid="1" rightSolid="1" bottomSolid="1" leftSolid="1" collisionGroup="2"/>
 		<Gravity g="150000"/>
 		<Physics acceleration="0" maxSpeed="10000" stoppingSpeed="0"/>
 		<Remove removeGroup="2" target="1"/>
@@ -370,7 +370,7 @@
 	<Components>
 		<Damage damagePerSecond="80000"/>
 		<Position />
-		<Sprite file="laser.png"/>
+		<Sprite file="laser.png" layer="1"/>
 		<BoundingBox x="0" y="0" w="1000" h="3"/>
 		<Countdown time="53">
 			<AddToSystem target="Render" time="37.486"/>

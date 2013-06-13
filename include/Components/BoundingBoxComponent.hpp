@@ -8,6 +8,8 @@
 #ifndef BOUNDINGBOXCOMPONENT_HPP
 #define	BOUNDINGBOXCOMPONENT_HPP
 
+#include <set>
+
 #include "Component.hpp"
 #include "SFML/Graphics/Rect.hpp"
 #include "rapidxml/rapidxml.hpp"
@@ -31,6 +33,7 @@ struct BoundingBoxComponent : public Component
 	bool topSolid, rightSolid, bottomSolid, leftSolid;
 	//pair entity - collision time
 	std::list <CollisionData> collidedWith;
+	std::set <int> collisionGroups;
 };
 
 #endif	/* BOUNDINGBOXCOMPONENT_HPP */

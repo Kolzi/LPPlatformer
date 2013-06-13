@@ -135,10 +135,12 @@ void Level::update(sf::Time deltaTime)
 	
 	sf::Clock preciseTimer;
 	long long int t1=0, t2=0;
+	int counter=0;
 	for(int EID : entitiesToRemove)
 	{
 		for(auto compName:StringComponentConverter::componentNames)
 		{
+			counter++;
 			components.erase(CompKey(EID, compName));
 		}
 		t1+=preciseTimer.restart().asMicroseconds();
@@ -150,7 +152,8 @@ void Level::update(sf::Time deltaTime)
 		t2+=preciseTimer.restart().asMicroseconds();
 
 	}
-	std::cerr<<"Entity components removed in: "<<t1<<"\n";
+	entitiesToRemove.clear();
+	std::cerr<<"Entity components removed in: "<<t1<<" counter: "<<counter<<"\n";
 	std::cerr<<"From systems removed in: "<<t2<<"\n";
 	std::cerr<<"Entities removed: "<<timer.restart().asMilliseconds()<<"\n";
 }

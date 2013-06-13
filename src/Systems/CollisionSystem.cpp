@@ -18,6 +18,7 @@
 #include <algorithm>
 #include <assert.h>
 #include <boost/cast.hpp>
+#include <set>
 
 CollisionSystem::CollisionSystem(Level::CompMap& components)
 :System(components)
@@ -138,59 +139,70 @@ void CollisionSystem::update(sf::Time deltaTime)
 				bbCi.collidedWith.push_back(colDatai);
 				bbCj.collidedWith.push_back(colDataj);
 				
-				
-				if(t==tx && t<=deltaTime.asSeconds()+eps)
+				bool sameGroup=false;
+				for(int group:bbCi.collisionGroups)
 				{
-					if((bbCi.leftSolid && bbCj.rightSolid && colDatai.left && colDataj.right)
-					 || (bbCj.leftSolid && bbCi.rightSolid && colDataj.left && colDatai.right))
+					if(bbCj.collisionGroups.find(group)!=bbCj.collisionGroups.end())
 					{
-						posCi.x-=(t*physCi.vx);
-						posCj.x-=(t*physCj.vx);
-						resetX.push_back(*it);
-						resetX.push_back(*jt);
-					/*	physCi.vx=0;
-						physCi.ax=0;
-						physCj.ax=0;
-						physCj.vx=0;*/
-					}
-					else if((bbCi.topSolid && bbCj.bottomSolid && colDatai.top && colDataj.bottom)
-					 || (bbCj.topSolid && bbCi.bottomSolid && colDataj.top && colDatai.bottom))
-					{
-						resetY.push_back(*it);
-						resetY.push_back(*jt);
-						posCi.y-=(ty*physCi.vy);
-						posCj.y-=(ty*physCj.vy);
-					/*	physCi.ay=0;
-						physCi.vy=0;
-						physCj.vy=0;
-						physCj.ay=0;*/
+						sameGroup=true;
+						break;
 					}
 				}
-				else if(t==ty && t<=deltaTime.asSeconds()+eps)
+				if(sameGroup)
 				{
-					if((bbCi.topSolid && bbCj.bottomSolid && colDatai.top && colDataj.bottom)
-					 || (bbCj.topSolid && bbCi.bottomSolid && colDataj.top && colDatai.bottom))
+					if(t==tx && t<=deltaTime.asSeconds()+eps)
 					{
-						resetY.push_back(*it);
-						resetY.push_back(*jt);
-						posCi.y-=(ty*physCi.vy);
-						posCj.y-=(ty*physCj.vy);
-					/*	physCi.ay=0;
-						physCi.vy=0;
-						physCj.vy=0;
-						physCj.ay=0;*/
+						if((bbCi.leftSolid && bbCj.rightSolid && colDatai.left && colDataj.right)
+						 || (bbCj.leftSolid && bbCi.rightSolid && colDataj.left && colDatai.right))
+						{
+							posCi.x-=(t*physCi.vx);
+							posCj.x-=(t*physCj.vx);
+							resetX.push_back(*it);
+							resetX.push_back(*jt);
+						/*	physCi.vx=0;
+							physCi.ax=0;
+							physCj.ax=0;
+							physCj.vx=0;*/
+						}
+						else if((bbCi.topSolid && bbCj.bottomSolid && colDatai.top && colDataj.bottom)
+						 || (bbCj.topSolid && bbCi.bottomSolid && colDataj.top && colDatai.bottom))
+						{
+							resetY.push_back(*it);
+							resetY.push_back(*jt);
+							posCi.y-=(ty*physCi.vy);
+							posCj.y-=(ty*physCj.vy);
+						/*	physCi.ay=0;
+							physCi.vy=0;
+							physCj.vy=0;
+							physCj.ay=0;*/
+						}
 					}
-					else if((bbCi.leftSolid && bbCj.rightSolid && colDatai.left && colDataj.right)
-					 || (bbCj.leftSolid && bbCi.rightSolid && colDataj.left && colDatai.right))
+					else if(t==ty && t<=deltaTime.asSeconds()+eps)
 					{
-						resetX.push_back(*it);
-						resetX.push_back(*jt);
-						posCi.x-=(tx*physCi.vx);
-						posCj.x-=(tx*physCj.vx);
-						/*physCi.vx=0;
-						physCi.ax=0;
-						physCj.ax=0;
-						physCj.vx=0;*/
+						if((bbCi.topSolid && bbCj.bottomSolid && colDatai.top && colDataj.bottom)
+						 || (bbCj.topSolid && bbCi.bottomSolid && colDataj.top && colDatai.bottom))
+						{
+							resetY.push_back(*it);
+							resetY.push_back(*jt);
+							posCi.y-=(ty*physCi.vy);
+							posCj.y-=(ty*physCj.vy);
+						/*	physCi.ay=0;
+							physCi.vy=0;
+							physCj.vy=0;
+							physCj.ay=0;*/
+						}
+						else if((bbCi.leftSolid && bbCj.rightSolid && colDatai.left && colDataj.right)
+						 || (bbCj.leftSolid && bbCi.rightSolid && colDataj.left && colDatai.right))
+						{
+							resetX.push_back(*it);
+							resetX.push_back(*jt);
+							posCi.x-=(tx*physCi.vx);
+							posCj.x-=(tx*physCj.vx);
+							/*physCi.vx=0;
+							physCi.ax=0;
+							physCj.ax=0;
+							physCj.vx=0;*/
+						}
 					}
 				}
 			}
