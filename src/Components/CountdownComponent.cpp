@@ -58,6 +58,12 @@ void CountdownComponent::read(rapidxml::xml_node<>* componentNode)
 
 		if (actionNode->first_attribute("target") != 0)
 			a.target = actionNode->first_attribute("target")->value();
+		
+		if(actionNode->first_attribute("targetTime") != 0)
+			a.targetTime = boost::lexical_cast<double>(actionNode->first_attribute("targetTime")->value());
+		else if(actionNode->name()=="Reset")
+			throw RequiredAttributeNotFound("targetTime", "Countdown::ActionReset");
+		
 		actions.insert(a);
 	}
 	actIt=actions.begin();

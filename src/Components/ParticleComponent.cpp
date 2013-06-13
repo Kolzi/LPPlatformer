@@ -89,8 +89,10 @@ void ParticleComponent::read(rapidxml::xml_node<>* componentNode)
 	if(componentNode->first_attribute("minInterval")!=0)
 		maxParticlesPerSec=1.0/boost::lexical_cast<double>(componentNode->first_attribute("minInterval")->value());
 	if(componentNode->first_attribute("maxInterval")!=0)
+	{
 		minParticlesPerSec=1.0/boost::lexical_cast<double>(componentNode->first_attribute("maxInterval")->value());
-	
+		timeSinceLastParticle=1.0/minParticlesPerSec;
+	}
 	if(componentNode->first_attribute("salvo")!=0)
 		salvo=boost::lexical_cast<bool>(componentNode->first_attribute("salvo")->value());
 	if(componentNode->first_attribute("particlesInSalvo")!=0)
@@ -100,6 +102,7 @@ void ParticleComponent::read(rapidxml::xml_node<>* componentNode)
 		emitsArchetype=componentNode->first_attribute("emits")->value();
 	else
 		throw RequiredAttributeNotFound("emits", "ParticleComponent");
+	
 }
 
 Component* ParticleComponent::clone(int newEID)

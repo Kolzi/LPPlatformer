@@ -48,20 +48,28 @@ void CountdownSystem::update(sf::Time deltaTime)
 			if(countC.actIt->name=="Remove")
 			{
 				toRemove.push_back(*it);
+				countC.actIt++;
 			}
 			else if(countC.actIt->name=="AddToSystem")
 			{
 				level.addEntityToSystem(*it, countC.actIt->target);
+				countC.actIt++;
 			}
 			else if(countC.actIt->name=="RemoveFromSystem")
 			{
 				toRemoveFromSystems.push_back(std::make_pair(*it, countC.actIt->target));				
+				countC.actIt++;
 			}
 			else if(countC.actIt->name=="RemoveComponent")
 			{
 				componentsToRemove.push_back(std::make_pair(*it, countC.actIt->target));
+				countC.actIt++;
 			}
-			countC.actIt++;
+			else if(countC.actIt->name=="Reset")
+			{
+				countC.timeLeft=countC.actIt->targetTime;
+				countC.actIt=countC.actions.begin();
+			}
 		}
 		
 		if(countC.timeLeft<=0 && countC.restart)

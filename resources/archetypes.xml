@@ -43,7 +43,7 @@
 <Archetype name="StoneRemover">
 	<Components>
 		<Position />
-		<BoundingBox x="0" y="0" w="72" h="10"/>
+		<BoundingBox x="0" y="0" w="30" h="30"/>
 		<Remove removeGroup="2" target="0"/>
 	</Components>
 	<Systems>
@@ -331,9 +331,9 @@
 	<Components>
 		<Position angle="180" />
 		<Particle emits="Stone" minAngle="0" maxAngle="0"  minV="300"  maxV="300" 
-		minInterval="3" maxInterval="3" minLifeTime="5" maxLifeTime="10" salvo="1" 
+		minInterval="2.09" maxInterval="2.09" minLifeTime="5" maxLifeTime="10" salvo="1" 
 		particlesInSalvo="1" minGravity="500" maxGravity="500" />
-		<Countdown time="3">
+		<Countdown time="7.201">
 			<AddToSystem target="Particle" time="0"/>
 			<RemoveFromSystem target="Countdown" time="0"/>
 			<RemoveComponent target="Countdown" time="0"/>
@@ -375,60 +375,10 @@
 		<Countdown time="53">
 			<AddToSystem target="Render" time="37.486"/>
 			<AddToSystem target="Collision" time="37.486"/>
-			<RemoveFromSystem target="Render" time="36.786"/>
-			<RemoveFromSystem target="Collision" time="36.786"/>
+			<RemoveFromSystem target="Render" time="36.721"/>
+			<RemoveFromSystem target="Collision" time="36.721"/>
 			
-			<AddToSystem target="Render" time="35.384"/>
-			<AddToSystem target="Collision" time="35.384"/>
-			<RemoveFromSystem target="Render" time="34.684"/>
-			<RemoveFromSystem target="Collision" time="34.684"/>
-			
-			<AddToSystem target="Render" time="33.282"/>
-			<AddToSystem target="Collision" time="33.282"/>
-			<RemoveFromSystem target="Render" time="32.582"/>
-			<RemoveFromSystem target="Collision" time="32.582"/>
-			
-			<AddToSystem target="Render" time="31.18"/>
-			<AddToSystem target="Collision" time="31.18"/>
-			<RemoveFromSystem target="Render" time="30.48"/>
-			<RemoveFromSystem target="Collision" time="30.48"/>
-			
-			<AddToSystem target="Render" time="29.078"/>
-			<AddToSystem target="Collision" time="29.078"/>
-			<RemoveFromSystem target="Render" time="28.378"/>
-			<RemoveFromSystem target="Collision" time="28.378"/>
-			
-			<AddToSystem target="Render" time="26.976"/>
-			<AddToSystem target="Collision" time="26.976"/>
-			<RemoveFromSystem target="Render" time="26.276"/>
-			<RemoveFromSystem target="Collision" time="26.276"/>
-			
-			<AddToSystem target="Render" time="24.874"/>
-			<AddToSystem target="Collision" time="24.874"/>
-			<RemoveFromSystem target="Render" time="24.174"/>
-			<RemoveFromSystem target="Collision" time="24.174"/>	
-			
-			<AddToSystem target="Render" time="22.772"/>
-			<AddToSystem target="Collision" time="22.772"/>
-			<RemoveFromSystem target="Render" time="22.072"/>
-			<RemoveFromSystem target="Collision" time="22.072"/>	
-			
-			<AddToSystem target="Render" time="20.67"/>
-			<AddToSystem target="Collision" time="20.67"/>
-			<RemoveFromSystem target="Render" time="19.97"/>
-			<RemoveFromSystem target="Collision" time="19.97"/>	
-			
-			<AddToSystem target="Render" time="18.569"/>
-			<AddToSystem target="Collision" time="18.569"/>
-			<RemoveFromSystem target="Render" time="17.869"/>
-			<RemoveFromSystem target="Collision" time="17.869"/>
-			
-			<AddToSystem target="Render" time="16.466"/>
-			<AddToSystem target="Collision" time="16.466"/>
-			<RemoveFromSystem target="Render" time="15.766"/>
-			<RemoveFromSystem target="Collision" time="15.766"/>
-			
-			<Remove time="0"/>
+			<Reset targetTime="37.486" time="35.399" />
 		</Countdown>
 	</Components>
 	<Systems>

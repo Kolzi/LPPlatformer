@@ -71,7 +71,7 @@
 </Object>
 
 <Object name="StoneRemover">
-	<Position x="728" y="229" z="0" />
+	<Position x="728" y="200" z="0" />
 </Object>
 
 <Object name="GroundMid">
@@ -92,6 +92,18 @@
 
 <Object name="GroundMid">
 	<Position x="1200" y="44" z="0" />
+</Object>
+
+<Object name="StoneEmiter">
+	<Position x="1370" y="-16" z="0" />
+</Object>
+
+<Object name="Armata">
+	<Position x="1370" y="-16" z="0" />
+</Object>
+
+<Object name="StoneRemover">
+	<Position x="1370" y="-46" z="0" />
 </Object>
 
 <Object name="GroundMid">

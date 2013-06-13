@@ -17,6 +17,7 @@ struct Action
 	double time;
 	std::string name;
 	std::string target;
+	double targetTime;
 };
 
 class CompareByTime
